@@ -4,6 +4,6 @@
   <a href="/about" style="font-weight: bold;">About Me</a>
   <form action="/search" method="get" style="margin-left: auto;">
     <input type="text" name="q" placeholder="Search..." style="padding: 0.25em; border-radius: 4px;">
-    <button type="submit" style="padding: 0.25em 0.5em;">
+    <button type="submit" style="padding: 0.25em 0.5em;">Search</button>
   </form>
 </nav>
