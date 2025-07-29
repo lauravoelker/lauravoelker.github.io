@@ -1,19 +1,22 @@
 ---
-# This is your custom splash layout.
 layout: default
 ---
 {% include skip-links.html %}
-{% include masthead.html %}
+{% comment %}
+  We intentionally do NOT include masthead.html here,
+  so no nav/logo repeats on the splash.
+{% endcomment %}
 
 <div class="page__hero page__hero--splash">
   <div class="page__hero--overlay"
-       {% if page.header.overlay_image %} style="background-image: url('{{ page.header.overlay_image }}');"{% endif %}>
+       {% if page.header.overlay_image %}
+         style="background-image: url('{{ page.header.overlay_image }}');"
+       {% endif %}>
     {%- comment -%}
-    The theme normally injects:
+      Removed:
       <h1 class="page__title">{{ page.title }}</h1>
       <p class="page__lead">{{ page.excerpt }}</p>
-      <ul class="splash__actions">…buttons…</ul>
-    We’ve removed them to leave only the image.
+      <ul class="splash__actions">…</ul>
     {%- endcomment -%}
   </div>
 </div>
