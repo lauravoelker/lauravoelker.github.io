@@ -5,10 +5,10 @@ permalink: /about/
 author_profile: true
 ---
 
-Hi ☺
+Hi<br>
 I’m Laura, Partner Development Manager for Microsoft Azure, based in Germany.
 
-My passion is helping businesses and IT partners succeed in the Microsoft ecosystem. 
+My passion is helping businesses and IT partners succeed in the Microsoft ecosystem.<br> 
 I focus on building strong relationships, simplifying cloud security, and making AI and modern workplace solutions accessible to everyone.
 
 ---
@@ -17,19 +17,19 @@ I focus on building strong relationships, simplifying cloud security, and making
 
 
 **Starting Out:**  
-I began my career in IT as a trainee and quickly moved into sales and management roles, where I worked closely with clients to deliver practical technology solutions and managed key accounts. 
+I began my career in IT as a trainee and quickly moved into sales and management roles, where I worked closely with clients to deliver practical technology solutions and managed key accounts.<br> 
 This early experience taught me the value of communication and a customer-first mindset.
 
 **Growing with Partners:**  
-My journey continued at a leading IT distributor. 
+My journey continued at a leading IT distributor.<br> 
 There, I supported system integrators and service providers with licensing advice, sales enablement, and strategic guidance, especially around Microsoft CSP (Cloud Solution Provider), SPLA (Service Provider Licensing Agreement), and Data Center Hosting solutions.
 
 **Embracing Cloud and Modern Work:**  
-Over time, I shifted my focus to Microsoft 365 and Teams, helping partners identify and implement the right modern workplace solutions to fit their customers’ evolving needs. 
+Over time, I shifted my focus to Microsoft 365 and Teams, helping partners identify and implement the right modern workplace solutions to fit their customers’ evolving needs.<br> 
 I enjoy translating complex technical topics into actionable steps that deliver real business value.
 
 **Today – All in on Azure:**  
-After a parental break, I returned with fresh perspective, now focusing fully on Microsoft Azure. 
+After a parental break, I returned with fresh perspective, now focusing fully on Microsoft Azure.<br> 
 My work centers on empowering partners to navigate cloud security, AI, and digital transformation, and to achieve their goals with confidence and clarity.
 
 ---
@@ -37,7 +37,8 @@ My work centers on empowering partners to navigate cloud security, AI, and digit
 ### Certifications
 
 
-I’m committed to continuous learning. Here are a few recent certifications I’m proud of:
+I’m committed to continuous learning.<br>
+Here are a few recent certifications I’m proud of:
 
 [![Microsoft 365 Certified: Fundamentals](https://images.credly.com/size/110x110/images/70b10c92-9c50-428f-b0a2-c136ea44181d/image.png)](https://www.credly.com/badges/6ED65F3E147537C0/public_url)
 [![Microsoft 365 Certified: Teams Administrator Associate](https://images.credly.com/size/110x110/images/ef055a8e-32d3-4809-9367-3b3e249d1c93/image.png)](https://www.credly.com/badges/F0B59A8FA749B198/public_url)
@@ -55,7 +56,8 @@ I know that cloud and security can feel overwhelming, but it doesn’t have to b
 ### Let’s connect!
 
 
-Whether you have questions, want to share your story, or just want to network. I’m always open for a conversation and new perspectives.
+Whether you have questions, want to share your story, or just want to network. <br>
+I’m always open for a conversation and new perspectives.
 
 [Connect with me on LinkedIn](https://www.linkedin.com/in/laura-v%C3%B6lker-1885451b5/)
 
