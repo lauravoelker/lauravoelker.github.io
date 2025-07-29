@@ -8,6 +8,6 @@
     {% if overlay_image %} style="background-image: url('{{ overlay_image }}');"{% endif %}>
     <span class="page__hero__bg"></span>
     <span class="page__hero__overlay" style="background-color:{{ overlay_color | default: '#000' }}; opacity:{{ overlay_filter | default: '0.5' }}"></span>
-    {# No title, excerpt, or buttons! #}
+    
   </section>
 {%- endif -%}
