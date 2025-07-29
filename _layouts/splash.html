@@ -1,6 +1,11 @@
 ---
-layout: default
+layout: null
 ---
+{% comment %}
+  We’re using layout: null so we can pull in exactly
+  the pieces we want—masthead, hero image, content.
+{% endcomment %}
+
 {% include skip-links.html %}
 {% include masthead.html %}
 
@@ -9,17 +14,13 @@ layout: default
        {% if page.header.overlay_image %}
          style="background-image: url('{{ page.header.overlay_image }}');"
        {% endif %}>
-    {%- comment -%}
-      We’ve removed:
-        <h1 class="page__title">{{ page.title }}</h1>
-        <p class="page__lead">{{ page.excerpt }}</p>
-        <ul class="splash__actions">…</ul>
-    {%- endcomment -%}
   </div>
 </div>
 
-<div class="container">
-  {{ content }}
-</div>
+<main class="main">
+  <div class="container">
+    {{ content }}
+  </div>
+</main>
 
 {% include footer.html %}
