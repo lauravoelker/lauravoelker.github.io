@@ -1,8 +1,53 @@
 ---
+layout: single
+title: "About Me"
 permalink: /about/
-title: "About"
+author_profile: true
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+Hello! I’m **Laura Voelker**, Partner Development Manager for Microsoft Azure, based in Germany.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+My passion is helping businesses and IT partners succeed in the Microsoft ecosystem. I focus on building strong relationships, simplifying cloud security, and making AI and modern workplace solutions accessible to everyone.
+
+---
+
+### My Career Journey
+
+**Starting Out:**  
+I began my career in IT as a trainee and quickly moved into sales and management roles, where I worked closely with clients to deliver practical technology solutions and managed key accounts. This early experience taught me the value of communication and a customer-first mindset.
+
+**Growing with Partners:**  
+My journey continued at a leading IT distributor. There, I supported system integrators and service providers with licensing advice, sales enablement, and strategic guidance, especially around Microsoft CSP (Cloud Solution Provider), SPLA (Service Provider Licensing Agreement), and Data Center Hosting solutions.
+
+**Embracing Cloud and Modern Work:**  
+Over time, I shifted my focus to Microsoft 365 and Teams, helping partners identify and implement the right modern workplace solutions to fit their customers’ evolving needs. I enjoy translating complex technical topics into actionable steps that deliver real business value.
+
+**Today – All in on Azure:**  
+After a parental break, I returned with fresh perspective, now focusing fully on Microsoft Azure. My work centers on empowering partners to navigate cloud security, AI, and digital transformation, and to achieve their goals with confidence and clarity.
+
+---
+
+### Certifications
+
+I’m committed to continuous learning. Here are a few recent certifications I’m proud of:
+
+[![Microsoft 365 Certified: Fundamentals](https://images.credly.com/size/110x110/images/70b10c92-9c50-428f-b0a2-c136ea44181d/image.png)](https://www.credly.com/badges/6ED65F3E147537C0/public_url)
+[![Microsoft 365 Certified: Teams Administrator Associate](https://images.credly.com/size/110x110/images/ef055a8e-32d3-4809-9367-3b3e249d1c93/image.png)](https://www.credly.com/badges/F0B59A8FA749B198/public_url)
+
+---
+
+**Why this blog?**  
+I know that cloud and security can feel overwhelming, but it doesn’t have to be! I started this site to share simple guides, real-world examples, and partner insights to help you get started, keep up, and feel confident using Azure and Microsoft technologies.
+
+
+---
+
+### Let’s connect!
+
+Whether you have questions, want to share your story, or just want to network. I’m always open for a conversation and new perspectives.
+
+[Connect with me on LinkedIn](https://www.linkedin.com/in/laura-v%C3%B6lker-1885451b5/)
+
+---
+
+*Empowering partners on their Azure journey – because the best results happen together!*
