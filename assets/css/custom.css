@@ -1,5 +1,0 @@
-/* Hide the splash page’s hero title and subtitle */
-.layout--splash .page__title,
-.layout--splash .page__lead {
-  display: none !important;
-}
