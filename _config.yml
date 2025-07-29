@@ -83,5 +83,5 @@ tag_archive:
   type: liquid
   path: /tags/
 
-copyright: "2025 Laura Voelker"
+copyright: "Laura Voelker"
 copyright_url: ""  # (leave empty if you don't want it linked)
