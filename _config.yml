@@ -13,6 +13,22 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+
+---
+layout: splash
+title: "A Guide to Security and AI in Microsoft Azure"
+excerpt: "Willkommen! Ich bin Laura, Partner Development Managerin für Microsoft Azure. Hier findest du praxisnahe Tipps, einfache Erklärungen und echte Use Cases zu Cloud Security & AI."
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.3"
+  overlay_image: /assets/images/azure-header.jpg   # <--- Dein Bild, siehe Schritt 3
+  actions:
+    - label: "Über mich"
+      url: "/about/"
+    - label: "Blog"
+      url: "/blog/"
+---
+
 title: MM
 email:
 description: >- # this means to ignore newlines until "baseurl:"
