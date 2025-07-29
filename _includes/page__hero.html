@@ -1,0 +1,14 @@
+{%- assign overlay_color = page.header.overlay_color | default: site.header.overlay_color -%}
+{%- assign overlay_image = page.header.overlay_image | default: site.header.overlay_image -%}
+{%- assign overlay_filter = page.header.overlay_filter | default: site.header.overlay_filter -%}
+{%- assign image = page.header.image | default: site.header.image -%}
+
+<div class="page__hero{% if overlay_image or image %} page__hero--overlay{% endif %}">
+  <div class="page__hero__inner">
+    {%- if overlay_image or image -%}
+      <div class="page__hero__bg"{% if overlay_image %} style="background-image: url('{{ overlay_image }}');"{% endif %}></div>
+      <div class="page__hero__overlay"{% if overlay_color %} style="background-color: {{ overlay_color }}; opacity: {{ overlay_filter | default: "0.5" }};"{% endif %}></div>
+    {%- endif -%}
+    {#  Title, excerpt, and splash actions REMOVED here #}
+  </div>
+</div>
