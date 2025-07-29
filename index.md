@@ -1,9 +1,10 @@
+
 ---
 layout: splash
 header:
   overlay_color: "#000"
   overlay_filter: "0.3"
-  overlay_image: /assets/images/header.png
+  overlay_image: /assets/images/your-header-image.jpg
 ---
 
 # A Guide to Security and AI in Microsoft Azure
