@@ -18,7 +18,6 @@
 logo: /assets/images/site-logo.png
 minimal_mistakes_skin: defaul
 
----
 # Add your settings below as needed
 paginate: 5
 paginate_path: /page:num/
@@ -42,6 +41,8 @@ author:
       url: "https://www.linkedin.com/in/laura-v%C3%B6lker-1885451b5/"
 
 # ...rest of your settings
+
+---
 
 title: MM
 email:
