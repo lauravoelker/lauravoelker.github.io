@@ -16,6 +16,18 @@ header:
 # Welcome to my Blog!
 
 Here you’ll find:
+
+- **Practical guides** for Azure Security (no technical frustration)
+- **Clear explanations** of AI solutions in the Microsoft ecosystem
+- **Partner insights**: What really works, and how?
+- Latest news and trends around Cloud, AI & Security
+
+*Enjoy reading!*
+
+
+# Welcome to my Blog!
+
+Here you’ll find:
 - **Practical guides** for Azure Security (no technical frustration)
 - **Clear explanations** of AI solutions in the Microsoft ecosystem
 - **Partner insights**: What really works, and how?
