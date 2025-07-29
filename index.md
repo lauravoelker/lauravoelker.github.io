@@ -1,19 +1,11 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
-author_profile: true
----
-
----
 layout: splash
 title: "A Guide to Security and AI in Microsoft Azure"
 excerpt: "Welcome! I’m Laura, Partner Development Manager for Microsoft Azure. Here you’ll find practical tips, simple explanations, and real use cases for Cloud Security & AI."
 header:
   overlay_color: "#000"
   overlay_filter: "0.3"
-  overlay_image: /assets/images/azure-header.jpg   # <-- Upload your own image with this name, or adjust the path!
+  overlay_image: /assets/images/azure-header.jpg
   actions:
     - label: "About Me"
       url: "/about/"
@@ -31,6 +23,5 @@ Here you’ll find:
 
 *Enjoy reading!*
 
----
 
 
