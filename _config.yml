@@ -15,18 +15,34 @@
 # in the templates via {{ site.myvariable }}.
 
 ---
-layout: splash
-title: "A Guide to Security and AI in Microsoft Azure"
-excerpt: "Willkommen! Ich bin Laura, Partner Development Managerin für Microsoft Azure. Hier findest du praxisnahe Tipps, einfache Erklärungen und echte Use Cases zu Cloud Security & AI."
-header:
-  overlay_color: "#000"
-  overlay_filter: "0.3"
-  overlay_image: /assets/images/azure-header.jpg   # <--- Dein Bild, siehe Schritt 3
-  actions:
-    - label: "Über mich"
-      url: "/about/"
-    - label: "Blog"
-      url: "/blog/"
+title: Laura Voelker – Azure Security & AI
+description: Practical Cloud Security and AI for Partners and Professionals.
+minimal_mistakes_skin: default
+
+# Add your settings below as needed
+paginate: 5
+paginate_path: /page:num/
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+
+author:
+  name   : "Laura Voelker"
+  avatar : "/assets/images/bio-photo.jpg"
+  bio    : "Partner Development Manager for Microsoft Azure"
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/laura-v%C3%B6lker-1885451b5/"
+
+# ...rest of your settings
+
 ---
 
 title: MM
