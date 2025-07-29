@@ -49,6 +49,13 @@ author:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/laura-v%C3%B6lker-1885451b5/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/lauravoelker"
+    - label: "Germany, Frankfurt"
+      icon: "fas fa-fw fa-map-marker-alt"
+      url: ""   # Leave url empty, or use "#" if you want no link
+
 
 footer:
   links:
