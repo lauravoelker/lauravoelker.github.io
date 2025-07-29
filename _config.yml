@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 
 ---
-title: Icon
+logo: /assets/images/site-logo.png
 description: Practical Cloud Security and AI for Partners and Professionals.
 minimal_mistakes_skin: default
 
