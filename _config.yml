@@ -20,6 +20,14 @@ description: Practical Cloud Security and AI for Partners and Professionals.
 minimal_mistakes_skin: default
 remote_theme: "mmistakes/minimal-mistakes"
 
+plugins:
+  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+  - jemoji
+  - jekyll-paginate
+
 paginate: 5
 paginate_path: /page:num/
 markdown: kramdown
