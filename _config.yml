@@ -16,8 +16,9 @@
 
 ---
 logo: /assets/images/site-logo.png
-description: Practical Cloud Security and AI for Partners and Professionals.
 minimal_mistakes_skin: default
+
+
 
 # Add your settings below as needed
 paginate: 5
