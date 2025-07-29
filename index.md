@@ -23,7 +23,7 @@ Of how AI and security tools work in the Microsoft Azure Cloud
 And real-world use cases: what’s working, what’s new, and what can help your business or sumtomers today
 
 **What you’ll find here**<br>
-▸ Step.by-step instructions for securing your Azure enviroment<br>
+▸ Step-by-step instructions for securing your Azure enviroment<br>
 ▸ How-to’s for using AI in Azure and why it matters for your business<br>
 ▸ Azure licensing and usage rights<br>
 ▸ News and trens on the future of cloud, AI and security
