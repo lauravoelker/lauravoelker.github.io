@@ -13,22 +13,22 @@ Hello. I’m Laura, a Partner Development Manager for Microsoft Azure, passionat
 
 On this blog, I share:
 
-**Practical guides**
+**Practical guides**<br>
 For getting started with security in Azure.
 
-**Clear explainations**
+**Clear explainations**<br>
 Of how AI and security tools work in the Microsoft Azure Cloud
 
-**Partner insights**
+**Partner insights**<br>
 And real-world use cases: what’s working, what’s new, and what can help your business or sumtomers today
 
-**What you’ll find here**
-▸ Step.by-step instructions for securing your Azure enviroment
-▸ How-to’s for using AI in Azure and why it matters for your business
-▸ Azure licensing and usage rights
+**What you’ll find here**<br>
+▸ Step.by-step instructions for securing your Azure enviroment<br>
+▸ How-to’s for using AI in Azure and why it matters for your business<br>
+▸ Azure licensing and usage rights<br>
 ▸ News and trens on the future of cloud, AI and security
 
-**Featured Articles**
+**Featured Articles**<br>
 [placeholder]
 
 
