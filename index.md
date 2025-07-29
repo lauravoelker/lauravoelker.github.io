@@ -1,6 +1,5 @@
 ---
 layout: splash
-title: "A Guide to Security and AI in Microsoft Azure"
 header:
   overlay_color: "#000"
   overlay_filter: "0.3"
@@ -8,7 +7,7 @@ header:
 
 ---
 
-# Welcome to My Azure Security & AI Blog!
+# A Guide to Security and AI in Microsoft Azure
 Hello. I’m Laura, a Partner Development Manager for Microsoft Azure, passionate about making cloud secuity and AI accessible for everyone, especially business professionals, consultants, and partners.
 
 On this blog, I share:
