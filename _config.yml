@@ -42,7 +42,9 @@ search: true
 author:
   name   : "Laura Voelker"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Partner Development Manager for Microsoft Azure"
+  bio    :  |
+    Partner Development Manager  
+    Microsoft Azure
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
