@@ -1,13 +1,13 @@
-logo: /assets/images/site-logo.png
 title: ""
+logo: /assets/images/site-logo.png
+description: Practical Cloud Security and AI for Partners and Professionals.
 minimal_mistakes_skin: default
-
+remote_theme: "mmistakes/minimal-mistakes"
 paginate: 5
 paginate_path: /page:num/
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
-timezone:  # optional, you can set e.g. Europe/Berlin
+timezone:  # optional, e.g. Europe/Berlin
 
 include:
   - _pages
