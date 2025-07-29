@@ -5,6 +5,13 @@ header:
   overlay_filter: "0.3"
   overlay_image: /assets/images/header.png
 
+  actions:
+    - label: "About Me"
+      url: "/about/"
+    - label: "Blog"
+      url: "/blog/"
+---
+
 ---
 
 # A Guide to Security and AI in Microsoft Azure
