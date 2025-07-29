@@ -5,29 +5,37 @@ permalink: /about/
 author_profile: true
 ---
 
-Hello! I’m **Laura Voelker**, Partner Development Manager for Microsoft Azure, based in Germany.
+Hi ☺
+I’m Laura, Partner Development Manager for Microsoft Azure, based in Germany.
 
-My passion is helping businesses and IT partners succeed in the Microsoft ecosystem. I focus on building strong relationships, simplifying cloud security, and making AI and modern workplace solutions accessible to everyone.
+My passion is helping businesses and IT partners succeed in the Microsoft ecosystem. 
+I focus on building strong relationships, simplifying cloud security, and making AI and modern workplace solutions accessible to everyone.
 
 ---
 
 ### My Career Journey
 
+
 **Starting Out:**  
-I began my career in IT as a trainee and quickly moved into sales and management roles, where I worked closely with clients to deliver practical technology solutions and managed key accounts. This early experience taught me the value of communication and a customer-first mindset.
+I began my career in IT as a trainee and quickly moved into sales and management roles, where I worked closely with clients to deliver practical technology solutions and managed key accounts. 
+This early experience taught me the value of communication and a customer-first mindset.
 
 **Growing with Partners:**  
-My journey continued at a leading IT distributor. There, I supported system integrators and service providers with licensing advice, sales enablement, and strategic guidance, especially around Microsoft CSP (Cloud Solution Provider), SPLA (Service Provider Licensing Agreement), and Data Center Hosting solutions.
+My journey continued at a leading IT distributor. 
+There, I supported system integrators and service providers with licensing advice, sales enablement, and strategic guidance, especially around Microsoft CSP (Cloud Solution Provider), SPLA (Service Provider Licensing Agreement), and Data Center Hosting solutions.
 
 **Embracing Cloud and Modern Work:**  
-Over time, I shifted my focus to Microsoft 365 and Teams, helping partners identify and implement the right modern workplace solutions to fit their customers’ evolving needs. I enjoy translating complex technical topics into actionable steps that deliver real business value.
+Over time, I shifted my focus to Microsoft 365 and Teams, helping partners identify and implement the right modern workplace solutions to fit their customers’ evolving needs. 
+I enjoy translating complex technical topics into actionable steps that deliver real business value.
 
 **Today – All in on Azure:**  
-After a parental break, I returned with fresh perspective, now focusing fully on Microsoft Azure. My work centers on empowering partners to navigate cloud security, AI, and digital transformation, and to achieve their goals with confidence and clarity.
+After a parental break, I returned with fresh perspective, now focusing fully on Microsoft Azure. 
+My work centers on empowering partners to navigate cloud security, AI, and digital transformation, and to achieve their goals with confidence and clarity.
 
 ---
 
 ### Certifications
+
 
 I’m committed to continuous learning. Here are a few recent certifications I’m proud of:
 
@@ -37,6 +45,8 @@ I’m committed to continuous learning. Here are a few recent certifications I�
 ---
 
 **Why this blog?**  
+
+
 I know that cloud and security can feel overwhelming, but it doesn’t have to be! I started this site to share simple guides, real-world examples, and partner insights to help you get started, keep up, and feel confident using Azure and Microsoft technologies.
 
 
@@ -44,10 +54,10 @@ I know that cloud and security can feel overwhelming, but it doesn’t have to b
 
 ### Let’s connect!
 
+
 Whether you have questions, want to share your story, or just want to network. I’m always open for a conversation and new perspectives.
 
 [Connect with me on LinkedIn](https://www.linkedin.com/in/laura-v%C3%B6lker-1885451b5/)
 
 ---
 
-*Empowering partners on their Azure journey – because the best results happen together!*
