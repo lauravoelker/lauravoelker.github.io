@@ -1,16 +1,11 @@
 ---
 layout: splash
 title: "A Guide to Security and AI in Microsoft Azure"
-excerpt: "Welcome! I’m Laura, Partner Development Manager for Microsoft Azure. Here you’ll find practical tips, simple explanations, and real use cases for Cloud Security & AI."
 header:
   overlay_color: "#000"
   overlay_filter: "0.3"
   overlay_image: /assets/images/azure-header.jpg
-  actions:
-    - label: "About Me"
-      url: "/about/"
-    - label: "Blog"
-      url: "/blog/"
+
 ---
 
 # Welcome to my Blog!
