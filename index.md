@@ -1,4 +1,3 @@
-
 ---
 layout: splash
 header:
