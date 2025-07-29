@@ -1,0 +1,5 @@
+/* Hide splash header title and excerpt on homepage */
+.splash .page__hero--overlay .page__title,
+.splash .page__hero--overlay .page__lead {
+  display: none !important;
+}
