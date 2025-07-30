@@ -97,3 +97,7 @@ copyright_url: ""  # (leave empty if you don't want it linked)
 
 favicon: /assets/images/favicon.png
 
+head_scripts:
+  - /assets/images/favicon.png
+
+
