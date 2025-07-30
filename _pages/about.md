@@ -13,9 +13,6 @@ I focus on building strong relationships, simplifying cloud security, and making
 
 ---
 
-### My Career Journey
-
-
 **Starting Out:**  
 I began my career in IT as a trainee and quickly moved into sales and management roles, where I worked closely with clients to deliver practical technology solutions and managed key accounts.<br> 
 This early experience taught me the value of communication and a customer-first mindset.
