@@ -35,10 +35,14 @@ My work centers on empowering partners to navigate cloud security, AI, and digit
 
 
 I’m committed to continuous learning.<br>
-Here are a few recent certifications I’m proud of:
+Here are a few recent certifications:
 
-[![Microsoft 365 Certified: Fundamentals](/assets/images/MS-900.png)](https://www.credly.com/badges/6ED65F3E147537C0/public_url)
-[![Microsoft 365 Certified: Teams Administrator Associate](/assets/images/Ms-700.png)](https://www.credly.com/badges/F0B59A8FA749B198/public_url)
+<a href="https://www.credly.com/badges/6ED65F3E147537C0/public_url" target="_blank">
+  <img src="/assets/images/MS-900.png" alt="Microsoft 365 Certified: Fundamentals" width="120"/>
+</a>
+<a href="https://www.credly.com/badges/F0B59A8FA749B198/public_url" target="_blank">
+  <img src="/assets/images/Ms-700.png" alt="Microsoft 365 Certified: Teams Administrator Associate" width="120"/>
+</a>
 
 ---
 
