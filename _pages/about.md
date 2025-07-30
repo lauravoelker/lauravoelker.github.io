@@ -37,10 +37,10 @@ My work centers on empowering partners to navigate cloud security, AI, and digit
 I’m committed to continuous learning.<br>
 Here are a few recent certifications:
 
-<a href="https://www.credly.com/badges/6ED65F3E147537C0/public_url" target="_blank">
+<a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/6ed65f3e147537c0" target="_blank">
   <img src="/assets/images/MS-900.png" alt="Microsoft 365 Certified: Fundamentals" width="120"/>
 </a>
-<a href="https://www.credly.com/badges/F0B59A8FA749B198/public_url" target="_blank">
+<a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/f0b59a8fa749b198" target="_blank">
   <img src="/assets/images/Ms-700.png" alt="Microsoft 365 Certified: Teams Administrator Associate" width="120"/>
 </a>
 
