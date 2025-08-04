@@ -1,42 +1,22 @@
-/* ==== Global Font Size ==== */
-html, body, .page__content {
-  font-size: 20px !important; /* Standard war ~16px */
-  line-height: 1.6 !important;
-}
-
-/* ==== Headings ==== */
-.page__title, 
-.page__content h1 {
-  font-size: 24px !important;
-}
-
-.page__content h2 {
-  font-size: 24px !important;
-}
-
-.page__content h3 {
-  font-size: 21px !important;
-}
-
-.page__content h4 {
-  font-size: 18px !important;
-}
-
-.page__content h5, 
-.page__content h6 {
-  font-size: 16px !important;
-}
-
-/* ==== Global Font Family ==== */
-html body,
-html body .page__content,
-html body .page__title,
-html body .page__content h1,
-html body .page__content h2,
-html body .page__content h3,
-html body .page__content h4,
-html body .page__content h5,
-html body .page__content h6 {
+/* --- Schriftgröße anpassen --- */
+body {
+  font-size: 15px !important; /* Standard war ca. 16px */
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
+/* Überschriftgrößen */
+.page__title, h1 {
+  font-size: 1.8rem !important; /* ~28px */
+}
+
+h2 {
+  font-size: 1.5rem !important; /* ~24px */
+}
+
+h3 {
+  font-size: 1.3rem !important; /* ~21px */
+}
+
+h4 {
+  font-size: 1.1rem !important; /* ~18px */
+}
