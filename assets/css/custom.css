@@ -18,7 +18,7 @@ nav#site-nav .masthead__menu-item {
 /* ==== Überschriften ==== */
 .page__title,
 .page__content h1 {
-  font-size: 28px !important;
+  font-size: 26px !important;
 }
 
 .page__content h2 {
@@ -26,11 +26,11 @@ nav#site-nav .masthead__menu-item {
 }
 
 .page__content h3 {
-  font-size: 21px !important;
+  font-size: 18px !important;
 }
 
 .page__content h4 {
-  font-size: 18px !important;
+  font-size: 16px !important;
 }
 
 /* ==== Sidebar-Name und Bio ==== */
