@@ -1,12 +1,12 @@
 /* ==== Global Font Size ==== */
 body {
-  font-size: 15px !important; /* Standard war ~16px */
+  font-size: 18px !important; /* Standard war ~16px */
   line-height: 1.6 !important; /* Etwas luftiger für bessere Lesbarkeit */
 }
 
 /* ==== Headings ==== */
 h1 {
-  font-size: 29px !important; /* vorher ~1.8em */
+  font-size: 24px !important; /* vorher ~1.8em */
 }
 
 h2 {
