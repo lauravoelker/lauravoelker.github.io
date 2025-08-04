@@ -1,29 +1,12 @@
-/* ==== Überschriften ==== */
-.page__title {
-  font-size: 29px !important;
-}
-
-h1 {
-  font-size: 29px !important;
-}
-
-h2 {
-  font-size: 24px !important;
-}
-
-h3 {
-  font-size: 21px !important;
-}
-
-/* ==== Body ==== */
-body {
-  font-size: 15px !important;
+/* ==== Global Font ==== */
+html body {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px !important; /* Standard-Textgröße */
   line-height: 1.6 !important;
 }
 
-/* ==== Navigation ==== */
-.masthead__menu-item {
+/* ==== Navigation größer ==== */
+nav#site-nav .masthead__menu-item {
   font-size: 18px !important;
   font-weight: 500 !important;
 }
@@ -32,13 +15,34 @@ body {
   padding: 12px 0 !important;
 }
 
-/* ==== Sidebar ==== */
-.author__name {
+/* ==== Überschriften ==== */
+.page__title,
+.page__content h1 {
+  font-size: 28px !important;
+}
+
+.page__content h2 {
+  font-size: 24px !important;
+}
+
+.page__content h3 {
+  font-size: 21px !important;
+}
+
+.page__content h4 {
+  font-size: 18px !important;
+}
+
+/* ==== Sidebar-Name und Bio ==== */
+.sidebar .author__name {
   font-size: 22px !important;
 }
 
-.author__bio,
-.author__content,
-.author__urls-wrapper a {
+.sidebar .author__bio {
+  font-size: 16px !important;
+}
+
+.sidebar .author__content,
+.sidebar .author__urls-wrapper a {
   font-size: 16px !important;
 }
