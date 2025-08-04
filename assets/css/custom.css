@@ -1,39 +1,41 @@
 /* ==== Global Font Size ==== */
-body {
+html, body, .page__content {
   font-size: 20px !important; /* Standard war ~16px */
-  line-height: 1.6 !important; /* Etwas luftiger für bessere Lesbarkeit */
+  line-height: 1.6 !important;
 }
 
 /* ==== Headings ==== */
-h1 {
-  font-size: 24px !important; /* vorher ~1.8em */
+.page__title, 
+.page__content h1 {
+  font-size: 24px !important;
 }
 
-h2 {
-  font-size: 24px !important; /* vorher ~1.5em */
+.page__content h2 {
+  font-size: 24px !important;
 }
 
-h3 {
-  font-size: 21px !important; /* vorher ~1.3em */
+.page__content h3 {
+  font-size: 21px !important;
 }
 
-h4 {
-  font-size: 18px !important; /* vorher ~1.1em */
+.page__content h4 {
+  font-size: 18px !important;
 }
 
-h5, h6 {
-  font-size: 16px !important; /* vorher ~1em */
+.page__content h5, 
+.page__content h6 {
+  font-size: 16px !important;
 }
 
 /* ==== Global Font Family ==== */
-html body, 
-html body h1, 
-html body h2, 
-html body h3, 
-html body h4, 
-html body h5, 
-html body h6 {
+html, body, 
+.page__content, 
+.page__title, 
+.page__content h1, 
+.page__content h2, 
+.page__content h3, 
+.page__content h4, 
+.page__content h5, 
+.page__content h6 {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
-
-
