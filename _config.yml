@@ -100,4 +100,8 @@ favicon: /assets/images/favicon.png
 head_scripts:
   - /assets/images/favicon.png
 
+custom_css:
+  - /assets/css/custom.css
+
+
 
