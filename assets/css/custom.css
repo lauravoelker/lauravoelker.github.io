@@ -25,7 +25,36 @@ h5, h6 {
   font-size: 1em !important;
 }
 
-/* ==== Optional: Global Font Family (schöner für Web) ==== */
+/* ==== Optional: Global Font Family ==== */
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* ==== Navigation größer ==== */
+.masthead__menu-item {
+  font-size: 1.1em !important; /* Menülinks größer */
+  font-weight: 500 !important; /* Etwas fetter */
+}
+
+.masthead {
+  padding: 0.75em 0 !important; /* Mehr vertikaler Abstand */
+}
+
+/* ==== About-Me Titel kleiner ==== */
+.page__title {
+  font-size: 1.6em !important; /* Weniger dominant */
+}
+
+/* ==== Sidebar-Profilinfos größer ==== */
+.author__name {
+  font-size: 1.4em !important; /* Name größer */
+}
+
+.author__bio {
+  font-size: 1em !important; /* Berufstitel größer */
+}
+
+.author__content {
+  font-size: 1em !important; /* Generelle Infos in Sidebar */
+  line-height: 1.5 !important;
 }
