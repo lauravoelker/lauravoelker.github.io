@@ -1,10 +1,10 @@
-/* Schriftgröße für Überschriften anpassen */
+/* ==== Überschriften ==== */
 .page__title {
-  font-size: 24px !important; /* Titel */
+  font-size: 29px !important;
 }
 
 h1 {
-  font-size: 24px !important; /* Allgemeine H1 */
+  font-size: 29px !important;
 }
 
 h2 {
@@ -15,7 +15,30 @@ h3 {
   font-size: 21px !important;
 }
 
+/* ==== Body ==== */
 body {
-  font-size: 15px !important; /* Standard-Textgröße */
+  font-size: 15px !important;
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  line-height: 1.6 !important;
+}
+
+/* ==== Navigation ==== */
+.masthead__menu-item {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.masthead__inner-wrap {
+  padding: 12px 0 !important;
+}
+
+/* ==== Sidebar ==== */
+.author__name {
+  font-size: 22px !important;
+}
+
+.author__bio,
+.author__content,
+.author__urls-wrapper a {
+  font-size: 16px !important;
 }
