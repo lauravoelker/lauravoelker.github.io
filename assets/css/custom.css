@@ -1,22 +1,21 @@
-/* --- Schriftgröße anpassen --- */
-body {
-  font-size: 15px !important; /* Standard war ca. 16px */
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+/* Schriftgröße für Überschriften anpassen */
+.page__title {
+  font-size: 1.8rem !important; /* Titel */
 }
 
-/* Überschriftgrößen */
-.page__title, h1 {
-  font-size: 1.8rem !important; /* ~28px */
+h1 {
+  font-size: 1.8rem !important; /* Allgemeine H1 */
 }
 
 h2 {
-  font-size: 1.5rem !important; /* ~24px */
+  font-size: 1.5rem !important;
 }
 
 h3 {
-  font-size: 1.3rem !important; /* ~21px */
+  font-size: 1.3rem !important;
 }
 
-h4 {
-  font-size: 1.1rem !important; /* ~18px */
+body {
+  font-size: 15px !important; /* Standard-Textgröße */
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
