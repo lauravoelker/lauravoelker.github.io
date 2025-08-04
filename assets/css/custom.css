@@ -1,6 +1,6 @@
 /* ==== Global Font Size ==== */
 body {
-  font-size: 18px !important; /* Standard war ~16px */
+  font-size: 20px !important; /* Standard war ~16px */
   line-height: 1.6 !important; /* Etwas luftiger für bessere Lesbarkeit */
 }
 
@@ -26,41 +26,47 @@ h5, h6 {
 }
 
 /* ==== Global Font Family ==== */
-body, h1, h2, h3, h4, h5, h6 {
+html body, 
+html body h1, 
+html body h2, 
+html body h3, 
+html body h4, 
+html body h5, 
+html body h6 {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* ==== Navigation größer ==== */
-nav#site-nav .masthead__menu-item {
-  font-size: 18px !important; /* vorher 1.1em */
+html body nav#site-nav .masthead__menu-item {
+  font-size: 18px !important;
   font-weight: 500 !important;
 }
 
-.masthead__inner-wrap {
-  padding: 12px 0 !important; /* vorher 0.75em */
+html body .masthead__inner-wrap {
+  padding: 12px 0 !important;
 }
 
 /* ==== About-Me Titel kleiner ==== */
-.page__title,
-.page__content h1.page__title {
-  font-size: 26px !important; /* vorher 1.6em */
+html body .page__title,
+html body .page__content h1.page__title {
+  font-size: 26px !important;
 }
 
 /* ==== Sidebar-Profilinfos größer ==== */
-.sidebar .author__name {
-  font-size: 22px !important; /* vorher 1.4em */
+html body .sidebar .author__name {
+  font-size: 22px !important;
 }
 
-.sidebar .author__bio {
-  font-size: 16px !important; /* vorher 1em */
+html body .sidebar .author__bio {
+  font-size: 16px !important;
 }
 
-.sidebar .author__content {
-  font-size: 16px !important; /* vorher 1em */
+html body .sidebar .author__content {
+  font-size: 16px !important;
   line-height: 1.5 !important;
 }
 
 /* ==== Sidebar-Links größer ==== */
-.sidebar .author__urls-wrapper a {
-  font-size: 16px !important; /* vorher 1em */
+html body .sidebar .author__urls-wrapper a {
+  font-size: 16px !important;
 }
