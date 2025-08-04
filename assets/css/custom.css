@@ -1,48 +1,20 @@
-/* ==== Global Font ==== */
-html body {
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-  font-size: 16px !important; /* Standard-Textgröße */
-  line-height: 1.6 !important;
-}
-
-/* ==== Navigation größer ==== */
-nav#site-nav .masthead__menu-item {
-  font-size: 18px !important;
-  font-weight: 500 !important;
-}
-
-.masthead__inner-wrap {
-  padding: 12px 0 !important;
-}
-
-/* ==== Überschriften ==== */
-.page__title,
-.page__content h1 {
-  font-size: 26px !important;
-}
-
-.page__content h2 {
+/* Force heading sizes */
+.page__content h1,
+h1 {
   font-size: 24px !important;
 }
 
-.page__content h3 {
-  font-size: 18px !important;
-}
-
-.page__content h4 {
-  font-size: 16px !important;
-}
-
-/* ==== Sidebar-Name und Bio ==== */
-.sidebar .author__name {
+.page__content h2,
+h2 {
   font-size: 22px !important;
 }
 
-.sidebar .author__bio {
-  font-size: 16px !important;
+.page__content h3,
+h3 {
+  font-size: 18px !important;
 }
 
-.sidebar .author__content,
-.sidebar .author__urls-wrapper a {
+.page__content h4,
+h4 {
   font-size: 16px !important;
 }
