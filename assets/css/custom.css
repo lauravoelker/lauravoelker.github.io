@@ -1,0 +1,27 @@
+/* --- Allgemeine Textgröße anpassen --- */
+body {
+  font-size: 15px; /* Standard war ca. 16px */
+}
+
+/* --- Überschriftgrößen anpassen --- */
+h1 {
+  font-size: 1.8em; /* Standard war ca. 2.25em */
+}
+
+h2 {
+  font-size: 1.5em; /* Standard war ca. 1.75em */
+}
+
+h3 {
+  font-size: 1.3em; /* Standard war ca. 1.5em */
+}
+
+h4 {
+  font-size: 1.1em; /* Standard war ca. 1.25em */
+}
+
+/* --- Optional: Schriftart global anpassen --- */
+/* Falls du eine andere Font willst */
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
