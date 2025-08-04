@@ -1,8 +1,8 @@
 main:
   #- title: "Posts"
-    url: /posts/
-    - title: "Categories"
-    url: /categories/#
+   # url: /posts/
+   # - title: "Categories"
+   # url: /categories/#
   - title: "Governance"
     url: /security-governance/
   - title: "Identity"
