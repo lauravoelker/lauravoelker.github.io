@@ -1,18 +1,18 @@
 /* Schriftgröße für Überschriften anpassen */
 .page__title {
-  font-size: 1.8rem !important; /* Titel */
+  font-size: 24px !important; /* Titel */
 }
 
 h1 {
-  font-size: 1.8rem !important; /* Allgemeine H1 */
+  font-size: 24px !important; /* Allgemeine H1 */
 }
 
 h2 {
-  font-size: 1.5rem !important;
+  font-size: 24px !important;
 }
 
 h3 {
-  font-size: 1.3rem !important;
+  font-size: 21px !important;
 }
 
 body {
