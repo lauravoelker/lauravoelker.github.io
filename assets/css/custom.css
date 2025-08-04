@@ -36,37 +36,4 @@ html body h6 {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* ==== Navigation größer ==== */
-html body nav#site-nav .masthead__menu-item {
-  font-size: 18px !important;
-  font-weight: 500 !important;
-}
 
-html body .masthead__inner-wrap {
-  padding: 12px 0 !important;
-}
-
-/* ==== About-Me Titel kleiner ==== */
-html body .page__title,
-html body .page__content h1.page__title {
-  font-size: 26px !important;
-}
-
-/* ==== Sidebar-Profilinfos größer ==== */
-html body .sidebar .author__name {
-  font-size: 22px !important;
-}
-
-html body .sidebar .author__bio {
-  font-size: 16px !important;
-}
-
-html body .sidebar .author__content {
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-}
-
-/* ==== Sidebar-Links größer ==== */
-html body .sidebar .author__urls-wrapper a {
-  font-size: 16px !important;
-}
