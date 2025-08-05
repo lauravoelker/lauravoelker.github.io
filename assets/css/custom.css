@@ -1,6 +1,6 @@
 /* ==== Global Body Text ==== */
 body {
-  font-size: 14px !important; /* smaller for better aesthetics */
+  font-size: 18px !important; /* smaller for better aesthetics */
   line-height: 1.6 !important; /* keep it readable */
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
