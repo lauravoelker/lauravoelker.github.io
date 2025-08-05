@@ -16,7 +16,10 @@
 
 title: ""
 logo: /assets/images/site-logo.png
-description: Practical Cloud Security and AI for Partners and Professionals.
+description: "Practical guides, insights, and best practices for Microsoft Azure, Security, and AI — from a Partner Development Manager's perspective."
+url: "https://voelker.blog"
+author:
+  name: "Laura Voelker"
 minimal_mistakes_skin: default
 remote_theme: "mmistakes/minimal-mistakes"
 custom_css:
@@ -102,6 +105,7 @@ favicon: /assets/images/favicon.png
 head_scripts:
   - /assets/images/favicon.png
 
-
+# Default social share image
+og_image: /assets/images/share-default.jpg
 
 
