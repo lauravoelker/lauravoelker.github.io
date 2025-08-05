@@ -1,7 +1,7 @@
 ---
 layout: category
-title: "Applications & Services"
+title: ""
 permalink: /applications-and-services/
 category: applications-and-services
 ---
-Applications & Services: Sichere Anwendungen und Services in der Azure Cloud.
+**Applications & Services**
