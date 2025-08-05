@@ -25,3 +25,19 @@ h3 {
 h4 {
   font-size: 16px !important;
 }
+
+/* ==== Pagination Buttons Smaller ==== */
+.pagination {
+  font-size: 14px !important; /* Smaller text */
+}
+
+.pagination .previous,
+.pagination .next {
+  padding: 8px 14px !important; /* Less padding */
+  font-size: 14px !important;  /* Smaller font size */
+}
+
+.pagination a,
+.pagination span {
+  border-radius: 6px !important; /* Slightly rounded corners */
+}
