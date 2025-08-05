@@ -5,7 +5,7 @@ permalink: /about/
 author_profile: true
 ---
 
-Hi,I’m Laura, Partner Development Manager for Microsoft Azure, based in Germany.
+Hi, I’m Laura, Partner Development Manager for Microsoft Azure, based in Germany.
 
 My passion is helping businesses and IT partners succeed in the Microsoft ecosystem.<br> 
 
