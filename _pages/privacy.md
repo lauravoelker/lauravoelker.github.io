@@ -12,13 +12,13 @@ This Privacy Policy explains how we collect, use, and protect information when y
 
 
 
-## 1. Responsible Party
+**1. Responsible Party**
 
 **Responsible for this website:**  
 Laura Voelker  
 Email: contact@voelker.blog  
 
-## 2. Data Collection
+**2. Data Collection**
 
 When you visit this website, certain data is automatically collected:
 
@@ -34,7 +34,7 @@ Google Analytics uses cookies to collect data such as:
 
 All IP addresses are anonymized before processing, and no personally identifiable information is stored.
 
-## 3. Purpose of Data Processing
+**3. Purpose of Data Processing**
 
 We collect and process this data to:
 
@@ -42,12 +42,12 @@ We collect and process this data to:
 - Analyze visitor statistics
 - Detect and fix technical issues
 
-## 4. Legal Basis
+**4. Legal Basis**
 
 The legal basis for processing your data under the **GDPR** is your **consent** (Art. 6 para. 1 lit. a GDPR).  
 You can withdraw your consent at any time (see **Cookie Settings** below).
 
-## 5. Cookies
+**5. Cookies**
 
 We use cookies for:
 
@@ -56,7 +56,7 @@ We use cookies for:
 
 You can control cookies through your browser settings or our cookie consent banner.
 
-## 6. Google Analytics
+**6. Google Analytics**
 
 This website uses Google Analytics provided by **Google Ireland Limited**, Gordon House, Barrow Street, Dublin 4, Ireland.
 
@@ -68,11 +68,11 @@ To opt out of Google Analytics tracking, you can:
 - Disable cookies in your browser
 - Use the [Google Analytics Opt-Out Browser Add-on](https://tools.google.com/dlpage/gaoptout)
 
-## 7. Data Retention
+**7. Data Retention**
 
 We store analytics data for **14 months** before it is automatically deleted.
 
-## 8. Your Rights
+**8. Your Rights**
 
 Under the GDPR, you have the right to:
 
@@ -83,14 +83,14 @@ Under the GDPR, you have the right to:
 - Withdraw consent
 - File a complaint with your local data protection authority
 
-## 9. Contact
+**9. Contact**
 
 If you have any questions about this Privacy Policy or your data, contact:
 
 **Laura Voelker**  
 Email: contact@voelker.blog  
 
-## 10. Changes to This Privacy Policy
+**10. Changes to This Privacy Policy**
 
 We may update this Privacy Policy from time to time.  
 The latest version will always be available at: [https://voelker.blog/privacy/](https://voelker.blog/privacy/)
