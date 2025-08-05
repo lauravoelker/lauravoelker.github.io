@@ -1,7 +1,9 @@
 ---
 layout: category
-title: "Security Governance"
+title: ""
 permalink: /security-governance/
 category: security-governance
+taxonomy: Security Governance
 ---
-Hier findest du alle Artikel rund um Security Governance, Monitoring und Incident Response in Azure.
+**Security governance** is about creating the right framework, policies, and processes to manage security effectively.
+Here, you'll find practical advice for monitoring, incident response, and building a secure Azure enviroment. 
