@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Privacy Policy"
+#title: "Privacy Policy"#
 permalink: /privacy/
 author_profile: false
 ---
