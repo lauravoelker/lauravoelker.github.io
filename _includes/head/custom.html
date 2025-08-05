@@ -8,6 +8,62 @@
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
+<!-- Cookie Consent Banner -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    palette: {
+      popup: {
+        background: "#000000",
+        text: "#ffffff"
+      },
+      button: {
+        background: "#f1d600",
+        text: "#000000"
+      }
+    },
+    theme: "classic",
+    position: "bottom",
+    type: "opt-in",
+    content: {
+      message: "We use cookies to improve your experience. You can accept or decline.",
+      dismiss: "Decline",
+      allow: "Accept",
+      link: "Learn more",
+      href: "/privacy/"
+    },
+    onInitialise: function (status) {
+      if (this.hasConsented()) {
+        loadGoogleAnalytics();
+      }
+    },
+    onStatusChange: function(status) {
+      if (this.hasConsented()) {
+        loadGoogleAnalytics();
+      }
+    }
+  });
+});
+
+function loadGoogleAnalytics() {
+  // Google Analytics code only loads if consent given
+  var script1 = document.createElement('script');
+  script1.async = true;
+  script1.src = "https://www.googletagmanager.com/gtag/js?id=G-JYZXEG3WMC";
+  document.head.appendChild(script1);
+
+  script1.onload = function() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JYZXEG3WMC');
+  };
+}
+</script>
+<!-- End Cookie Consent Banner -->
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYZXEG3WMC"></script>
 <script>
