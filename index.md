@@ -6,7 +6,7 @@ header:
   overlay_image: /assets/images/header.png
 ---
 
-# A Guide to Security and AI in Microsoft Azure
+**A Guide to Security and AI in Microsoft Azure**
 Hello. I’m Laura, a Partner Development Manager for Microsoft Azure, passionate about making cloud secuity and AI accessible for everyone, especially business professionals, consultants, and partners.
 
 On this blog, I share:
