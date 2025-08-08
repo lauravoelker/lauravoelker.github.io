@@ -30,8 +30,6 @@ And real-world use cases: what’s working, what’s new, and what can help your
 {% for post in site.posts limit:3 %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
 *{{ post.date | date: "%B %d, %Y" }}*  
-{{ post.excerpt }}
-{% endfor %}
 
 
 
