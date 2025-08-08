@@ -5,13 +5,5 @@ main:
    # url: /categories/#
   - title: "Governance"
     url: /security-governance/
-  - title: "Identity"
-    url: /identity-and-access-management/
-  - title: "Network"
-    url: /infrastructure-and-network-protection/
-  - title: "Data"
-    url: /data-protection/
-  - title: "Apps"
-    url: /applications-and-services/
   - title: "About"
     url: /about/
