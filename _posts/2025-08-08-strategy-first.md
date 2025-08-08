@@ -28,7 +28,7 @@ The Cloud Adaption Framework is Microsoft's guide to doing Azure right. It break
 In this post we will focus on Strategy. 
 We will define your goals, your appetite for risk and the measures of the success that guide every step that follows. 
 
-![Cloud Adaption Framework Roadmap](https://github.com/lauravoelker/lauravoelker.github.io/blob/master/assets/images/CAF-Roadmap.svg)
+![Cloud Adaption Framework Roadmap](/assets/images/CAF-Roadmap.svg)
 
 ## Define your strategy
 Walk through the heart of strategy in three parts:
