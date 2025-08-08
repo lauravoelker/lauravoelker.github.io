@@ -64,4 +64,57 @@ Then turn each into a simple, measurable goal.
   </tbody>
 </table>
 
-*The table is an example.
+*This table is an example.
+
+**2. Risk Appetite**<br>
+Decide how much risk you will accept and write a note why you chose that level.
+
+<table>
+  <thread>
+    <tr>
+      <th>Low</th>
+      <th>Medium</th>
+      <th>High</th>
+    </tr>
+  </thread>
+  <tbody>
+    <tr>
+      <td>No surprise, even if it costs more</td>
+      <td>Balance speed and security</td>
+      <td>Move fast and refine</td>
+    </tr>
+   </tbody>
+</table>
+
+**3. Roles and Responsibilities**<br>
+Make sure everyone knows who does what. 
+
+<table>
+  <thread>
+    <tr>
+      <th>Role</th>
+      <th>Team</th>
+      <th>Responsible</th>
+      <th>Accountable</th>
+      <th>Consulted</th>
+      <th>Informed</th>
+    </tr>
+  </thread>
+  <tbody>
+    <tr>
+      <td>Executive Sponsor</td>
+    </tr>
+    <tr>
+      <td>Security Lead</td>
+    </tr>
+    <tr>
+      <td>Cloud Architect</td>
+    </tr>
+    <tr>
+      <td>Compliance or Legal</td>
+    </tr>
+    <tr>
+      <td>Business Unit Owner</td>
+    </tr>
+   </tbody>
+</table>
