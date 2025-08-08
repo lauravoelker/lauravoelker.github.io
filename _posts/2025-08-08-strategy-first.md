@@ -16,14 +16,14 @@ Turning on a single security setting won't keep your cloud safe. True protection
 Today I will walk you through the first step of Microsoft's Cloud Adaption Framework 'Strategy' and share a ten-question worksheet to get you and your team on the same page before you touch a VM.
 
 ## What is the Cloud Adaption Framework?
-The Cloud Adaption Framework is Microsoft's guide to doing Azure right. It breaks the journey into six steps:
+The Cloud Adaption Framework is Microsoft's guide to doing Azure right. It breaks the journey into six steps:<br>
 
-**1. Strategy**: Figure out what you want to archieve and who needs to be involved
-**2. Plan**: Turn those goals into a list of projects and quick wins
-**3. Ready**: Build your secure foundation in the cloud
-**4. Adopt**: Move and create workloads under those guardrails
-**5. Govern**: Keep policies in place and measure compliance
-**6. Manage**: Run and improve your enviroment over time
+**1. Strategy**: Figure out what you want to archieve and who needs to be involved<br>
+**2. Plan**: Turn those goals into a list of projects and quick wins<br>
+**3. Ready**: Build your secure foundation in the cloud<br>
+**4. Adopt**: Move and create workloads under those guardrails<br>
+**5. Govern**: Keep policies in place and measure compliance<br>
+**6. Manage**: Run and improve your enviroment over time<br>
 
 In this post we will focus on Strategy. 
 We will define your goals, your appetite for risk and the measures of the success that guide every step that follows. 
@@ -33,7 +33,7 @@ We will define your goals, your appetite for risk and the measures of the succes
 ## Define your strategy
 Walk through the heart of strategy in three parts:
 
-**1. Business Goals and Metrics**
+**1. Business Goals and Metrics**<br>
 Ask your team to name the top three things they expect Azure to deliver.
 Then turn each into a simple, measurable goal.
 
