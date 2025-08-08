@@ -150,11 +150,9 @@ Tie your strategy answers back to five governance areas. This shows why those qu
 ![The five governance areas](/assets/images/governance-area.svg)
 
 When you lock in your goals, risk level, and roles, you have everything you need to drive each governance area. 
-
 Your risk appetite and KPIs set the tone for Security Governance policies. 
 
 Your MFA targets and stakeholder map tell you exactly who needs what access in Identity and Access. 
-
 The regions and network requirements from Strategy guide your Infrastructure and Networking design. 
 
 Data classification and audit dates dictate your encryption and retention rules. 
