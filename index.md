@@ -27,7 +27,7 @@ And real-world use cases: what’s working, what’s new, and what can help your
 ▸ News and trens on the future of cloud, AI and security
 
 **Featured Articles**<br>
-[Strategy First: Why It Matters Before Any VM]({{ "/2025/08/15/strategy-first/" | relative_url }})
+[Strategy First: Why It Matters Before Any VM](https://voelker.blog/cloud%20adaption%20framework/strategy-first/)
 
 
 
