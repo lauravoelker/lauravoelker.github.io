@@ -13,6 +13,6 @@ I will share simple PowerShell examples and customer ready templates so you can 
 
 By the end you will have a roadmap and tools to move forward with confidence and ease.
 
-**Featured Articles**
+**Featured Articles**<br>
 [Strategy First: Why It Matters Before Any VM](/_posts/2025-08-08-strategy-first.md)
 
