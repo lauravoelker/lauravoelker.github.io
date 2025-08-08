@@ -18,7 +18,7 @@ Today I will walk you through the first step of Microsoft's Cloud Adaption Frame
 ## What is the Cloud Adaption Framework?
 The Cloud Adaption Framework is Microsoft's guide to doing Azure right. It breaks the journey into six steps:<br>
 
-**1. Strategy**: What do you want to archieve and who needs to be involved<br>
+**1. Strategy**: What to archieve and who needs to be involved<br>
 **2. Plan**: Turn those goals into a list of projects and quick wins<br>
 **3. Ready**: Build your secure foundation in the cloud<br>
 **4. Adopt**: Move and create workloads under those guardrails<br>
@@ -28,7 +28,7 @@ The Cloud Adaption Framework is Microsoft's guide to doing Azure right. It break
 In this post we will focus on Strategy. 
 We will define your goals, your appetite for risk and the measures of the success that guide every step that follows. 
 
-[Cloud Adaption Framework Roadmap](assets/images/CAF-Roadmap.svg)
+![Cloud Adaption Framework Roadmap](assets/images/CAF-Roadmap.svg)
 
 ## Define your strategy
 Walk through the heart of strategy in three parts:
