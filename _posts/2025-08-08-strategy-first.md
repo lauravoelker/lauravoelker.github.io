@@ -103,18 +103,105 @@ Make sure everyone knows who does what.
   <tbody>
     <tr>
       <td>Executive Sponsor</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
       <td>Security Lead</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
       <td>Cloud Architect</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
       <td>Compliance or Legal</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
       <td>Business Unit Owner</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+   </tbody>
+</table>
+
+## Turn Strategy into Action
+Tie your strategy answers back to five governance areas. This shows why those questions mattered.
+
+![The five governance areas](/assets/images/governance-area.svg)
+
+When you lock in your goals, risk level, and roles, you have everything you need to drive each governance area. 
+
+Your risk appetite and KPIs set the tone for Security Governance policies. 
+
+Your MFA targets and stakeholder map tell you exactly who needs what access in Identity and Access. 
+
+The regions and network requirements from Strategy guide your Infrastructure and Networking design. 
+
+Data classification and audit dates dictate your encryption and retention rules. 
+
+And your speed versus risk balance defines the security checks in your build and release process. Each area flows straight from the Strategy work you just did.
+
+## Download your Worksheet
+Put everything into one simple, fill-in form.
+
+<a href="{{ '/assets/Files/Strategy-Discover-Worksheet.pdf' | relative_url }}" download>PDF download</a>
+
+Open it in your next meeting. Work together to fill in goals, risk appetite, roles and compliance checks. That should take no more than 30 minutes.
+
+## What Comes Next
+When you have your strategy in place, move on to planning.
+
+1. Pick your first three “quick wins” for the next 30 days<br>
+2. Build a backlog of projects for the next 90 to 180 days<br>
+3. Sketch a simple timeline to track progress
+
+In the next post I will show you exactly how to turn these strategy outcomes into a plan you can execute.
+
+## References
+
+<table>
+  <thread>
+    <tr>
+      <th>Tag</th>
+      <th>URL</th>
+    </tr>
+  </thread>
+  <tbody>
+    <tr>
+      <td>Microsoft CAF Overview</td>
+      <td>(https://learn.microsoft.com/azure/cloud-adoption-framework)</td>
+    </tr>
+        <tr>
+      <td>Microsoft CAF Strategy</td>
+      <td>(https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/strategy/)</td>
+    </tr>
+    <tr>
+      <td>Microsoft AI Adaption</td>
+      <td>(https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/)</td>
+    </tr>
+        <tr>
+      <td>Secure Score in Defender for Cloud</td>
+      <td>(https://learn.microsoft.com/azure/security-center/security-center-secure-score)</td>
     </tr>
    </tbody>
 </table>
