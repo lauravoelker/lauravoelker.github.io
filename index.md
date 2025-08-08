@@ -28,7 +28,8 @@ And real-world use cases: what’s working, what’s new, and what can help your
 ▸ Regular updates on cloud, AI, and security trends<br>
 
 **Featured Articles**<br>
-[Strategy First: Why It Matters Before Any VM](/_posts/2025-08-08-strategy-first.md)
+[Strategy First: Why It Matters Before Any VM]({{ '/strategy-first/' | relative_url }})
+
 
 
 
