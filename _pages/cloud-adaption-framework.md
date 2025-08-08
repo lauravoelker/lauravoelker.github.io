@@ -8,5 +8,5 @@ taxonomy: cloud-adaption-framework
 **Cloud adaption framework** coming soon..
 
 **Featured Articles**<br>
-[Strategy First: Why It Matters Before Any VM]({{ "/2025/08/15/strategy-first/" | relative_url }})
+[Strategy First: Why It Matters Before Any VM]({{ "/2025/08/08/strategy-first/" | relative_url }})
 
