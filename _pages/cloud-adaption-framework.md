@@ -9,4 +9,4 @@ taxonomy: cloud-adaption-framework
 
 **Featured Articles**<br>
 **„Strategy First: Why It Matters Before Any VM“**  
-[Read →]({{ "/2025/08/08/strategy-first/" | relative_url }})
+[Read →]({{ "_posts/2025-08-08-strategy-first.md" | relative_url }})
