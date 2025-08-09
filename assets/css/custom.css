@@ -44,3 +44,44 @@ h4 {
 
 table { border-collapse: collapse; !important; }
 th, td { border: 1px solid #d0d7de; padding: 6px 13px; !important; }
+
+/* === Mobile Tweaks (≤ 768px) === */
+@media (max-width: 768px) {
+  /* Grundtypografie etwas kompakter */
+  html { font-size: 16px; }
+  body { font-size: 0.95rem; line-height: 1.6; }
+
+  /* Überschriften kleiner */
+  .page__title { font-size: 1.4rem; }
+  .page__content h1 { font-size: 1.5rem; }
+  .page__content h2 { font-size: 1.3rem; }
+  .page__content h3 { font-size: 1.15rem; }
+
+  /* Navbar: weniger Abstand, gut klickbar */
+  .masthead__inner-wrap { padding: 8px 0; }
+  .masthead__menu-item { font-size: 0.95rem; }
+
+  /* Hero-Bild nicht so hoch */
+  .page__hero--overlay { min-height: 40vh; background-position: center; }
+
+  /* Bilder und Videos nie über den Bildschirm hinausschieben */
+  .page__content img,
+  .page__content video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Tabellen scrollbar statt abgeschnitten */
+  .page__content table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Sidebar kompakter (About-Box) */
+  .author__avatar { width: 80px; }
+  .sidebar .author__name { font-size: 1.1rem; }
+  .sidebar .author__content { font-size: 0.95rem; }
+}
