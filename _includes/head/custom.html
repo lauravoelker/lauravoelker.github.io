@@ -1,3 +1,6 @@
+<!-- ============================= -->
+<!-- Favicons and PWA manifest -->
+<!-- ============================= -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png">
@@ -6,117 +9,103 @@
 <link rel="manifest" href="/assets/images/site.webmanifest">
 <meta name="theme-color" content="#ffffff">
 
+<!-- Site styles -->
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
-<!-- Microsoft Clarity: Ladefunktion (wird erst nach Consent aufgerufen) -->
+<!-- ============================= -->
+<!-- Microsoft Clarity (load on consent) -->
+<!-- ============================= -->
 <script>
   function loadClarity() {
+    if (window.__clarityLoaded) return; // simple guard
+    window.__clarityLoaded = true;
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r); t.async=1; t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ss11kov13w");
+    })(window, document, "clarity", "script", "ss11kov13w"); /* your project ID */
   }
-
-  // Falls der Nutzer schon früher zugestimmt hat, direkt laden
-  document.addEventListener('DOMContentLoaded', function () {
-    try {
-      if (localStorage.getItem('site_consent') === 'accepted') {
-        loadClarity();
-      }
-    } catch (e) {}
-  });
 </script>
 
-<!-- Cookie Consent Banner -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<!-- ============================= -->
+<!-- Google Analytics (load on consent) -->
+<!-- ============================= -->
+<script>
+  function loadGoogleAnalytics() {
+    if (window.__gaLoaded) return; // simple guard
+    window.__gaLoaded = true;
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-JYZXEG3WMC";
+    document.head.appendChild(s);
+
+    s.onload = function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-JYZXEG3WMC');
+    };
+  }
+</script>
+
+<!-- ============================= -->
+<!-- Cookie Consent (opt-in) -->
+<!-- ============================= -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>
-window.addEventListener("load", function(){
-  window.cookieconsent.initialise({
-    palette: {
-      popup: {
-        background: "#000000",
-        text: "#ffffff"
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#000000", text: "#ffffff" },
+        button:{ background: "#00fbff", text: "#ffffff" }
       },
-      button: {
-        background: "#00fbff",
-        text: "#ffffff"
+      theme: "classic",
+      position: "bottom",
+      type: "opt-in",
+      content: {
+        message: "We use cookies to improve your experience. You can accept or decline.",
+        dismiss: "Decline",
+        allow: "Accept",
+        link: "Learn more",
+        href: "/privacy/"
+      },
+      onInitialise: function () {
+        if (this.hasConsented()) {
+          loadClarity();
+          loadGoogleAnalytics();
+        }
+      },
+      onStatusChange: function() {
+        if (this.hasConsented()) {
+          loadClarity();
+          loadGoogleAnalytics();
+        }
       }
-    },
-    theme: "classic",
-    position: "bottom",
-    type: "opt-in",
-    content: {
-      message: "We use cookies to improve your experience. You can accept or decline.",
-      dismiss: "Decline",
-      allow: "Accept",
-      link: "Learn more",
-      href: "/privacy/"
-    },
-    onInitialise: function (status) {
-      if (this.hasConsented()) {
-        loadGoogleAnalytics();
-      }
-    },
-    onStatusChange: function(status) {
-      if (this.hasConsented()) {
-        loadGoogleAnalytics();
-      }
-    }
+    });
   });
-});
-
-function loadGoogleAnalytics() {
-  // Google Analytics code only loads if consent given
-  var script1 = document.createElement('script');
-  script1.async = true;
-  script1.src = "https://www.googletagmanager.com/gtag/js?id=G-JYZXEG3WMC";
-  document.head.appendChild(script1);
-
-  script1.onload = function() {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JYZXEG3WMC');
-  };
-}
 </script>
-<!-- End Cookie Consent Banner -->
 
 <!-- ============================= -->
-<!-- SEO & Social Sharing Meta Tags -->
+<!-- SEO & Social Sharing Meta -->
 <!-- ============================= -->
+<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 
-<!-- Title -->
-<title>
-  {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}
-</title>
-
-<!-- Meta Description -->
 <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 
-<!-- Canonical URL -->
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 
-<!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.url }}/assets/images/social-preview.png{% endif %}">
 
-<!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
 <meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.url }}/assets/images/social-preview.png{% endif %}">
-
-<!-- Favicon -->
-<link rel="icon" href="{{ site.url }}/assets/images/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ site.url }}/assets/images/apple-touch-icon.png">
-
-<!-- End SEO & Social Meta Tags -->
-
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-
+<link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
