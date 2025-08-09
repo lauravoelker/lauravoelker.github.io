@@ -12,8 +12,6 @@ toc_sticky: true
 
 ## Intro
 <i>"Flip the switch on MFA and you think you’re done? Not quite."</i>
-## Intro
-<i>"Flip the switch on MFA and you think you're done? Not quite."</i>
 
 Turning on a single security setting won't keep your cloud safe. True protection starts with figuring out why you are in the cloud, who owns the risk and how it will help your business.
 
