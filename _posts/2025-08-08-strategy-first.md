@@ -1,15 +1,17 @@
 ---
+layout: single
 title: "Strategy First: Why It Matters Before Any VM"
 permalink: /strategy-first/
 date: 2025-08-08
-categories: [Cloud Adaption Framework]
-tags: [Azure, Security, Governance, CAF]
----
-layout: single
+categories: ["Cloud Adoption Framework"]
+tags: ["Azure", "Security", "Governance", "CAF"]
 author_profile: true
 toc: true
 toc_sticky: true
 ---
+
+## Intro
+<i>"Flip the switch on MFA and you think you’re done? Not quite."</i>
 ## Intro
 <i>"Flip the switch on MFA and you think you're done? Not quite."</i>
 
