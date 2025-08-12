@@ -3,7 +3,7 @@ layout: single
 title: "Strategy First: Why It Matters Before Any VM"
 permalink: /strategy-first/
 date: 2025-08-08
-categories: Cloud Adoption Framework
+categories: Cloud Adaption Framework
 tags: ["Azure", "Security", "Governance", "CAF"]
 
 # Hero header on the post page
