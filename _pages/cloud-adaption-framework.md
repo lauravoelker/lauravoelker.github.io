@@ -15,7 +15,11 @@ I will share simple PowerShell examples and customer ready templates so you can 
 By the end you will have a roadmap and tools to move forward with confidence and ease.
 
 **Featured Articles**<br>
-{% assign caf_posts = site.categories['Cloud Adaption Framework'] | sort: 'date' | reverse %}
+{% assign caf_posts = site.posts
+  | where_exp: "p", "p.categories contains 'Cloud Adaption Framework'"
+  | sort: "date"
+  | reverse %}
+
 {% for post in caf_posts %}
   {% include archive-single.html %}
 {% endfor %}
