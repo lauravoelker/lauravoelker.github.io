@@ -15,14 +15,22 @@ I will share simple PowerShell examples and customer ready templates so you can 
 
 By the end you will have a roadmap and tools to move forward with confidence and ease.
 
-**Featured Articles**<br>
-{% assign caf_posts = site.posts
-  | where_exp: "p", "p.categories contains 'Cloud Adaption Framework'"
-  | sort: "date"
-  | reverse %}
+**Featured Articles**
 
-{% for post in caf_posts %}
-  {% include archive-single.html %}
-{% endfor %}
+{% assign caf_posts = site.categories['Cloud Adaption Framework'] | sort: 'date' | reverse %}
+
+<div class="grid__wrapper">
+  {% for post in caf_posts %}
+  <article class="archive__item">
+    <a class="archive__item-teaser" href="{{ post.url | relative_url }}">
+      <img src="{{ (post.teaser | default: site.teaser) | relative_url }}" alt="{{ post.title }}">
+    </a>
+    <h2 class="archive__item-title no_toc">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h2>
+  </article>
+  {% endfor %}
+</div>
+
 
 
