@@ -10,13 +10,17 @@ categories:
 
 tags: ["Azure", "Security", "Governance", "CAF"]
 
+# Hero header on the post page
 header:
-  overlay_image: "/assets/images/posts/Strategy-First-Hero.webp"
+  overlay_image: "/assets/images/Strategy-First-Hero.webp"
   overlay_filter: 0.4
   caption: "Photo: canva"
 
-image: "/assets/images/posts/Strategy-First-Social.webp"
-teaser: "/assets/images/posts/Strategy-First-Teaser.webp"
+# Social preview image for LinkedIn, Teams, etc.
+image: "/assets/images/Strategy-First-Social.webp"
+
+# Thumbnail used on lists and grids
+teaser: "/assets/images/Strategy-First-Teaser.webp"
 
 author_profile: true
 toc: true
