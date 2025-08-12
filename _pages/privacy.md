@@ -3,94 +3,128 @@ layout: single
 title: "Privacy Policy"
 permalink: /privacy/
 author_profile: false
+toc: true
 ---
 
-Last updated: August 5, 2025
+_Last updated: {{ "now" | date: "%B %d, %Y" }}_
 
-We value your privacy and are committed to protecting your personal data.  
-This Privacy Policy explains how we collect, use, and protect information when you visit **voelker.blog**.
+We value your privacy and are committed to protecting your personal data.
+This policy explains what we collect when you visit **voelker.blog**, how we use it, and the choices you have.
 
+---
 
+## 1. Controller
 
-**1. Responsible Party**
-
-**Responsible for this website:**  
+**Responsible for this website**  
 Laura Voelker  
-Email: contact@voelker.blog  
+Email: contact@voelker.blog
 
-**2. Data Collection**
+---
 
-When you visit this website, certain data is automatically collected:
+## 2. What we collect
 
-- **Technical data**: browser type, operating system, referrer URL, IP address (anonymized)
-- **Usage data**: pages viewed, time spent on the site, clicks
+Some information is collected automatically when you visit the site:
 
-We use **Google Analytics** to understand how visitors use our website.  
-Google Analytics uses cookies to collect data such as:
+- **Technical data** such as browser type and version, operating system, referrer URL, IP address, date and time of access
+- **Usage data** such as pages viewed, time spent, clicks, and scrolls
 
-- Which pages you visit
-- How long you stay
-- Your approximate location (country/city)
+This site is hosted on **GitHub Pages**, which may keep server logs for security and reliability. See GitHub’s privacy statement for details:  
+<https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement>
 
-All IP addresses are anonymized before processing, and no personally identifiable information is stored.
+---
 
-**3. Purpose of Data Processing**
+## 3. Cookies and consent
 
-We collect and process this data to:
+You will see a cookie banner on your first visit.  
+We only set **non-essential** cookies (analytics) if you **accept** in the banner.
 
-- Improve website content and user experience
-- Analyze visitor statistics
-- Detect and fix technical issues
+- **Essential cookies** store your consent choice so the banner remembers your decision  
+- **Analytics cookies** load only after you accept in the banner
 
-**4. Legal Basis**
+You can change or withdraw consent at any time:
 
-The legal basis for processing your data under the **GDPR** is your **consent** (Art. 6 para. 1 lit. a GDPR).  
-You can withdraw your consent at any time (see **Cookie Settings** below).
+**<a href="#" onclick="if(window.cookieconsent){window.cookieconsent.toggle();} return false;">Change cookie settings</a>**
 
-**5. Cookies**
+---
 
-We use cookies for:
+## 4. Analytics tools (only if you consent)
 
-- Storing your consent preferences
-- Measuring website usage with Google Analytics
+If you accept analytics in the cookie banner, the following services may load.
 
-You can control cookies through your browser settings or our cookie consent banner.
+### Microsoft Clarity
+Clarity helps me understand how people use the site so I can improve it. Clarity records page views and interaction signals such as clicks, scrolls, approximate location (derived from IP), device and browser type, and referrer. Clarity does not collect sensitive form content by default and includes masking features.
 
-**6. Google Analytics**
+- Provider: Microsoft Corporation  
+- Legal basis: Consent (Art. 6(1)(a) GDPR)  
+- Data processed: interaction events, device and browser information, approximate location, referrer  
+- Retention: up to 13 months (per Microsoft policy)  
+- More info:  
+  <https://privacy.microsoft.com/privacystatement>  
+  <https://learn.microsoft.com/clarity/>
 
-This website uses Google Analytics provided by **Google Ireland Limited**, Gordon House, Barrow Street, Dublin 4, Ireland.
+### Google Analytics 4
+Google Analytics helps measure traffic and site usage at an aggregate level. It loads only after consent.
 
-Google Analytics collects usage data and stores it on Google servers in the USA.  
-You can learn more here: [Google Privacy Policy](https://policies.google.com/privacy).
+- Provider: Google LLC / Google Ireland Limited  
+- Legal basis: Consent (Art. 6(1)(a) GDPR)  
+- Data processed: page views, events, device and browser information, approximate location, referrer  
+- Retention: up to 14 months for event data (configurable)  
+- More info:  
+  <https://policies.google.com/privacy>  
+  <https://support.google.com/analytics/answer/6004245>
 
-To opt out of Google Analytics tracking, you can:
+**Additional opt out for Google**  
+You can also install Google’s browser add-on: <https://tools.google.com/dlpage/gaoptout>
 
-- Disable cookies in your browser
-- Use the [Google Analytics Opt-Out Browser Add-on](https://tools.google.com/dlpage/gaoptout)
+---
 
-**7. Data Retention**
+## 5. Purpose of processing
 
-We store analytics data for **14 months** before it is automatically deleted.
+We process data to:
 
-**8. Your Rights**
+- operate and secure the website  
+- understand usage and improve content  
+- identify and fix technical issues
 
-Under the GDPR, you have the right to:
+---
 
-- Access your personal data
-- Correct inaccurate data
-- Request deletion of your data
-- Restrict processing
-- Withdraw consent
-- File a complaint with your local data protection authority
+## 6. Legal basis
 
-**9. Contact**
+For essential logging and security, processing is based on **legitimate interest** (Art. 6(1)(f) GDPR).  
+For analytics, processing is based on your **consent** (Art. 6(1)(a) GDPR), which you can withdraw at any time using the link above.
 
-If you have any questions about this Privacy Policy or your data, contact:
+---
+
+## 7. Transfers outside the EU/EEA
+
+Analytics providers may process data on servers outside the EU or EEA. They use Standard Contractual Clauses and other safeguards. See each provider’s privacy statement for details.
+
+---
+
+## 8. Retention
+
+- **Consent cookie** is kept only as long as needed to remember your choice  
+- **Microsoft Clarity** data is retained up to 13 months  
+- **Google Analytics** event data is retained up to 14 months  
+- **Hosting logs** are retained by GitHub per their policies
+
+---
+
+## 9. Your rights
+
+You have the right to access your personal data, correct inaccuracies, request deletion, restrict processing, object to processing where applicable, and receive your data in a portable format. You can withdraw consent at any time without affecting the lawfulness of processing before withdrawal.
+
+If you believe your rights have been violated, you can lodge a complaint with your local data protection authority.
+
+---
+
+## 10. Contact
 
 **Laura Voelker**  
-Email: contact@voelker.blog  
+Email: contact@voelker.blog
 
-**10. Changes to This Privacy Policy**
+---
 
-We may update this Privacy Policy from time to time.  
-The latest version will always be available at: [https://voelker.blog/privacy/](https://voelker.blog/privacy/)
+## 11. Changes to this policy
+
+We may update this policy if the site or services change. The “Last updated” date at the top reflects the most recent version.
