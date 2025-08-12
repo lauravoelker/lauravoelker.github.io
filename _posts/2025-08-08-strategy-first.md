@@ -3,19 +3,19 @@ layout: single
 title: "Strategy First: Why It Matters Before Any VM"
 permalink: /strategy-first/
 date: 2025-08-08
-categories: Cloud Adaption Framework
+
+# ✅ keep this as a one-item array
+categories:
+  - Cloud Adaption Framework
+
 tags: ["Azure", "Security", "Governance", "CAF"]
 
-# Hero header on the post page
 header:
   overlay_image: "/assets/images/posts/Strategy-First-Hero.webp"
-  overlay_filter: 0.4        # darkens the image so text stays readable
+  overlay_filter: 0.4
   caption: "Photo: canva"
 
-# Social preview image for LinkedIn, Teams, etc.
 image: "/assets/images/posts/Strategy-First-Social.webp"
-
-# Thumbnail used on lists and grids
 teaser: "/assets/images/posts/Strategy-First-Teaser.webp"
 
 author_profile: true
