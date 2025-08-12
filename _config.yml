@@ -108,4 +108,6 @@ head_scripts:
 # Default social share image
 og_image: /assets/images/share-default.jpg
 
+teaser: /assets/images/teaser-default.webp
+
 
