@@ -1,10 +1,11 @@
 ---
-layout: archive
+layout: single
 title: ""
 permalink: /cloud-adaption-framework/
 category: [cloud-adaption-framework]
 taxonomy: cloud-adaption-framework
 entries_layout: grid
+show_excerpts: false
 ---
 **Cloud adaption framework**<br>
 Thinking about Azure and not sure where to begin. The Cloud Adoption Framework offers six clear stages to guide your journey from setting goals through day to day operations in the cloud. 
