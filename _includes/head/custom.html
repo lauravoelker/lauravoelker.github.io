@@ -1,12 +1,12 @@
 <!-- ============================= -->
 <!-- Favicons and PWA manifest -->
 <!-- ============================= -->
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png">
-<link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
-<link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="manifest" href="/assets/images/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/images/favicon-96x96.png' | relative_url }}">
+<link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+<link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#5bbad5">
+<link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
 <meta name="theme-color" content="#ffffff">
 
 <!-- Site styles -->
@@ -17,13 +17,13 @@
 <!-- ============================= -->
 <script>
   function loadClarity() {
-    if (window.__clarityLoaded) return; // simple guard
+    if (window.__clarityLoaded) return;
     window.__clarityLoaded = true;
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r); t.async=1; t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ss11kov13w"); /* your project ID */
+    })(window, document, "clarity", "script", "ss11kov13w"); /* your Clarity ID */
   }
 </script>
 
@@ -32,7 +32,7 @@
 <!-- ============================= -->
 <script>
   function loadGoogleAnalytics() {
-    if (window.__gaLoaded) return; // simple guard
+    if (window.__gaLoaded) return;
     window.__gaLoaded = true;
 
     var s = document.createElement('script');
@@ -51,7 +51,7 @@
 </script>
 
 <!-- Bing verification -->
-<meta name="msvalidate.01" content="01BA88336B57B13FF7CC44730E23B394" />
+<meta name="msvalidate.01" content="01BA88336B57B13FF7CC44730E23B394">
 
 <!-- ============================= -->
 <!-- Cookie Consent (opt-in) -->
@@ -76,39 +76,17 @@
         href: "/privacy/"
       },
       onInitialise: function () {
-        if (this.hasConsented()) {
-          loadClarity();
-          loadGoogleAnalytics();
-        }
+        if (this.hasConsented()) { loadClarity(); loadGoogleAnalytics(); }
       },
       onStatusChange: function() {
-        if (this.hasConsented()) {
-          loadClarity();
-          loadGoogleAnalytics();
-        }
+        if (this.hasConsented()) { loadClarity(); loadGoogleAnalytics(); }
       }
     });
   });
 </script>
 
-<!-- ============================= -->
-<!-- SEO & Social Sharing Meta -->
-<!-- ============================= -->
-<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-
-<meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
-
-<link rel="canonical" href="{{ page.url | absolute_url }}">
-
-<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-<meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ page.url | absolute_url }}">
-<meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.url }}/assets/images/social-preview.png{% endif %}">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-<meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
-<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.url }}/assets/images/social-preview.png{% endif %}">
-<link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+{% comment %}
+SEO and social meta tags (og:*, twitter:*) are rendered by Minimal Mistakes via jekyll-seo-tag.
+Do not add them here to avoid duplicates. Set per-post images with:
+image: "/assets/images/your-social-image.png"
+{% endcomment %}
