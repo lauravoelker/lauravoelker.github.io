@@ -17,7 +17,7 @@ header:
   caption: "Photo: canva"
 
 # Social preview image for LinkedIn, Teams, etc.
-image: "/assets/images/Strategy-First-Social.png"
+image: "https://voelker.blog/assets/images/Strategy-First-Social.png"
 
 # Thumbnail used on lists and grids
 teaser: "/assets/images/Strategy-First-Teaser.webp"
