@@ -2,7 +2,7 @@
 layout: archive
 title: ""
 permalink: /cloud-adaption-framework/
-category: cloud-adaption-framework
+category: [cloud-adaption-framework]
 taxonomy: cloud-adaption-framework
 entries_layout: grid
 ---
