@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: archive
 title: ""
 permalink: /cloud-adaption-framework/
 category: cloud-adaption-framework
