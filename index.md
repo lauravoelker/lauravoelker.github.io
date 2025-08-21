@@ -28,7 +28,7 @@ And real-world use cases: what’s working, what’s new, and what can help your
 ▸ Regular updates on cloud, AI, and security trends<br>
 
 **Featured Articles**<br>
-[Strategy First: Why It Matters Before Any VM]({{ '/strategy-first/' | relative_url }})
+[Hybrid-First CAF Plan: From Strategy to a Living Backlog]({{ '/caf-plan/' | relative_url }})
 
 
 
