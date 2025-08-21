@@ -86,29 +86,40 @@ th, td { border: 1px solid #d0d7de; padding: 6px 13px; !important; }
   .sidebar .author__content { font-size: 0.95rem; }
 }
 
-/* Show the full 16:9 hero image on small screens for posts with `classes: no-crop-169` */
+---
+# Only the main Sass file needs front matter
+---
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+/* Show full hero image on phones (Minimal Mistakes overlay hero) */
 @media (max-width: 640px) {
-  .no-crop-169 .page__hero--overlay .page__hero-image {
-    background-size: contain !important;      /* show entire image */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #000;                   /* letterbox color (optional) */
+  .page__hero--overlay {
+    /* show the entire image instead of cropping */
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    /* keep height proportional to your hero (16:9 for 1600×900) */
+    aspect-ratio: 16 / 9;
     min-height: 0 !important;
     height: auto !important;
-    aspect-ratio: 16 / 9;                     /* your 1600×900 ratio */
   }
 
-  /* Fallback for older iOS/Android without aspect-ratio support */
+  /* Fallback for older browsers without aspect-ratio */
   @supports not (aspect-ratio: 1 / 1) {
-    .no-crop-169 .page__hero--overlay .page__hero-image {
+    .page__hero--overlay {
       height: 0 !important;
-      padding-top: 56.25%;                    /* 9/16 × 100 = 56.25% */
+      padding-top: 56.25%; /* 9/16 × 100 = 56.25% */
     }
   }
 
-  /* Keep caption below the image so it doesn't overlap */
-  .no-crop-169 .page__hero--overlay .page__hero-caption {
+  /* Make the dark overlay and caption behave with the new height */
+  .page__hero--overlay::before { height: 100% !important; }
+  .page__hero--overlay .page__hero-caption {
     position: static;
     margin-top: .4rem;
   }
 }
+
