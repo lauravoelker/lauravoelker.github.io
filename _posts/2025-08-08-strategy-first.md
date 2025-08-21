@@ -12,8 +12,7 @@ tags: ["Azure", "Security", "Governance", "CAF"]
 
 # Hero header on the post page
 header:
-  overlay_image: "/assets/images/Strategy-First-Hero.webp"
-  overlay_filter: 0.4
+  image: "/assets/images/Strategy-First-Hero.webp"
   caption: "Photo: canva"
 
 # Social preview image for LinkedIn, Teams, etc.
