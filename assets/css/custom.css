@@ -86,25 +86,28 @@ th, td { border: 1px solid #d0d7de; padding: 6px 13px; !important; }
   .sidebar .author__content { font-size: 0.95rem; }
 }
 
-/* Show full hero image on small screens for posts with `classes: no-crop-hero` */
+/* Show the full 16:9 hero image on small screens for posts with `classes: no-crop-169` */
 @media (max-width: 640px) {
-  .no-crop-hero .page__hero--overlay .page__hero-image {
-    background-size: contain !important;      /* don't crop */
-    background-repeat: no-repeat;
+  .no-crop-169 .page__hero--overlay .page__hero-image {
+    background-size: contain !important;      /* show entire image */
     background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #000;                   /* letterbox color (optional) */
     min-height: 0 !important;
     height: auto !important;
-    aspect-ratio: 16 / 9;                     /* <-- set to your hero's ratio */
+    aspect-ratio: 16 / 9;                     /* your 1600×900 ratio */
   }
-  /* Fallback for older browsers (iOS 14/old Android) */
+
+  /* Fallback for older iOS/Android without aspect-ratio support */
   @supports not (aspect-ratio: 1 / 1) {
-    .no-crop-hero .page__hero--overlay .page__hero-image {
-      /* padding-top = (height/width)*100%; 16:9 => 56.25% */
-      padding-top: 56.25%;
+    .no-crop-169 .page__hero--overlay .page__hero-image {
+      height: 0 !important;
+      padding-top: 56.25%;                    /* 9/16 × 100 = 56.25% */
     }
   }
-  /* Keep the caption readable below the image */
-  .no-crop-hero .page__hero--overlay .page__hero-caption {
+
+  /* Keep caption below the image so it doesn't overlap */
+  .no-crop-169 .page__hero--overlay .page__hero-caption {
     position: static;
     margin-top: .4rem;
   }
