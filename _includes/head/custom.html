@@ -90,3 +90,22 @@ SEO and social meta tags (og:*, twitter:*) are rendered by Minimal Mistakes via 
 Do not add them here to avoid duplicates. Set per-post images with:
 image: "/assets/images/your-social-image.png"
 {% endcomment %}
+
+<style>
+@media (max-width: 640px){
+  .layout--single .page__hero--overlay{
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    aspect-ratio: 16 / 9;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  @supports not (aspect-ratio: 1 / 1){
+    .layout--single .page__hero--overlay{height:0!important;padding-top:56.25%}
+  }
+  .layout--single .page__hero--overlay::before{height:100%!important}
+  .layout--single .page__hero--overlay .page__hero-caption{position:static;margin-top:.4rem}
+}
+</style>
+
