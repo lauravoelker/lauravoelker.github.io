@@ -198,28 +198,15 @@ When you have your strategy in place, move on to planning.
 
 In the next post I will show you exactly how to turn these strategy outcomes into a plan you can execute.
 
-## References
+## Sources
 
-<table>
-  <thread>
-    <tr>
-      <th>Tag</th>
-      <th>URL</th>
-    </tr>
-  </thread>
-  <tbody>
-    <tr>
-      <td>Microsoft CAF Overview</td>
-      <td>(https://learn.microsoft.com/azure/cloud-adoption-framework)</td>
-    </tr>
-        <tr>
-      <td>Microsoft CAF Strategy</td>
-      <td>(https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/strategy/)</td>
-    </tr>
-    <tr>
-      <td>Microsoft AI Adaption</td>
-      <td>(https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/)</td>
-    </tr>
+| Topic | Link |
+|---|---|
+| Cloud Adoption Framework — overview | [https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview) |
+| CAF — Strategy | [https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/strategy/](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/strategy/) |
+| CAF — AI adoption (scenario) | [https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/) |
+| Defender for Cloud — Secure score | [https://learn.microsoft.com/en-us/azure/defender-for-cloud/secure-score-security-controls](https://learn.microsoft.com/en-us/azure/defender-for-cloud/secure-score-security-controls) |
+
         <tr>
       <td>Secure Score in Defender for Cloud</td>
       <td>(https://learn.microsoft.com/azure/security-center/security-center-secure-score)</td>
