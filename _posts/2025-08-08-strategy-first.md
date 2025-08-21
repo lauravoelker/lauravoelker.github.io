@@ -11,11 +11,14 @@ categories:
 tags: ["Azure", "Security", "Governance", "CAF"]
 
 # Hero header on the post page
+# keep your current overlay_image settings
 header:
   overlay_image: "/assets/images/Strategy-First-Hero.webp"
   overlay_filter: 0.4
   caption: "Photo: canva"
-classes: no-crop-hero   # <-- add this line on this post only
+
+# add a class to target this post
+classes: no-crop-169
 
 # Social preview image for LinkedIn, Teams, etc.
 image: "https://voelker.blog/assets/images/Strategy-First-Social.png"
