@@ -109,4 +109,7 @@ image: "/assets/images/your-social-image.png"
 }
 </style>
 
-<script defer src="{{ '/assets/js/lzgen.js' | relative_url }}"></script>
+{% if page.lzgen %}
+  <script defer src="{{ '/assets/js/lzgen.js?v=3' | relative_url }}"></script>
+{% endif %}
+
