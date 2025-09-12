@@ -3,7 +3,6 @@ layout: single
 title: ""                            # keine automatische H1
 permalink: /landing-zone-generator/
 author_profile: true
-classes: wide
 toc: false
 lzgen: true                          # sorgt dafür, dass lzgen.js NUR hier geladen wird
 ---
