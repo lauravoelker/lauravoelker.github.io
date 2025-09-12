@@ -5,7 +5,6 @@
   <p>Pick a preset or configure everything. Click Generate to get Bicep and Terraform starters. You can also export ALZ-compatible params and tfvars.</p>
   {% endunless %}
 
-  <!-- Region suggestions (for all app LZs) -->
   <datalist id="azureRegions">
     <option value="westeurope"><option value="northeurope"><option value="germanywestcentral">
     <option value="germanynorth"><option value="uksouth"><option value="ukwest">
@@ -399,7 +398,6 @@
 </section>
 
 <style>
-/* Scoped styles – keep theme header intact */
 #lzgen { font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif; margin:2rem 0; padding:1rem 0; }
 #lzgen .lz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
 #lzgen .lz-card{border:1px solid var(--b,#ddd);border-radius:10px;padding:1rem;background:var(--bg,#fff);box-shadow:0 1px 2px rgba(0,0,0,.04)}
@@ -417,5 +415,4 @@
 }
 </style>
 
-<!-- JS jetzt extern laden (CSP-freundlich) -->
 <script defer src="{{ '/assets/js/lzgen.js' | relative_url }}"></script>
