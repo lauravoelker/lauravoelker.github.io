@@ -5,6 +5,16 @@
   <p>Pick a preset or configure everything. Click Generate to get Bicep and Terraform starters. You can also export ALZ-compatible params and tfvars.</p>
   {% endunless %}
 
+  <!-- Region suggestions (for all app LZs) -->
+  <datalist id="azureRegions">
+    <option value="westeurope"><option value="northeurope"><option value="germanywestcentral">
+    <option value="germanynorth"><option value="uksouth"><option value="ukwest">
+    <option value="francecentral"><option value="swedencentral"><option value="norwayeast">
+    <option value="switzerlandnorth"><option value="polandcentral">
+    <option value="eastus"><option value="eastus2"><option value="westus2"><option value="westus3">
+    <option value="centralus"><option value="southcentralus"><option value="canadacentral">
+  </datalist>
+
   <div class="lz-grid">
     <!-- Preset -->
     <div class="lz-card">
@@ -128,6 +138,13 @@
           <option value="PCI">PCI DSS</option>
         </select>
       </label>
+
+      <!-- Guardrails -->
+      <label>Guardrails</label>
+      <label>
+        <input id="guardDenyPublicIp" type="checkbox" checked>
+        Deny creation of Public IPs (subscription)
+      </label>
     </div>
 
     <!-- Security -->
@@ -210,7 +227,7 @@
     <!-- Application LZ: AVD -->
     <div id="avdSection" class="lz-card" style="display:none">
       <h3>Application LZ: Azure Virtual Desktop (AVD)</h3>
-      <label>Region <input id="avdRegion" type="text" value="westeurope"></label>
+      <label>Region <input id="avdRegion" type="text" list="azureRegions" value="westeurope"></label>
       <label>Host pool type
         <select id="avdHostPoolType"><option>Pooled</option><option>Personal</option></select>
       </label>
@@ -241,7 +258,7 @@
     <!-- Application LZ: AKS -->
     <div id="aksSection" class="lz-card" style="display:none">
       <h3>Application LZ: Azure Kubernetes Service (AKS)</h3>
-      <label>Region <input id="aksRegion" type="text" value="westeurope"></label>
+      <label>Region <input id="aksRegion" type="text" list="azureRegions" value="westeurope"></label>
       <label>Private cluster
         <select id="aksPrivate"><option>Yes</option><option>No</option></select>
       </label>
@@ -268,6 +285,9 @@
       <label>ACR integration
         <select id="aksAcr"><option>Yes</option><option>No</option></select>
       </label>
+      <label>ACR name (if enabled)
+        <input id="aksAcrName" type="text" placeholder="e.g. mycompanyacr" />
+      </label>
       <label>AKS Policy
         <select id="aksPolicy"><option>On</option><option>Off</option></select>
       </label>
@@ -282,27 +302,15 @@
     <!-- Application LZ: SAP -->
     <div id="sapSection" class="lz-card" style="display:none">
       <h3>Application LZ: SAP on Azure</h3>
-      <label>Region <input id="sapRegion" type="text" value="westeurope"></label>
+      <label>Region <input id="sapRegion" type="text" list="azureRegions" value="westeurope"></label>
       <label>Deployment pattern
-        <select id="sapPattern">
-          <option>Two-tier</option>
-          <option>Three-tier</option>
-          <option>Single-VM</option>
-        </select>
+        <select id="sapPattern"><option>Two-tier</option><option>Three-tier</option><option>Single-VM</option></select>
       </label>
       <label>High availability
-        <select id="sapHa">
-          <option>None</option>
-          <option>ASCS-ERS</option>
-          <option>DB HA</option>
-          <option>Full</option>
-        </select>
+        <select id="sapHa"><option>None</option><option>ASCS-ERS</option><option>DB HA</option><option>Full</option></select>
       </label>
       <label>DB platform
-        <select id="sapDb">
-          <option>HANA</option>
-          <option>SQL</option>
-        </select>
+        <select id="sapDb"><option>HANA</option><option>SQL</option></select>
       </label>
       <label>SAP SID (3 letters) <input id="sapSid" type="text" maxlength="3" value="PRD"></label>
       <label>VM size (App) <input id="sapAppVm" type="text" value="Standard_D8s_v5"></label>
@@ -325,7 +333,7 @@
     <!-- Application LZ: APIM -->
     <div id="apimSection" class="lz-card" style="display:none">
       <h3>Application LZ: API Management (APIM)</h3>
-      <label>Region <input id="apimRegion" type="text" value="westeurope"></label>
+      <label>Region <input id="apimRegion" type="text" list="azureRegions" value="westeurope"></label>
       <label>SKU
         <select id="apimSku"><option>Developer</option><option>Basic</option><option>Standard</option><option>Premium</option></select>
       </label>
@@ -415,12 +423,14 @@
     "preset","orgSize","subModel","regionPlan","entraLevel","identitySource","rbac",
     "topology","connectivity","privDns","policyLevel","allowedRegions","tagSchema","vending","compliance",
     "defender","keys","baseline","monitoring","bcdr","budget","alerts","iac","pipelines","archetype",
+    // Guardrails
+    "guardDenyPublicIp",
     // AVD
     "avdRegion","avdHostPoolType","avdBalance","avdMaxSessions","avdDomainJoin","avdFslogix",
     "avdPrivateLinks","avdScaling","avdScaleMinHosts","avdScaleMaxHosts","avdPeakStart","avdPeakEnd",
     // AKS
     "aksRegion","aksPrivate","aksCni","aksIngress","aksOutbound","aksZones","aksSysSize","aksSysCount",
-    "aksUserSize","aksUserCount","aksWi","aksKvCsi","aksAcr","aksPolicy","aksNetPolicy","aksPsp",
+    "aksUserSize","aksUserCount","aksWi","aksKvCsi","aksAcr","aksAcrName","aksPolicy","aksNetPolicy","aksPsp",
     // SAP
     "sapRegion","sapPattern","sapHa","sapDb","sapSid","sapAppVm","sapDbVm","sapZones","sapAnf","sapBackup","sapMonitor","sapVnetCidr","sapSubnetApp","sapSubnetDb",
     // APIM
@@ -483,7 +493,7 @@
       // AKS defaults
       aksRegion:"westeurope", aksPrivate:"Yes", aksCni:"Azure CNI", aksIngress:"Nginx", aksOutbound:"NAT Gateway",
       aksZones:"1,2,3", aksSysSize:"Standard_D4s_v5", aksSysCount:"1", aksUserSize:"Standard_D4s_v5", aksUserCount:"2",
-      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"baseline",
+      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksAcrName:"", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"baseline",
       // SAP defaults
       sapRegion:"westeurope", sapPattern:"Three-tier", sapHa:"Full", sapDb:"HANA", sapSid:"PRD",
       sapAppVm:"Standard_D8s_v5", sapDbVm:"Standard_E16ds_v5", sapZones:"1,2,3", sapAnf:"Yes", sapBackup:"ANF Snapshots",
@@ -506,7 +516,7 @@
       // AKS
       aksRegion:"westeurope", aksPrivate:"Yes", aksCni:"Azure CNI", aksIngress:"AGIC", aksOutbound:"NAT Gateway",
       aksZones:"1,2", aksSysSize:"Standard_D4s_v5", aksSysCount:"2", aksUserSize:"Standard_D8s_v5", aksUserCount:"3",
-      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted",
+      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksAcrName:"", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted",
       // SAP
       sapRegion:"westeurope", sapPattern:"Three-tier", sapHa:"Full", sapDb:"HANA", sapSid:"QAS",
       sapAppVm:"Standard_D8s_v5", sapDbVm:"Standard_E32ds_v5", sapZones:"1,2", sapAnf:"Yes", sapBackup:"ANF Snapshots",
@@ -529,7 +539,7 @@
       // AKS
       aksRegion:"westeurope", aksPrivate:"Yes", aksCni:"Azure CNI", aksIngress:"AGIC", aksOutbound:"NAT Gateway",
       aksZones:"1,2,3", aksSysSize:"Standard_D4s_v5", aksSysCount:"3", aksUserSize:"Standard_D8s_v5", aksUserCount:"6",
-      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted",
+      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksAcrName:"", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted",
       // SAP
       sapRegion:"westeurope", sapPattern:"Three-tier", sapHa:"Full", sapDb:"HANA", sapSid:"PRD",
       sapAppVm:"Standard_D16s_v5", sapDbVm:"Standard_M32ts", sapZones:"1,2,3", sapAnf:"Yes", sapBackup:"ANF Snapshots",
@@ -542,7 +552,11 @@
 
   function applyPreset(name){
     const p = presets[name];
-    Object.entries(p).forEach(([k,v]) => { if (el[k]) el[k].value = String(v); });
+    Object.entries(p).forEach(([k,v]) => {
+      if (!el[k]) return;
+      if (el[k].type === "checkbox") el[k].checked = !!v;
+      else el[k].value = String(v);
+    });
     toggleArchetype(); saveState(); toast("Preset applied");
   }
 
@@ -563,6 +577,12 @@
     if(a==="SAP"){
       const req = ["sapRegion","sapPattern","sapDb","sapSid","sapAppVm","sapDbVm","sapVnetCidr","sapSubnetApp","sapSubnetDb"];
       const miss = req.filter(k=>!el[k].value); if(miss.length){ toast("SAP: please fill " + miss.join(", ")); return false; }
+      // CIDR validations
+      const vnet = el.sapVnetCidr.value.trim(), aC = el.sapSubnetApp.value.trim(), dC = el.sapSubnetDb.value.trim();
+      if(!isValidCidr(vnet)) { toast("SAP: VNet CIDR is invalid"); return false; }
+      if(!isValidCidr(aC) || !isValidCidr(dC)) { toast("SAP: Subnet CIDR(s) invalid"); return false; }
+      if(!subnetWithin(vnet,aC) || !subnetWithin(vnet,dC)) { toast("SAP: Subnets must be inside VNet range"); return false; }
+      if(rangesOverlap(cidrToRange(aC), cidrToRange(dC))) { toast("SAP: Subnets overlap"); return false; }
     }
     if(a==="APIM"){
       const req = ["apimRegion","apimSku","apimCapacity","apimVnetMode"];
@@ -592,7 +612,7 @@
       lines.push(`AVD: ${s.avdHostPoolType} host pool in ${s.avdRegion}, ${s.avdBalance} balancing, max ${s.avdMaxSessions}/host, FSLogix=${s.avdFslogix}, Join=${s.avdDomainJoin}, PrivateLinks=${s.avdPrivateLinks}, Scaling=${s.avdScaling} (${s.avdScaleMinHosts}-${s.avdScaleMaxHosts}, ${s.avdPeakStart}-${s.avdPeakEnd})`);
     }
     if(s.archetype==="AKS"){
-      lines.push(`AKS: ${s.aksPrivate==="Yes"?"private":"public"} cluster in ${s.aksRegion}, ${s.aksCni}, ingress=${s.aksIngress}, egress=${s.aksOutbound}, zones=[${s.aksZones}]; system ${s.aksSysCount}×${s.aksSysSize}, user ${s.aksUserCount}×${s.aksUserSize}; WI=${s.aksWi}, KV CSI=${s.aksKvCsi}, ACR=${s.aksAcr}, Policy=${s.aksPolicy}, NetPolicy=${s.aksNetPolicy}, PSP=${s.aksPsp}`);
+      lines.push(`AKS: ${s.aksPrivate==="Yes"?"private":"public"} cluster in ${s.aksRegion}, ${s.aksCni}, ingress=${s.aksIngress}, egress=${s.aksOutbound}, zones=[${s.aksZones}]; system ${s.aksSysCount}×${s.aksSysSize}, user ${s.aksUserCount}×${s.aksUserSize}; WI=${s.aksWi}, KV CSI=${s.aksKvCsi}, ACR=${s.aksAcr}${s.aksAcr==="Yes"&&s.aksAcrName?`(${s.aksAcrName})`:""}, Policy=${s.aksPolicy}, NetPolicy=${s.aksNetPolicy}, PSP=${s.aksPsp}`);
     }
     if(s.archetype==="SAP"){
       lines.push(`SAP: ${s.sapPattern} in ${s.sapRegion}, DB=${s.sapDb}, HA=${s.sapHa}, SID=${s.sapSid}, zones=[${s.sapZones}], ANF=${s.sapAnf}, Backup=${s.sapBackup}, Monitor=${s.sapMonitor}`);
@@ -603,23 +623,50 @@
     return lines.join("\n");
   }
 
-  // Platform templates (short)
-  function bicepTemplate(s){ return `// CAF Ready Bicep Starter (platform)
+  // Platform templates (short, with guardrail)
+  function bicepTemplate(s){
+    return `// CAF Ready Bicep Starter (platform)
 targetScope = 'subscription'
 param location string = 'westeurope'
 param monthlyBudget int = ${Number(s.budget)||1000}
 param thresholds array = [${(s.alerts||"50,80,100").split(",").map(x=>Number(x.trim())).join(", ")}]
 resource rg_mgmt 'Microsoft.Resources/resourceGroups@2024-03-01' = { name: 'rg-mgmt' location: location }
 ${s.topology==="Hub-and-Spoke" ? "resource rg_network 'Microsoft.Resources/resourceGroups@2024-03-01' = { name: 'rg-network-hub' location: location }" : "// flat topology"}
-`; }
 
-  function tfTemplate(s){ return `# CAF Ready Terraform Starter (platform)
+// Guardrail: Deny Public IP (custom Policy) 
+${s.guardDenyPublicIp ? `
+resource denyPipDef 'Microsoft.Authorization/policyDefinitions@2021-06-01' = {
+  name: 'deny-public-ip'
+  properties: {
+    policyType: 'Custom'
+    mode: 'All'
+    displayName: 'Deny creation of Public IP addresses'
+    policyRule: {
+      if: { field: 'type', equals: 'Microsoft.Network/publicIPAddresses' }
+      then: { effect: 'Deny' }
+    }
+  }
+}
+resource denyPipAssign 'Microsoft.Authorization/policyAssignments@2022-06-01' = {
+  name: 'deny-public-ip-assignment'
+  properties: {
+    displayName: 'Deny Public IPs'
+    policyDefinitionId: denyPipDef.id
+  }
+}
+` : `// Guardrail: Deny Public IP disabled`}
+`;
+  }
+
+  function tfTemplate(s){
+    return `# CAF Ready Terraform Starter (platform)
 terraform { required_providers { azurerm = { source = "hashicorp/azurerm" version = "~> 3.112" } } }
 provider "azurerm" { features {} }
 variable "location" { type = string, default = "westeurope" }
 resource "azurerm_resource_group" "rg_mgmt" { name="rg-mgmt" location=var.location }
 ${s.topology==="Hub-and-Spoke" ? 'resource "azurerm_resource_group" "rg_network_hub" { name="rg-network-hub" location=var.location }' : "# flat topology"}
-`; }
+`;
+  }
 
   // AVD templates
   function avdBicepTemplate(s){ if(s.archetype!=="AVD") return "// Select 'AVD' archetype."; return `// AVD minimal sample in ${s.avdRegion||"westeurope"}
@@ -666,7 +713,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
     ]
   }
 }
-// Notes: ACR (${s.aksAcr}), AKS Policy (${s.aksPolicy}), Pod Security=${s.aksPsp}
+// Notes: ACR (${s.aksAcr}${s.aksAcr==="Yes"&&s.aksAcrName?` - ${s.aksAcrName}`:""}), AKS Policy (${s.aksPolicy}), Pod Security=${s.aksPsp}
 `;
   }
   function aksTfTemplate(s){
@@ -688,11 +735,14 @@ resource "azurerm_kubernetes_cluster" "aks" {
   workload_identity_enabled = ${s.aksWi==="On"}
 }
 ${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool" "user" { name="user" kubernetes_cluster_id=azurerm_kubernetes_cluster.aks.id vm_size="${s.aksUserSize||"Standard_D4s_v5"}" node_count=${Number(s.aksUserCount)||2} zones=[${zones}] }` : `# no user node pool`}
-# Notes: ACR (${s.aksAcr}), AKS Policy (${s.aksPolicy}), Pod Security ${s.aksPsp}
+
+# If ACR integration = Yes and name provided:
+# - Grant AcrPull to AKS kubelet identity
+# ACR name: ${s.aksAcr==="Yes" ? (s.aksAcrName||"(missing)") : "disabled"}
 `;
   }
 
-  // SAP templates – scaffold for workload zone
+  // SAP templates
   function sapBicepTemplate(s){
     if(s.archetype!=="SAP") return "// Select 'SAP' archetype.";
     const zones = (s.sapZones||"").split(",").map(x=>`'${x.trim()}'`).filter(Boolean).join(", ");
@@ -817,6 +867,7 @@ resource "azurerm_api_management" "apim" {
           sysNode: { size: s.aksSysSize, count: Number(s.aksSysCount)||1 },
           userNode: { size: s.aksUserSize, count: Number(s.aksUserCount)||0 },
           workloadIdentity: s.aksWi==="On", kvCsi: s.aksKvCsi==="On", acr: s.aksAcr==="Yes",
+          acrName: s.aksAcrName || "",
           policy: s.aksPolicy==="On", networkPolicy: s.aksNetPolicy, podSecurity: s.aksPsp
         }
       };
@@ -878,7 +929,7 @@ resource "azurerm_api_management" "apim" {
       flat.aks_ingress = a.ingress; flat.aks_outbound = a.outbound; flat.aks_zones = a.zones;
       flat.aks_sys_size = a.sysNode.size; flat.aks_sys_count = a.sysNode.count;
       flat.aks_user_size = a.userNode.size; flat.aks_user_count = a.userNode.count;
-      flat.aks_workload_identity = a.workloadIdentity; flat.aks_kv_csi = a.kvCsi; flat.aks_acr_integration = a.acr;
+      flat.aks_workload_identity = a.workloadIdentity; flat.aks_kv_csi = a.kvCsi; flat.aks_acr_integration = a.acr; flat.aks_acr_name = a.acrName || "";
       flat.aks_policy = a.policy; flat.aks_network_policy = a.networkPolicy; flat.aks_pod_security = a.podSecurity;
     }
     if(p.application?.type==="SAP"){
@@ -899,6 +950,45 @@ resource "azurerm_api_management" "apim" {
     return flat;
   }
 
+  // --- CIDR utilities ---
+  function ipToInt(ip){ return ip.split('.').reduce((acc,oct)=> (acc<<8) + (parseInt(oct,10)&255), 0)>>>0; }
+  function isValidIpv4(ip){ return /^(\d{1,3}\.){3}\d{1,3}$/.test(ip) && ip.split('.').every(n=>+n>=0 && +n<=255); }
+  function isValidCidr(c){
+    const m=c.match(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/(\d{1,2})$/);
+    if(!m) return false; const [,ip,p]=m; const pref=+p;
+    return isValidIpv4(ip) && pref>=0 && pref<=32;
+  }
+  function cidrToRange(c){
+    const [ip,p]=c.split('/'); const base=ipToInt(ip); const pref=Number(p);
+    const mask = pref===0 ? 0 : (0xFFFFFFFF << (32 - pref)) >>> 0;
+    const start = (base & mask) >>> 0;
+    const size = (pref===32 ? 1 : Math.pow(2, 32 - pref));
+    const end = (start + size - 1) >>> 0;
+    return [start,end];
+  }
+  function rangeContains(outer, inner){ return inner[0]>=outer[0] && inner[1]<=outer[1]; }
+  function rangesOverlap(a,b){ return !(a[1]<b[0] || b[1]<a[0]); }
+  function subnetWithin(superCidr, subCidr){
+    if(!isValidCidr(superCidr) || !isValidCidr(subCidr)) return false;
+    return rangeContains(cidrToRange(superCidr), cidrToRange(subCidr));
+  }
+
+  // APIM compatibility hints (non-blocking)
+  function apimCompatWarnings(s){
+    const msgs=[];
+    if(s.archetype==="APIM"){
+      const sku = (s.apimSku||"").toLowerCase();
+      const vnet = s.apimVnetMode||"None";
+      if(vnet!=="None" && (sku==="basic" || sku==="standard")){
+        msgs.push("APIM: Selected VNet mode may not be supported with this SKU. Please verify SKU/VNet compatibility in docs.");
+      }
+      if(s.apimPrivateEndpoints==="Yes" && vnet==="None"){
+        msgs.push("APIM: Private Endpoints are typically used with VNet modes (External/Internal).");
+      }
+    }
+    return msgs;
+  }
+
   // Generate & UI
   function generate(){
     if(!validate()) return;
@@ -914,11 +1004,31 @@ resource "azurerm_api_management" "apim" {
     out.sapTf.textContent     = sapTfTemplate(s);
     out.apimBicep.textContent = apimBicepTemplate(s);
     out.apimTf.textContent    = apimTfTemplate(s);
+
+    const hints = apimCompatWarnings(s);
+    if(hints.length) toast(hints[0]);
+
     toast("Generated");
   }
 
-  function readState(){ return Object.fromEntries(ids.map(k=>[k, el[k]?.value?.trim ? el[k].value.trim() : el[k]?.value ?? ""])); }
-  function writeState(state){ Object.entries(state).forEach(([k,v])=>{ if(el[k]) el[k].value = v; }); toggleArchetype(); }
+  function readState(){
+    const state = {};
+    for (const k in el){
+      const node = el[k];
+      if(!node) continue;
+      if(node.type === "checkbox") state[k] = !!node.checked;
+      else state[k] = node.value?.trim ? node.value.trim() : node.value;
+    }
+    return state;
+  }
+  function writeState(state){
+    Object.entries(state).forEach(([k,v])=>{
+      if(!el[k]) return;
+      if(el[k].type === "checkbox") el[k].checked = !!v;
+      else el[k].value = v;
+    });
+    toggleArchetype();
+  }
   function saveState(){ localStorage.setItem("lzgen:v1", JSON.stringify(readState())); }
   function loadState(){
     const hash = location.hash.startsWith("#lz=") ? location.hash.slice(4) : null;
