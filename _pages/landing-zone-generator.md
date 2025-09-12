@@ -34,6 +34,5 @@ It scaffolds a platform landing zone and app variants (AKS, AVD, SAP, APIM). You
     <li>For Azure Landing Zone, import <code>params.json</code>/<code>.tfvars</code> and extend modules</li>
     <li>Review policies vs. your compliance pack (MCSB, ISO 27001, NIST, CIS, PCI)</li>
   </ul>
-</div>
 
 {% include lzgen.html %}
