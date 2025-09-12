@@ -2,7 +2,7 @@
 layout: single
 title: ""
 permalink: /landing-zone-generator/
-author_profile: false
+author_profile: true
 toc: false
 classes: wide
 ---
