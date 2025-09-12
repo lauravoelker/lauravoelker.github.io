@@ -1,9 +1,10 @@
 ---
 layout: single
-title: ""
+title: "Landing Zone Generator"
 permalink: /landing-zone-generator/
 author_profile: true
 toc: false
+classes: wide
 ---
 
-{% include lzgen.html hide_title=true %}
+{% include lzgen.html %}
