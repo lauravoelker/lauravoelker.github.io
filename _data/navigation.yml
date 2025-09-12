@@ -3,6 +3,8 @@ main:
    # url: /posts/
    # - title: "Categories"
    # url: /categories/#
+  - title: "Landing Zone Generator"
+    url: /landing-zone-generator/
   - title: "Cloud Adaption Framework"
     url: /cloud-adaption-framework/
   - title: "About"
