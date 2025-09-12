@@ -278,6 +278,69 @@
         <select id="aksPsp"><option>baseline</option><option>restricted</option></select>
       </label>
     </div>
+
+    <!-- Application LZ: SAP -->
+    <div id="sapSection" class="lz-card" style="display:none">
+      <h3>Application LZ: SAP on Azure</h3>
+      <label>Region <input id="sapRegion" type="text" value="westeurope"></label>
+      <label>Deployment pattern
+        <select id="sapPattern">
+          <option>Two-tier</option>
+          <option>Three-tier</option>
+          <option>Single-VM</option>
+        </select>
+      </label>
+      <label>High availability
+        <select id="sapHa">
+          <option>None</option>
+          <option>ASCS-ERS</option>
+          <option>DB HA</option>
+          <option>Full</option>
+        </select>
+      </label>
+      <label>DB platform
+        <select id="sapDb">
+          <option>HANA</option>
+          <option>SQL</option>
+        </select>
+      </label>
+      <label>SAP SID (3 letters) <input id="sapSid" type="text" maxlength="3" value="PRD"></label>
+      <label>VM size (App) <input id="sapAppVm" type="text" value="Standard_D8s_v5"></label>
+      <label>VM size (DB) <input id="sapDbVm" type="text" value="Standard_E16ds_v5"></label>
+      <label>Availability zones (e.g. 1,2,3) <input id="sapZones" type="text" value="1,2,3"></label>
+      <label>Azure NetApp Files
+        <select id="sapAnf"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>Backup strategy
+        <select id="sapBackup"><option>Azure Backup</option><option>ANF Snapshots</option><option>None</option></select>
+      </label>
+      <label>SAP Monitor
+        <select id="sapMonitor"><option>On</option><option>Off</option></select>
+      </label>
+      <label>VNet CIDR <input id="sapVnetCidr" type="text" value="10.40.0.0/16"></label>
+      <label>Subnet App <input id="sapSubnetApp" type="text" value="10.40.1.0/24"></label>
+      <label>Subnet DB <input id="sapSubnetDb" type="text" value="10.40.2.0/24"></label>
+    </div>
+
+    <!-- Application LZ: APIM -->
+    <div id="apimSection" class="lz-card" style="display:none">
+      <h3>Application LZ: API Management (APIM)</h3>
+      <label>Region <input id="apimRegion" type="text" value="westeurope"></label>
+      <label>SKU
+        <select id="apimSku"><option>Developer</option><option>Basic</option><option>Standard</option><option>Premium</option></select>
+      </label>
+      <label>Capacity <input id="apimCapacity" type="number" min="1" value="1"></label>
+      <label>VNet mode
+        <select id="apimVnetMode"><option>None</option><option>External</option><option>Internal</option></select>
+      </label>
+      <label>Private endpoints
+        <select id="apimPrivateEndpoints"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>Availability zones (e.g. 1,2,3) <input id="apimZones" type="text" value="1,2,3"></label>
+      <label>Managed Identity
+        <select id="apimMi"><option>On</option><option>Off</option></select>
+      </label>
+    </div>
   </div>
 
   <div class="lz-actions">
@@ -292,6 +355,10 @@
     <button type="button" id="downloadAvdTf">Download AVD Terraform</button>
     <button type="button" id="downloadAksBicep">Download AKS Bicep</button>
     <button type="button" id="downloadAksTf">Download AKS Terraform</button>
+    <button type="button" id="downloadSapBicep">Download SAP Bicep</button>
+    <button type="button" id="downloadSapTf">Download SAP Terraform</button>
+    <button type="button" id="downloadApimBicep">Download APIM Bicep</button>
+    <button type="button" id="downloadApimTf">Download APIM Terraform</button>
     <button type="button" id="share">Share link</button>
     <span id="toast" role="status" aria-live="polite"></span>
   </div>
@@ -312,6 +379,14 @@
     <pre id="aksBicep"></pre>
     <h4>Application (AKS) – Terraform</h4>
     <pre id="aksTf"></pre>
+    <h4>Application (SAP) – Bicep</h4>
+    <pre id="sapBicep"></pre>
+    <h4>Application (SAP) – Terraform</h4>
+    <pre id="sapTf"></pre>
+    <h4>Application (APIM) – Bicep</h4>
+    <pre id="apimBicep"></pre>
+    <h4>Application (APIM) – Terraform</h4>
+    <pre id="apimTf"></pre>
   </details>
 </section>
 
@@ -345,11 +420,17 @@
     "avdPrivateLinks","avdScaling","avdScaleMinHosts","avdScaleMaxHosts","avdPeakStart","avdPeakEnd",
     // AKS
     "aksRegion","aksPrivate","aksCni","aksIngress","aksOutbound","aksZones","aksSysSize","aksSysCount",
-    "aksUserSize","aksUserCount","aksWi","aksKvCsi","aksAcr","aksPolicy","aksNetPolicy","aksPsp"
+    "aksUserSize","aksUserCount","aksWi","aksKvCsi","aksAcr","aksPolicy","aksNetPolicy","aksPsp",
+    // SAP
+    "sapRegion","sapPattern","sapHa","sapDb","sapSid","sapAppVm","sapDbVm","sapZones","sapAnf","sapBackup","sapMonitor","sapVnetCidr","sapSubnetApp","sapSubnetDb",
+    // APIM
+    "apimRegion","apimSku","apimCapacity","apimVnetMode","apimPrivateEndpoints","apimZones","apimMi"
   ];
   const el = Object.fromEntries(ids.map(id=>[id,document.getElementById(id)]));
-  const avdSection = document.getElementById("avdSection");
-  const aksSection = document.getElementById("aksSection");
+  const avdSection  = document.getElementById("avdSection");
+  const aksSection  = document.getElementById("aksSection");
+  const sapSection  = document.getElementById("sapSection");
+  const apimSection = document.getElementById("apimSection");
 
   const out = {
     summary:document.getElementById("summary"),
@@ -359,6 +440,10 @@
     avdTf:document.getElementById("avdTf"),
     aksBicep:document.getElementById("aksBicep"),
     aksTf:document.getElementById("aksTf"),
+    sapBicep:document.getElementById("sapBicep"),
+    sapTf:document.getElementById("sapTf"),
+    apimBicep:document.getElementById("apimBicep"),
+    apimTf:document.getElementById("apimTf"),
     toast:document.getElementById("toast")
   };
   const btn = {
@@ -374,6 +459,10 @@
     downloadAvdTf:document.getElementById("downloadAvdTf"),
     downloadAksBicep:document.getElementById("downloadAksBicep"),
     downloadAksTf:document.getElementById("downloadAksTf"),
+    downloadSapBicep:document.getElementById("downloadSapBicep"),
+    downloadSapTf:document.getElementById("downloadSapTf"),
+    downloadApimBicep:document.getElementById("downloadApimBicep"),
+    downloadApimTf:document.getElementById("downloadApimTf"),
     share:document.getElementById("share")
   };
 
@@ -394,7 +483,14 @@
       // AKS defaults
       aksRegion:"westeurope", aksPrivate:"Yes", aksCni:"Azure CNI", aksIngress:"Nginx", aksOutbound:"NAT Gateway",
       aksZones:"1,2,3", aksSysSize:"Standard_D4s_v5", aksSysCount:"1", aksUserSize:"Standard_D4s_v5", aksUserCount:"2",
-      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"baseline"
+      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"baseline",
+      // SAP defaults
+      sapRegion:"westeurope", sapPattern:"Three-tier", sapHa:"Full", sapDb:"HANA", sapSid:"PRD",
+      sapAppVm:"Standard_D8s_v5", sapDbVm:"Standard_E16ds_v5", sapZones:"1,2,3", sapAnf:"Yes", sapBackup:"ANF Snapshots",
+      sapMonitor:"On", sapVnetCidr:"10.40.0.0/16", sapSubnetApp:"10.40.1.0/24", sapSubnetDb:"10.40.2.0/24",
+      // APIM defaults
+      apimRegion:"westeurope", apimSku:"Developer", apimCapacity:"1", apimVnetMode:"None",
+      apimPrivateEndpoints:"No", apimZones:"1,2,3", apimMi:"On"
     },
     regulated:{
       orgSize:"Enterprise", subModel:"Multi", regionPlan:"Primary+DR",
@@ -405,12 +501,19 @@
       monitoring:"Log Analytics + SIEM", bcdr:"Azure Backup + ASR",
       budget:"5000", alerts:"50,75,90,100",
       iac:"Bicep", pipelines:"Azure DevOps", archetype:"APIM",
-      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"DepthFirst",
-      avdMaxSessions:"10", avdDomainJoin:"AD DS (hybrid) joined", avdFslogix:"Azure Files",
-      avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"2", avdScaleMaxHosts:"10", avdPeakStart:"08:00", avdPeakEnd:"18:00",
+      // AVD
+      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"DepthFirst", avdMaxSessions:"10", avdDomainJoin:"AD DS (hybrid) joined", avdFslogix:"Azure Files", avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"2", avdScaleMaxHosts:"10", avdPeakStart:"08:00", avdPeakEnd:"18:00",
+      // AKS
       aksRegion:"westeurope", aksPrivate:"Yes", aksCni:"Azure CNI", aksIngress:"AGIC", aksOutbound:"NAT Gateway",
       aksZones:"1,2", aksSysSize:"Standard_D4s_v5", aksSysCount:"2", aksUserSize:"Standard_D8s_v5", aksUserCount:"3",
-      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted"
+      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted",
+      // SAP
+      sapRegion:"westeurope", sapPattern:"Three-tier", sapHa:"Full", sapDb:"HANA", sapSid:"QAS",
+      sapAppVm:"Standard_D8s_v5", sapDbVm:"Standard_E32ds_v5", sapZones:"1,2", sapAnf:"Yes", sapBackup:"ANF Snapshots",
+      sapMonitor:"On", sapVnetCidr:"10.50.0.0/16", sapSubnetApp:"10.50.1.0/24", sapSubnetDb:"10.50.2.0/24",
+      // APIM
+      apimRegion:"westeurope", apimSku:"Standard", apimCapacity:"1", apimVnetMode:"Internal",
+      apimPrivateEndpoints:"Yes", apimZones:"1,2", apimMi:"On"
     },
     enterprise:{
       orgSize:"Enterprise", subModel:"Multi", regionPlan:"Multi region",
@@ -421,12 +524,19 @@
       monitoring:"Log Analytics + SIEM", bcdr:"Azure Backup + ASR",
       budget:"8000", alerts:"50,80,100",
       iac:"Terraform", pipelines:"Azure DevOps", archetype:"AKS",
-      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"BreadthFirst",
-      avdMaxSessions:"16", avdDomainJoin:"Entra ID joined", avdFslogix:"Azure NetApp Files",
-      avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"3", avdScaleMaxHosts:"20", avdPeakStart:"07:30", avdPeakEnd:"19:00",
+      // AVD
+      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"BreadthFirst", avdMaxSessions:"16", avdDomainJoin:"Entra ID joined", avdFslogix:"Azure NetApp Files", avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"3", avdScaleMaxHosts:"20", avdPeakStart:"07:30", avdPeakEnd:"19:00",
+      // AKS
       aksRegion:"westeurope", aksPrivate:"Yes", aksCni:"Azure CNI", aksIngress:"AGIC", aksOutbound:"NAT Gateway",
       aksZones:"1,2,3", aksSysSize:"Standard_D4s_v5", aksSysCount:"3", aksUserSize:"Standard_D8s_v5", aksUserCount:"6",
-      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted"
+      aksWi:"On", aksKvCsi:"On", aksAcr:"Yes", aksPolicy:"On", aksNetPolicy:"Azure", aksPsp:"restricted",
+      // SAP
+      sapRegion:"westeurope", sapPattern:"Three-tier", sapHa:"Full", sapDb:"HANA", sapSid:"PRD",
+      sapAppVm:"Standard_D16s_v5", sapDbVm:"Standard_M32ts", sapZones:"1,2,3", sapAnf:"Yes", sapBackup:"ANF Snapshots",
+      sapMonitor:"On", sapVnetCidr:"10.60.0.0/16", sapSubnetApp:"10.60.1.0/24", sapSubnetDb:"10.60.2.0/24",
+      // APIM
+      apimRegion:"westeurope", apimSku:"Premium", apimCapacity:"2", apimVnetMode:"Internal",
+      apimPrivateEndpoints:"Yes", apimZones:"1,2,3", apimMi:"On"
     }
   };
 
@@ -440,15 +550,23 @@
     const required = ["orgSize","subModel","topology","connectivity","policyLevel","defender","budget","iac"];
     const missing = required.filter(k=>!el[k].value);
     if(missing.length){ toast("Please fill required fields: " + missing.join(", ")); return false; }
-    if(el.archetype.value==="AVD"){
-      const reqAvd = ["avdRegion","avdHostPoolType","avdBalance","avdMaxSessions"];
-      const missA = reqAvd.filter(k=>!el[k].value);
-      if(missA.length){ toast("AVD: please fill " + missA.join(", ")); return false; }
+
+    const a = el.archetype.value;
+    if(a==="AVD"){
+      const req = ["avdRegion","avdHostPoolType","avdBalance","avdMaxSessions"];
+      const miss = req.filter(k=>!el[k].value); if(miss.length){ toast("AVD: please fill " + miss.join(", ")); return false; }
     }
-    if(el.archetype.value==="AKS"){
-      const reqAks = ["aksRegion","aksCni","aksSysSize","aksSysCount"];
-      const missK = reqAks.filter(k=>!el[k].value);
-      if(missK.length){ toast("AKS: please fill " + missK.join(", ")); return false; }
+    if(a==="AKS"){
+      const req = ["aksRegion","aksCni","aksSysSize","aksSysCount"];
+      const miss = req.filter(k=>!el[k].value); if(miss.length){ toast("AKS: please fill " + miss.join(", ")); return false; }
+    }
+    if(a==="SAP"){
+      const req = ["sapRegion","sapPattern","sapDb","sapSid","sapAppVm","sapDbVm","sapVnetCidr","sapSubnetApp","sapSubnetDb"];
+      const miss = req.filter(k=>!el[k].value); if(miss.length){ toast("SAP: please fill " + miss.join(", ")); return false; }
+    }
+    if(a==="APIM"){
+      const req = ["apimRegion","apimSku","apimCapacity","apimVnetMode"];
+      const miss = req.filter(k=>!el[k].value); if(miss.length){ toast("APIM: please fill " + miss.join(", ")); return false; }
     }
     return true;
   }
@@ -476,10 +594,16 @@
     if(s.archetype==="AKS"){
       lines.push(`AKS: ${s.aksPrivate==="Yes"?"private":"public"} cluster in ${s.aksRegion}, ${s.aksCni}, ingress=${s.aksIngress}, egress=${s.aksOutbound}, zones=[${s.aksZones}]; system ${s.aksSysCount}×${s.aksSysSize}, user ${s.aksUserCount}×${s.aksUserSize}; WI=${s.aksWi}, KV CSI=${s.aksKvCsi}, ACR=${s.aksAcr}, Policy=${s.aksPolicy}, NetPolicy=${s.aksNetPolicy}, PSP=${s.aksPsp}`);
     }
+    if(s.archetype==="SAP"){
+      lines.push(`SAP: ${s.sapPattern} in ${s.sapRegion}, DB=${s.sapDb}, HA=${s.sapHa}, SID=${s.sapSid}, zones=[${s.sapZones}], ANF=${s.sapAnf}, Backup=${s.sapBackup}, Monitor=${s.sapMonitor}`);
+    }
+    if(s.archetype==="APIM"){
+      lines.push(`APIM: ${s.apimSku} x${s.apimCapacity} in ${s.apimRegion}, VNet=${s.apimVnetMode}, PrivateEndpoints=${s.apimPrivateEndpoints}, zones=[${s.apimZones}], MI=${s.apimMi}`);
+    }
     return lines.join("\n");
   }
 
-  // Platform templates (unchanged from earlier, trimmed for brevity)
+  // Platform templates (short)
   function bicepTemplate(s){ return `// CAF Ready Bicep Starter (platform)
 targetScope = 'subscription'
 param location string = 'westeurope'
@@ -513,113 +637,145 @@ resource "azurerm_virtual_desktop_host_pool" "hp" { name="hp-avd" location=var.l
   // AKS templates
   function aksBicepTemplate(s){
     if(s.archetype!=="AKS") return "// Select 'AKS' archetype.";
-    const privateStr = s.aksPrivate==="Yes" ? "true" : "false";
     const zones = (s.aksZones||"").split(",").map(x=>x.trim()).filter(Boolean).map(z=>`'${z}'`).join(", ");
     const egress = s.aksOutbound==="NAT Gateway" ? "userDefinedRouting" : "loadBalancer";
     return `// AKS minimal sample in ${s.aksRegion||"westeurope"}
 param location string='${s.aksRegion||"westeurope"}'
 resource rg_aks 'Microsoft.Resources/resourceGroups@2024-03-01' = { name:'rg-aks' location:location }
-
 resource aks 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
   name: 'aks-cluster'
   location: location
-  sku: { name: 'Base', tier: 'Free' }
   properties: {
     dnsPrefix: 'aksdemo'
-    apiServerAccessProfile: { enablePrivateCluster: ${privateStr} }
+    apiServerAccessProfile: { enablePrivateCluster: ${s.aksPrivate==="Yes"} }
     networkProfile: {
-      networkPlugin: '${s.aksCni==="CNI Overlay" ? "azure" : "azure"}'
+      networkPlugin: 'azure'
       networkPluginMode: '${s.aksCni==="CNI Overlay" ? "overlay" : "none"}'
-      networkPolicy: '${s.aksNetPolicy||"azure"}'
+      networkPolicy: '${(s.aksNetPolicy||"Azure").toLowerCase()}'
       outboundType: '${egress}'
     }
     identity: { type: 'SystemAssigned' }
-    securityProfile: {
-      workloadIdentity: { enabled: ${s.aksWi==="On"} }
-      defender: { logAnalyticsWorkspaceResourceId: '' }
-    }
+    securityProfile: { workloadIdentity: { enabled: ${s.aksWi==="On"} } }
     addonProfiles: {
       azureKeyvaultSecretsProvider: { enabled: ${s.aksKvCsi==="On"} }
       ingressApplicationGateway: { enabled: ${s.aksIngress==="AGIC"} }
     }
     agentPoolProfiles: [
-      {
-        name: 'sys'
-        mode: 'System'
-        count: ${Number(s.aksSysCount)||1}
-        vmSize: '${s.aksSysSize||"Standard_D4s_v5"}'
-        availabilityZones: [${zones}]
-      }
-      ${Number(s.aksUserCount||0)>0 ? `,{
-        name: 'user'
-        mode: 'User'
-        count: ${Number(s.aksUserCount)}
-        vmSize: '${s.aksUserSize||"Standard_D4s_v5"}'
-        availabilityZones: [${zones}]
-      }` : ``}
+      { name:'sys', mode:'System', count:${Number(s.aksSysCount)||1}, vmSize:'${s.aksSysSize||"Standard_D4s_v5"}', availabilityZones:[${zones}] }
+      ${Number(s.aksUserCount||0)>0 ? `,{ name:'user', mode:'User', count:${Number(s.aksUserCount)}, vmSize:'${s.aksUserSize||"Standard_D4s_v5"}', availabilityZones:[${zones}] }` : ``}
     ]
   }
 }
-// Notes: integrate ACR (${s.aksAcr}), enable AKS Policy (${s.aksPolicy}), Pod Security=${s.aksPsp}
+// Notes: ACR (${s.aksAcr}), AKS Policy (${s.aksPolicy}), Pod Security=${s.aksPsp}
 `;
   }
-
   function aksTfTemplate(s){
     if(s.archetype!=="AKS") return "# Select 'AKS' archetype.";
-    const privateBool = s.aksPrivate==="Yes";
     const zones = (s.aksZones||"").split(",").map(x=>`"${x.trim()}"`).filter(Boolean).join(", ");
     const egress = s.aksOutbound==="NAT Gateway" ? "userDefinedRouting" : "loadBalancer";
-    const networkPlugin = "azure";
     const networkPluginMode = s.aksCni==="CNI Overlay" ? "overlay" : "none";
     return `terraform { required_providers { azurerm = { source="hashicorp/azurerm" version="~> 3.112" } } }
 provider "azurerm" { features {} }
-
 variable "location" { type=string, default="${s.aksRegion||"westeurope"}" }
-
-resource "azurerm_resource_group" "rg_aks" {
-  name     = "rg-aks"
-  location = var.location
-}
-
+resource "azurerm_resource_group" "rg_aks" { name="rg-aks" location=var.location }
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "aks-cluster"
-  location            = var.location
-  resource_group_name = azurerm_resource_group.rg_aks.name
-  dns_prefix          = "aksdemo"
-  private_cluster_enabled = ${privateBool}
-
-  default_node_pool {
-    name       = "sys"
-    vm_size    = "${s.aksSysSize||"Standard_D4s_v5"}"
-    node_count = ${Number(s.aksSysCount)||1}
-    zones      = [${zones}]
-    orchestrator_version = null
-  }
-
-  identity { type = "SystemAssigned" }
-
-  network_profile {
-    network_plugin      = "${networkPlugin}"
-    network_plugin_mode = "${networkPluginMode}"
-    network_policy      = "${(s.aksNetPolicy||"Azure").toLowerCase()}"
-    outbound_type       = "${egress}"
-  }
-
+  name="aks-cluster" location=var.location resource_group_name=azurerm_resource_group.rg_aks.name dns_prefix="aksdemo"
+  private_cluster_enabled = ${s.aksPrivate==="Yes"}
+  default_node_pool { name="sys" vm_size="${s.aksSysSize||"Standard_D4s_v5"}" node_count=${Number(s.aksSysCount)||1} zones=[${zones}] }
+  identity { type="SystemAssigned" }
+  network_profile { network_plugin="azure" network_plugin_mode="${networkPluginMode}" network_policy="${(s.aksNetPolicy||"Azure").toLowerCase()}" outbound_type="${egress}" }
   key_vault_secrets_provider { secret_rotation_enabled = ${s.aksKvCsi==="On"} }
-
   workload_identity_enabled = ${s.aksWi==="On"}
 }
+${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool" "user" { name="user" kubernetes_cluster_id=azurerm_kubernetes_cluster.aks.id vm_size="${s.aksUserSize||"Standard_D4s_v5"}" node_count=${Number(s.aksUserCount)||2} zones=[${zones}] }` : `# no user node pool`}
+# Notes: ACR (${s.aksAcr}), AKS Policy (${s.aksPolicy}), Pod Security ${s.aksPsp}
+`;
+  }
 
-# User node pool (optional)
-${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool" "user" {
-  name                  = "user"
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
-  vm_size               = "${s.aksUserSize||"Standard_D4s_v5"}"
-  node_count            = ${Number(s.aksUserCount)||2}
-  zones                 = [${zones}]
-}` : `# no user node pool`}
+  // SAP templates – scaffold for workload zone
+  function sapBicepTemplate(s){
+    if(s.archetype!=="SAP") return "// Select 'SAP' archetype.";
+    const zones = (s.sapZones||"").split(",").map(x=>`'${x.trim()}'`).filter(Boolean).join(", ");
+    return `// SAP Landing Zone scaffold in ${s.sapRegion||"westeurope"}
+param location string='${s.sapRegion||"westeurope"}'
+resource rg_sap 'Microsoft.Resources/resourceGroups@2024-03-01' = { name:'rg-sap-${(s.sapSid||"SID").toLowerCase()}' location:location }
+resource vnet_sap 'Microsoft.Network/virtualNetworks@2023-11-01' = {
+  name: 'vnet-sap'
+  location: location
+  properties: {
+    addressSpace: { addressPrefixes: [ '${s.sapVnetCidr||"10.40.0.0/16"}' ] }
+    subnets: [
+      { name:'app', properties:{ addressPrefix:'${s.sapSubnetApp||"10.40.1.0/24"}' } }
+      { name:'db',  properties:{ addressPrefix:'${s.sapSubnetDb||"10.40.2.0/24"}' } }
+    ]
+  }
+}
+${s.sapAnf==="Yes" ? `// ANF volumes for /usr/sap, /sapmnt etc. – define as needed` : `// Using managed disks`}
+ // Pattern: ${s.sapPattern}, DB: ${s.sapDb}, HA: ${s.sapHa}, Zones:[${zones}]
+ // VM sizes: App=${s.sapAppVm}, DB=${s.sapDbVm}
+ // Backup: ${s.sapBackup}, SAP Monitor: ${s.sapMonitor}
+ // Use SAP workload modules for full deployment (ASCS/ERS, HANA, etc.)
+`;
+  }
+  function sapTfTemplate(s){
+    if(s.archetype!=="SAP") return "# Select 'SAP' archetype.";
+    return `terraform { required_providers { azurerm = { source="hashicorp/azurerm" version="~> 3.112" } } }
+provider "azurerm" { features {} }
+variable "location" { type=string, default="${s.sapRegion||"westeurope"}" }
+resource "azurerm_resource_group" "rg_sap" { name = "rg-sap-${(s.sapSid||"SID").toLowerCase()}" location = var.location }
+resource "azurerm_virtual_network" "vnet_sap" { name="vnet-sap" location=var.location resource_group_name=azurerm_resource_group.rg_sap.name address_space=["${s.sapVnetCidr||"10.40.0.0/16"}"] }
+resource "azurerm_subnet" "sub_app" { name="app" resource_group_name=azurerm_resource_group.rg_sap.name virtual_network_name=azurerm_virtual_network.vnet_sap.name address_prefixes=["${s.sapSubnetApp||"10.40.1.0/24"}"] }
+resource "azurerm_subnet" "sub_db"  { name="db"  resource_group_name=azurerm_resource_group.rg_sap.name virtual_network_name=azurerm_virtual_network.vnet_sap.name address_prefixes=["${s.sapSubnetDb||"10.40.2.0/24"}"] }
+# Pattern: ${s.sapPattern}, DB: ${s.sapDb}, HA: ${s.sapHa}, SID: ${s.sapSid}
+# VM sizes: App=${s.sapAppVm}, DB=${s.sapDbVm}
+# Backup: ${s.sapBackup}, SAP Monitor: ${s.sapMonitor}
+# Use official SAP on Azure modules for full build-out.
+`;
+  }
 
-# Notes: ACR integration (${s.aksAcr}), AKS Policy (${s.aksPolicy}), Pod Security ${s.aksPsp}
+  // APIM templates
+  function apimBicepTemplate(s){
+    if(s.archetype!=="APIM") return "// Select 'APIM' archetype.";
+    const zones = (s.apimZones||"").split(",").map(x=>`'${x.trim()}'`).filter(Boolean).join(", ");
+    const vnetMode = s.apimVnetMode;
+    return `// APIM in ${s.apimRegion||"westeurope"}
+param location string='${s.apimRegion||"westeurope"}'
+resource rg_apim 'Microsoft.Resources/resourceGroups@2024-03-01' = { name:'rg-apim' location:location }
+resource apim 'Microsoft.ApiManagement/service@2022-08-01' = {
+  name: 'apim-${(s.apimSku||"Developer").toLowerCase()}'
+  location: location
+  sku: { name: '${s.apimSku||"Developer"}', capacity: ${Number(s.apimCapacity)||1} }
+  zones: [${zones}]
+  identity: { type: ${s.apimMi==="On" ? "'SystemAssigned'" : "'None'"} }
+  properties: {
+    publisherEmail: 'owner@example.com'
+    publisherName: 'Owner'
+    virtualNetworkType: '${vnetMode==="None" ? "None" : (vnetMode==="Internal" ? "Internal" : "External")}'
+    ${vnetMode==="None" ? "" : `virtualNetworkConfiguration: { subnetResourceId: '/subscriptions/<subId>/resourceGroups/<rg>/providers/Microsoft.Network/virtualNetworks/<vnet>/subnets/<subnet>' }`}
+  }
+}
+${s.apimPrivateEndpoints==="Yes" ? `// Add Private Endpoints to portal/management/gateway per your design` : `// No private endpoints`}
+`;
+  }
+  function apimTfTemplate(s){
+    if(s.archetype!=="APIM") return "# Select 'APIM' archetype.";
+    const vnetType = s.apimVnetMode==="None" ? "None" : (s.apimVnetMode==="Internal" ? "Internal" : "External");
+    return `terraform { required_providers { azurerm = { source="hashicorp/azurerm" version="~> 3.112" } } }
+provider "azurerm" { features {} }
+variable "location" { type=string, default="${s.apimRegion||"westeurope"}" }
+resource "azurerm_resource_group" "rg_apim" { name="rg-apim" location=var.location }
+resource "azurerm_api_management" "apim" {
+  name                = "apim-${(s.apimSku||"Developer").toLowerCase()}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg_apim.name
+  publisher_name      = "Owner"
+  publisher_email     = "owner@example.com"
+  sku_name            = "${(s.apimSku||"Developer")}_${Number(s.apimCapacity)||1}"
+  virtual_network_type = "${vnetType}"
+  identity { type = ${s.apimMi==="On" ? '"SystemAssigned"' : '"None"'} }
+  ${vnetType!=="None" ? 'virtual_network_configuration { subnet_id = "/subscriptions/<subId>/resourceGroups/<rg>/providers/Microsoft.Network/virtualNetworks/<vnet>/subnets/<subnet>" }' : ""}
+}
+# For private endpoints (${s.apimPrivateEndpoints}): add azurerm_private_endpoint for gateway/management/portal.
 `;
   }
 
@@ -665,6 +821,27 @@ ${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool"
         }
       };
     }
+    if(s.archetype==="SAP"){
+      base.application = {
+        type: "SAP",
+        sap: {
+          region: s.sapRegion, pattern: s.sapPattern, ha: s.sapHa, db: s.sapDb, sid: s.sapSid,
+          appVm: s.sapAppVm, dbVm: s.sapDbVm, zones: (s.sapZones||"").split(",").map(x=>x.trim()).filter(Boolean),
+          anf: s.sapAnf==="Yes", backup: s.sapBackup, monitor: s.sapMonitor==="On",
+          vnet: { cidr: s.sapVnetCidr, subnets: { app: s.sapSubnetApp, db: s.sapSubnetDb } }
+        }
+      };
+    }
+    if(s.archetype==="APIM"){
+      base.application = {
+        type: "APIM",
+        apim: {
+          region: s.apimRegion, sku: s.apimSku, capacity: Number(s.apimCapacity)||1,
+          vnetMode: s.apimVnetMode, privateEndpoints: s.apimPrivateEndpoints==="Yes",
+          zones: (s.apimZones||"").split(",").map(x=>x.trim()).filter(Boolean), managedIdentity: s.apimMi==="On"
+        }
+      };
+    }
     return base;
   }
 
@@ -693,28 +870,31 @@ ${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool"
       iac_tool: p.automation.iac,
       pipeline_tool: p.automation.pipeline
     };
-    if(p.application?.type==="AVD"){
-      flat.avd_enabled = true;
-    }
+    if(p.application?.type==="AVD"){ flat.avd_enabled = true; }
     if(p.application?.type==="AKS"){
       const a = p.application.aks;
       flat.aks_enabled = true;
-      flat.aks_region = a.region;
-      flat.aks_private_cluster = a.privateCluster;
-      flat.aks_cni = a.cni;
-      flat.aks_ingress = a.ingress;
-      flat.aks_outbound = a.outbound;
-      flat.aks_zones = a.zones;
-      flat.aks_sys_size = a.sysNode.size;
-      flat.aks_sys_count = a.sysNode.count;
-      flat.aks_user_size = a.userNode.size;
-      flat.aks_user_count = a.userNode.count;
-      flat.aks_workload_identity = a.workloadIdentity;
-      flat.aks_kv_csi = a.kvCsi;
-      flat.aks_acr_integration = a.acr;
-      flat.aks_policy = a.policy;
-      flat.aks_network_policy = a.networkPolicy;
-      flat.aks_pod_security = a.podSecurity;
+      flat.aks_region = a.region; flat.aks_private_cluster = a.privateCluster; flat.aks_cni = a.cni;
+      flat.aks_ingress = a.ingress; flat.aks_outbound = a.outbound; flat.aks_zones = a.zones;
+      flat.aks_sys_size = a.sysNode.size; flat.aks_sys_count = a.sysNode.count;
+      flat.aks_user_size = a.userNode.size; flat.aks_user_count = a.userNode.count;
+      flat.aks_workload_identity = a.workloadIdentity; flat.aks_kv_csi = a.kvCsi; flat.aks_acr_integration = a.acr;
+      flat.aks_policy = a.policy; flat.aks_network_policy = a.networkPolicy; flat.aks_pod_security = a.podSecurity;
+    }
+    if(p.application?.type==="SAP"){
+      const a = p.application.sap;
+      flat.sap_enabled = true;
+      flat.sap_region = a.region; flat.sap_pattern = a.pattern; flat.sap_ha = a.ha; flat.sap_db = a.db; flat.sap_sid = a.sid;
+      flat.sap_app_vm = a.appVm; flat.sap_db_vm = a.dbVm; flat.sap_zones = a.zones;
+      flat.sap_anf = a.anf; flat.sap_backup = a.backup; flat.sap_monitor = a.monitor;
+      flat.sap_vnet_cidr = a.vnet.cidr; flat.sap_subnet_app = a.vnet.subnets.app; flat.sap_subnet_db = a.vnet.subnets.db;
+    }
+    if(p.application?.type==="APIM"){
+      const a = p.application.apim;
+      flat.apim_enabled = true;
+      flat.apim_region = a.region; flat.apim_sku = a.sku; flat.apim_capacity = a.capacity;
+      flat.apim_vnet_mode = a.vnetMode; flat.apim_private_endpoints = a.privateEndpoints;
+      flat.apim_zones = a.zones; flat.apim_managed_identity = a.managedIdentity;
     }
     return flat;
   }
@@ -723,13 +903,17 @@ ${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool"
   function generate(){
     if(!validate()) return;
     const s = readState();
-    out.summary.textContent = buildSummary(s);
-    out.bicep.textContent   = bicepTemplate(s);
-    out.tf.textContent      = tfTemplate(s);
-    out.avdBicep.textContent = avdBicepTemplate(s);
-    out.avdTf.textContent    = avdTfTemplate(s);
-    out.aksBicep.textContent = aksBicepTemplate(s);
-    out.aksTf.textContent    = aksTfTemplate(s);
+    out.summary.textContent   = buildSummary(s);
+    out.bicep.textContent     = bicepTemplate(s);
+    out.tf.textContent        = tfTemplate(s);
+    out.avdBicep.textContent  = avdBicepTemplate(s);
+    out.avdTf.textContent     = avdTfTemplate(s);
+    out.aksBicep.textContent  = aksBicepTemplate(s);
+    out.aksTf.textContent     = aksTfTemplate(s);
+    out.sapBicep.textContent  = sapBicepTemplate(s);
+    out.sapTf.textContent     = sapTfTemplate(s);
+    out.apimBicep.textContent = apimBicepTemplate(s);
+    out.apimTf.textContent    = apimTfTemplate(s);
     toast("Generated");
   }
 
@@ -744,8 +928,10 @@ ${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool"
 
   function toggleArchetype(){
     const a = el.archetype.value;
-    avdSection.style.display = (a==="AVD") ? "" : "none";
-    aksSection.style.display = (a==="AKS") ? "" : "none";
+    avdSection.style.display  = (a==="AVD")  ? "" : "none";
+    aksSection.style.display  = (a==="AKS")  ? "" : "none";
+    sapSection.style.display  = (a==="SAP")  ? "" : "none";
+    apimSection.style.display = (a==="APIM") ? "" : "none";
   }
 
   function copy(t){ navigator.clipboard.writeText(t).then(()=>toast("Copied")).catch(()=>toast("Copy failed")); }
@@ -770,6 +956,10 @@ ${Number(s.aksUserCount||0)>0 ? `resource "azurerm_kubernetes_cluster_node_pool"
   btn.downloadAvdTf.addEventListener("click", ()=>downloadFile("application-avd.tf", out.avdTf.textContent || avdTfTemplate(readState())));
   btn.downloadAksBicep.addEventListener("click", ()=>downloadFile("application-aks.bicep", out.aksBicep.textContent || aksBicepTemplate(readState())));
   btn.downloadAksTf.addEventListener("click", ()=>downloadFile("application-aks.tf", out.aksTf.textContent || aksTfTemplate(readState())));
+  btn.downloadSapBicep.addEventListener("click", ()=>downloadFile("application-sap.bicep", out.sapBicep.textContent || sapBicepTemplate(readState())));
+  btn.downloadSapTf.addEventListener("click", ()=>downloadFile("application-sap.tf", out.sapTf.textContent || sapTfTemplate(readState())));
+  btn.downloadApimBicep.addEventListener("click", ()=>downloadFile("application-apim.bicep", out.apimBicep.textContent || apimBicepTemplate(readState())));
+  btn.downloadApimTf.addEventListener("click", ()=>downloadFile("application-apim.tf", out.apimTf.textContent || apimTfTemplate(readState())));
   btn.exportAlz.addEventListener("click", ()=>downloadFile("alz-platform.params.json", JSON.stringify(buildAlzParams(readState()), null, 2), "application/json"));
   btn.exportTfvars.addEventListener("click", ()=>{
     const tfv = buildTfvars(readState());
