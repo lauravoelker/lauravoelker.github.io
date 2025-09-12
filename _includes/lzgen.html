@@ -1,0 +1,208 @@
+<!-- _includes/lzgen.html -->
+<section id="lzgen" class="lz-wrap">
+  <h2>CAF Ready - Landing Zone Generator</h2>
+  <p>Pick a preset or configure everything. Click Generate to get Bicep and Terraform starters.</p>
+
+  <div class="lz-grid">
+    <div class="lz-card">
+      <h3>Preset</h3>
+      <select id="preset">
+        <option value="starter">Starter - SMB, quick start</option>
+        <option value="regulated">Regulated - strong policy set</option>
+        <option value="enterprise">Enterprise - multi subscription, hub and spoke</option>
+      </select>
+      <button type="button" id="applyPreset">Apply preset</button>
+    </div>
+
+    <div class="lz-card">
+      <h3>Organization</h3>
+      <label>Org size*
+        <select id="orgSize" required>
+          <option value="">Please choose</option>
+          <option>Solo IT</option>
+          <option>Team</option>
+          <option>Enterprise</option>
+        </select>
+      </label>
+      <label>Subscription model*
+        <select id="subModel" required>
+          <option value="">Please choose</option>
+          <option>Single</option>
+          <option>Multi</option>
+        </select>
+      </label>
+      <label>Regions strategy
+        <select id="regionPlan">
+          <option>Primary</option>
+          <option>Primary+DR</option>
+          <option>Multi region</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="lz-card">
+      <h3>Identity</h3>
+      <label>Entra license
+        <select id="entraLevel">
+          <option>P1</option>
+          <option>P2</option>
+        </select>
+      </label>
+      <label>Identity source
+        <select id="identitySource">
+          <option>Cloud only</option>
+          <option>Hybrid (AD Connect)</option>
+        </select>
+      </label>
+      <label>RBAC baseline
+        <select id="rbac">
+          <option>Least privilege</option>
+          <option>Owner restricted</option>
+          <option>Relaxed</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="lz-card">
+      <h3>Network</h3>
+      <label>Topology*
+        <select id="topology" required>
+          <option value="">Please choose</option>
+          <option>Flat</option>
+          <option>Hub-and-Spoke</option>
+          <option>Mesh</option>
+        </select>
+      </label>
+      <label>Connectivity*
+        <select id="connectivity" required>
+          <option value="">Please choose</option>
+          <option>None</option>
+          <option>Site-to-Site VPN</option>
+          <option>ExpressRoute</option>
+        </select>
+      </label>
+      <label>Private DNS
+        <select id="privDns">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="lz-card">
+      <h3>Governance and Policy</h3>
+      <label>Policy level*
+        <select id="policyLevel" required>
+          <option value="">Please choose</option>
+          <option>Basic</option>
+          <option>Standard</option>
+          <option>Strict</option>
+        </select>
+      </label>
+      <label>Allowed regions
+        <input id="allowedRegions" type="text" placeholder="e.g. westeurope, northeurope">
+      </label>
+      <label>Tags (comma separated)
+        <input id="tagSchema" type="text" value="CostCenter,Owner,Environment">
+      </label>
+      <label>Subscription vending
+        <select id="vending">
+          <option>Manual</option>
+          <option>Automated</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="lz-card">
+      <h3>Security</h3>
+      <label>Defender for Cloud*
+        <select id="defender" required>
+          <option value="">Please choose</option>
+          <option>Off</option>
+          <option>Essentials</option>
+          <option>Full</option>
+        </select>
+      </label>
+      <label>Key management
+        <select id="keys">
+          <option>Platform managed</option>
+          <option>Customer managed</option>
+        </select>
+      </label>
+      <label>Baseline controls
+        <select id="baseline">
+          <option>Standard</option>
+          <option>High</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="lz-card">
+      <h3>Ops and Cost</h3>
+      <label>Monitoring
+        <select id="monitoring">
+          <option>Log Analytics</option>
+          <option>Log Analytics + SIEM</option>
+        </select>
+      </label>
+      <label>Backup and DR
+        <select id="bcdr">
+          <option>Azure Backup</option>
+          <option>Azure Backup + ASR</option>
+          <option>3rd party</option>
+        </select>
+      </label>
+      <label>Monthly budget per subscription (€)*
+        <input id="budget" type="number" min="0" step="50" placeholder="e.g. 1000" required>
+      </label>
+      <label>Alerts
+        <input id="alerts" type="text" value="50,80,100">
+      </label>
+    </div>
+
+    <div class="lz-card">
+      <h3>Automation</h3>
+      <label>IaC*
+        <select id="iac" required>
+          <option value="">Please choose</option>
+          <option>Bicep</option>
+          <option>Terraform</option>
+        </select>
+      </label>
+      <label>Pipelines
+        <select id="pipelines">
+          <option>GitHub Actions</option>
+          <option>Azure DevOps</option>
+          <option>None</option>
+        </select>
+      </label>
+      <label>Archetype
+        <select id="archetype">
+          <option>Foundation</option>
+          <option>AKS</option>
+          <option>AVD</option>
+          <option>SAP</option>
+          <option>APIM</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="lz-actions">
+    <button type="button" id="generate">Generate</button>
+    <button type="button" id="copyBicep">Copy Bicep</button>
+    <button type="button" id="copyTf">Copy Terraform</button>
+    <button type="button" id="downloadBicep">Download Bicep</button>
+    <button type="button" id="downloadTf">Download Terraform</button>
+    <button type="button" id="share">Share link</button>
+    <span id="toast" role="status" aria-live="polite"></span>
+  </div>
+
+  <details open class="lz-output">
+    <summary>Output</summary>
+    <h4>Summary</h4>
+    <pre id="summary"></pre>
+    <h4>Bicep</h4>
+    <pre id="bicep"></pre>
+    <h4>Terraform</h4>
+    <pre id="tf"></pre>
