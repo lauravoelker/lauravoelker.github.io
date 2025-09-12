@@ -6,4 +6,4 @@ author_profile: true
 toc: false
 ---
 
-{% include lzgen.html %}
+{% include lzgen.html hide_title=true %}
