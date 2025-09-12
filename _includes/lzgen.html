@@ -6,6 +6,7 @@
   {% endunless %}
 
   <div class="lz-grid">
+    <!-- Preset -->
     <div class="lz-card">
       <h3>Preset</h3>
       <select id="preset">
@@ -16,6 +17,7 @@
       <button type="button" id="applyPreset">Apply preset</button>
     </div>
 
+    <!-- Organization -->
     <div class="lz-card">
       <h3>Organization</h3>
       <label>Org size*
@@ -42,6 +44,7 @@
       </label>
     </div>
 
+    <!-- Identity -->
     <div class="lz-card">
       <h3>Identity</h3>
       <label>Entra license
@@ -65,6 +68,7 @@
       </label>
     </div>
 
+    <!-- Network -->
     <div class="lz-card">
       <h3>Network</h3>
       <label>Topology*
@@ -91,6 +95,7 @@
       </label>
     </div>
 
+    <!-- Governance -->
     <div class="lz-card">
       <h3>Governance and Policy</h3>
       <label>Policy level*
@@ -125,6 +130,7 @@
       </label>
     </div>
 
+    <!-- Security -->
     <div class="lz-card">
       <h3>Security</h3>
       <label>Defender for Cloud*
@@ -149,6 +155,7 @@
       </label>
     </div>
 
+    <!-- Ops & Cost -->
     <div class="lz-card">
       <h3>Ops and Cost</h3>
       <label>Monitoring
@@ -172,6 +179,7 @@
       </label>
     </div>
 
+    <!-- Automation -->
     <div class="lz-card">
       <h3>Automation</h3>
       <label>IaC*
@@ -198,6 +206,63 @@
         </select>
       </label>
     </div>
+
+    <!-- Application Landing Zone: AVD -->
+    <div id="avdSection" class="lz-card" style="display:none">
+      <h3>Application LZ: Azure Virtual Desktop (AVD)</h3>
+      <label>Region
+        <input id="avdRegion" type="text" value="westeurope">
+      </label>
+      <label>Host pool type
+        <select id="avdHostPoolType">
+          <option>Pooled</option>
+          <option>Personal</option>
+        </select>
+      </label>
+      <label>Load balancing
+        <select id="avdBalance">
+          <option>BreadthFirst</option>
+          <option>DepthFirst</option>
+        </select>
+      </label>
+      <label>Max sessions per host
+        <input id="avdMaxSessions" type="number" min="1" max="999" value="12">
+      </label>
+      <label>Join type
+        <select id="avdDomainJoin">
+          <option>Entra ID joined</option>
+          <option>AD DS (hybrid) joined</option>
+        </select>
+      </label>
+      <label>FSLogix profile storage
+        <select id="avdFslogix">
+          <option>Azure Files</option>
+          <option>Azure NetApp Files</option>
+        </select>
+      </label>
+      <label>Private endpoints
+        <select id="avdPrivateLinks">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+      <label>Scaling plan
+        <select id="avdScaling">
+          <option>On</option>
+          <option>Off</option>
+        </select>
+      </label>
+      <label>Scale min hosts
+        <input id="avdScaleMinHosts" type="number" min="0" value="1">
+      </label>
+      <label>Scale max hosts
+        <input id="avdScaleMaxHosts" type="number" min="1" value="5">
+      </label>
+      <label>Peak window (HH:MM - HH:MM)
+        <input id="avdPeakStart" type="time" value="08:00">
+        <input id="avdPeakEnd" type="time" value="18:00">
+      </label>
+    </div>
   </div>
 
   <div class="lz-actions">
@@ -208,6 +273,8 @@
     <button type="button" id="downloadTf">Download Terraform</button>
     <button type="button" id="exportAlz">Export ALZ params.json</button>
     <button type="button" id="exportTfvars">Export tfvars</button>
+    <button type="button" id="downloadAvdBicep">Download AVD Bicep</button>
+    <button type="button" id="downloadAvdTf">Download AVD Terraform</button>
     <button type="button" id="share">Share link</button>
     <span id="toast" role="status" aria-live="polite"></span>
   </div>
@@ -220,11 +287,15 @@
     <pre id="bicep"></pre>
     <h4>Terraform</h4>
     <pre id="tf"></pre>
+    <h4>Application (AVD) – Bicep</h4>
+    <pre id="avdBicep"></pre>
+    <h4>Application (AVD) – Terraform</h4>
+    <pre id="avdTf"></pre>
   </details>
 </section>
 
 <style>
-/* Scope EVERYTHING to #lzgen so the theme header/nav isn't touched */
+/* Scoped styles – do not touch theme header/nav */
 #lzgen { font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif; margin:2rem 0; padding:1rem 0; }
 #lzgen .lz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
 #lzgen .lz-card{border:1px solid var(--b,#ddd);border-radius:10px;padding:1rem;background:var(--bg,#fff);box-shadow:0 1px 2px rgba(0,0,0,.04)}
@@ -235,8 +306,6 @@
 #lzgen .lz-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem;margin:1rem 0}
 #lzgen .lz-output pre{white-space:pre-wrap;background:#0a0a0a;color:#f4f4f4;padding:1rem;border-radius:10px;overflow:auto}
 #lzgen #toast{display:inline-block;margin-left:.5rem;min-height:1.2em}
-
-/* Dark mode – scoped (keine body- oder :root-Styles!) */
 @media (prefers-color-scheme: dark){
   #lzgen{--bg:#111;--b:#333}
   #lzgen .lz-card{background:#111;border-color:#333}
@@ -246,9 +315,25 @@
 
 <script>
 (function(){
-  const ids = ["preset","orgSize","subModel","regionPlan","entraLevel","identitySource","rbac","topology","connectivity","privDns","policyLevel","allowedRegions","tagSchema","vending","compliance","defender","keys","baseline","monitoring","bcdr","budget","alerts","iac","pipelines","archetype"];
+  const ids = [
+    "preset","orgSize","subModel","regionPlan","entraLevel","identitySource","rbac",
+    "topology","connectivity","privDns","policyLevel","allowedRegions","tagSchema","vending","compliance",
+    "defender","keys","baseline","monitoring","bcdr","budget","alerts","iac","pipelines","archetype",
+    // AVD
+    "avdRegion","avdHostPoolType","avdBalance","avdMaxSessions","avdDomainJoin","avdFslogix",
+    "avdPrivateLinks","avdScaling","avdScaleMinHosts","avdScaleMaxHosts","avdPeakStart","avdPeakEnd"
+  ];
   const el = Object.fromEntries(ids.map(id=>[id,document.getElementById(id)]));
-  const out = {summary:document.getElementById("summary"), bicep:document.getElementById("bicep"), tf:document.getElementById("tf"), toast:document.getElementById("toast")};
+  const avdSection = document.getElementById("avdSection");
+
+  const out = {
+    summary:document.getElementById("summary"),
+    bicep:document.getElementById("bicep"),
+    tf:document.getElementById("tf"),
+    avdBicep:document.getElementById("avdBicep"),
+    avdTf:document.getElementById("avdTf"),
+    toast:document.getElementById("toast")
+  };
   const btn = {
     applyPreset:document.getElementById("applyPreset"),
     generate:document.getElementById("generate"),
@@ -258,6 +343,8 @@
     downloadTf:document.getElementById("downloadTf"),
     exportAlz:document.getElementById("exportAlz"),
     exportTfvars:document.getElementById("exportTfvars"),
+    downloadAvdBicep:document.getElementById("downloadAvdBicep"),
+    downloadAvdTf:document.getElementById("downloadAvdTf"),
     share:document.getElementById("share")
   };
 
@@ -270,7 +357,11 @@
       defender:"Essentials", keys:"Platform managed", baseline:"Standard",
       monitoring:"Log Analytics", bcdr:"Azure Backup",
       budget:"1000", alerts:"50,80,100",
-      iac:"Bicep", pipelines:"GitHub Actions", archetype:"Foundation"
+      iac:"Bicep", pipelines:"GitHub Actions", archetype:"Foundation",
+      // AVD defaults (hidden unless archetype=AVD)
+      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"BreadthFirst",
+      avdMaxSessions:"12", avdDomainJoin:"Entra ID joined", avdFslogix:"Azure Files",
+      avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"1", avdScaleMaxHosts:"5", avdPeakStart:"08:00", avdPeakEnd:"18:00"
     },
     regulated:{
       orgSize:"Enterprise", subModel:"Multi", regionPlan:"Primary+DR",
@@ -280,7 +371,10 @@
       defender:"Full", keys:"Customer managed", baseline:"High",
       monitoring:"Log Analytics + SIEM", bcdr:"Azure Backup + ASR",
       budget:"5000", alerts:"50,75,90,100",
-      iac:"Bicep", pipelines:"Azure DevOps", archetype:"APIM"
+      iac:"Bicep", pipelines:"Azure DevOps", archetype:"APIM",
+      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"DepthFirst",
+      avdMaxSessions:"10", avdDomainJoin:"AD DS (hybrid) joined", avdFslogix:"Azure Files",
+      avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"2", avdScaleMaxHosts:"10", avdPeakStart:"08:00", avdPeakEnd:"18:00"
     },
     enterprise:{
       orgSize:"Enterprise", subModel:"Multi", regionPlan:"Multi region",
@@ -290,48 +384,60 @@
       defender:"Full", keys:"Platform managed", baseline:"High",
       monitoring:"Log Analytics + SIEM", bcdr:"Azure Backup + ASR",
       budget:"8000", alerts:"50,80,100",
-      iac:"Terraform", pipelines:"Azure DevOps", archetype:"AKS"
+      iac:"Terraform", pipelines:"Azure DevOps", archetype:"AKS",
+      avdRegion:"westeurope", avdHostPoolType:"Pooled", avdBalance:"BreadthFirst",
+      avdMaxSessions:"16", avdDomainJoin:"Entra ID joined", avdFslogix:"Azure NetApp Files",
+      avdPrivateLinks:"Yes", avdScaling:"On", avdScaleMinHosts:"3", avdScaleMaxHosts:"20", avdPeakStart:"07:30", avdPeakEnd:"19:00"
     }
   };
 
   function applyPreset(name){
     const p = presets[name];
     Object.entries(p).forEach(([k,v]) => { if (el[k]) el[k].value = String(v); });
-    saveState(); toast("Preset applied");
+    toggleAvd(); saveState(); toast("Preset applied");
   }
 
   function validate(){
     const required = ["orgSize","subModel","topology","connectivity","policyLevel","defender","budget","iac"];
     const missing = required.filter(k=>!el[k].value);
     if(missing.length){ toast("Please fill required fields: " + missing.join(", ")); return false; }
+    if(el.archetype.value==="AVD"){
+      const reqAvd = ["avdRegion","avdHostPoolType","avdBalance","avdMaxSessions"];
+      const missA = reqAvd.filter(k=>!el[k].value);
+      if(missA.length){ toast("AVD: please fill " + missA.join(", ")); return false; }
+    }
     return true;
   }
 
-  function buildSummary(state){
+  function buildSummary(s){
     const lines = [];
-    lines.push(`Model: ${state.subModel}, Topology: ${state.topology}, Regions: ${state.regionPlan}`);
-    lines.push(`Identity: ${state.identitySource} (${state.entraLevel}), RBAC: ${state.rbac}`);
-    lines.push(`Connectivity: ${state.connectivity}, Private DNS: ${state.privDns}`);
-    lines.push(`Policy level: ${state.policyLevel}, Allowed regions: ${state.allowedRegions||"not restricted"}`);
-    lines.push(`Tags: ${state.tagSchema}, Compliance: ${state.compliance}`);
-    lines.push(`Security: Defender=${state.defender}, Baseline=${state.baseline}, Keys=${state.keys}`);
-    lines.push(`Ops: Monitoring=${state.monitoring}, BCDR=${state.bcdr}`);
-    lines.push(`Cost: Budget=${state.budget}€, Alerts=${state.alerts}`);
-    lines.push(`Automation: IaC=${state.iac}, Pipeline=${state.pipelines}, Archetype=${state.archetype}`);
-    if(state.subModel==="Multi"){
+    lines.push(`Model: ${s.subModel}, Topology: ${s.topology}, Regions: ${s.regionPlan}`);
+    lines.push(`Identity: ${s.identitySource} (${s.entraLevel}), RBAC: ${s.rbac}`);
+    lines.push(`Connectivity: ${s.connectivity}, Private DNS: ${s.privDns}`);
+    lines.push(`Policy level: ${s.policyLevel}, Allowed regions: ${s.allowedRegions||"not restricted"}`);
+    lines.push(`Tags: ${s.tagSchema}, Compliance: ${s.compliance}`);
+    lines.push(`Security: Defender=${s.defender}, Baseline=${s.baseline}, Keys=${s.keys}`);
+    lines.push(`Ops: Monitoring=${s.monitoring}, BCDR=${s.bcdr}`);
+    lines.push(`Cost: Budget=${s.budget}€, Alerts=${s.alerts}`);
+    lines.push(`Automation: IaC=${s.iac}, Pipeline=${s.pipelines}, Archetype=${s.archetype}`);
+    if(s.subModel==="Multi"){
       lines.push(`MG suggestion: Tenant Root -> Platform, LandingZones, Sandbox`);
       lines.push(`Suggested subscriptions: Connectivity, Identity, Management, Workload spokes`);
     } else {
       lines.push(`Suggestion: Single subscription with clear RG split for platform and workloads`);
     }
+    if(s.archetype==="AVD"){
+      lines.push(`AVD: ${s.avdHostPoolType} host pool in ${s.avdRegion}, ${s.avdBalance} balancing, max ${s.avdMaxSessions} sessions/host, FSLogix=${s.avdFslogix}, Join=${s.avdDomainJoin}, PrivateLinks=${s.avdPrivateLinks}, Scaling=${s.avdScaling} (${s.avdScaleMinHosts}-${s.avdScaleMaxHosts}, ${s.avdPeakStart}-${s.avdPeakEnd})`);
+    }
     return lines.join("\n");
   }
 
+  // Platform templates
   function bicepTemplate(s){
     const allowRegions = (s.allowedRegions||"").split(",").map(x=>x.trim()).filter(Boolean);
     const tags = (s.tagSchema||"").split(",").map(x=>x.trim()).filter(Boolean);
 
-    return `// CAF Ready Bicep Starter
+    return `// CAF Ready Bicep Starter (platform)
 targetScope = 'subscription'
 
 @description('Default location for platform resources')
@@ -352,7 +458,7 @@ resource rg_mgmt 'Microsoft.Resources/resourceGroups@2024-03-01' = {
   }
 }
 
-// Budget
+// Budget (placeholder notifications)
 resource budget 'Microsoft.Consumption/budgets@2023-05-01' = {
   name: 'lz-monthly-budget'
   scope: subscription().id
@@ -370,7 +476,7 @@ resource budget 'Microsoft.Consumption/budgets@2023-05-01' = {
   }
 }
 
-// Hub VNet optional by topology
+// Optional Hub VNet
 ${s.topology === "Hub-and-Spoke" ? `
 resource rg_network 'Microsoft.Resources/resourceGroups@2024-03-01' = {
   name: 'rg-network-hub'
@@ -392,7 +498,7 @@ resource vnet_hub 'Microsoft.Network/virtualNetworks@2023-11-01' = {
 ` : `// Flat topology - per workload VNet later`
 }
 
-// Policy - Allowed Locations
+// Policy - Allowed locations (example)
 ${allowRegions.length ? `
 resource policyDef 'Microsoft.Authorization/policyDefinitions@2021-06-01' = {
   name: 'allowed-locations'
@@ -416,20 +522,14 @@ resource policyAssign 'Microsoft.Authorization/policyAssignments@2022-06-01' = {
 ` : `// No allowed locations policy set`
 }
 
-// Security baseline
-${s.baseline==="High" ? `// Example: deny public IP without NSG, enforce disk encryption
-// In production use a Policy Initiative for a complete set` : `// Standard baseline active`}
-
-// Defender
-// ${s.defender} - Plan assignment will be added in production template
-
-// Note: This is a minimal starter, extend as needed
+// Security baseline (sketch)
+${s.baseline==="High" ? `// Example: deny public IP without NSG, enforce disk encryption (use Initiative in prod)` : `// Standard baseline active`}
 `;
   }
 
   function tfTemplate(s){
     const allowRegions = (s.allowedRegions||"").split(",").map(x=>x.trim()).filter(Boolean);
-    return `# CAF Ready Terraform Starter
+    return `# CAF Ready Terraform Starter (platform)
 terraform {
   required_providers {
     azurerm = {
@@ -454,9 +554,8 @@ resource "azurerm_resource_group" "rg_mgmt" {
   }
 }
 
-# Budget note: Azure budget uses Consumption API - placeholder here
+# Budget: handled via Consumption API (placeholder)
 
-# Optional network hub by topology
 ${s.topology==="Hub-and-Spoke" ? `
 resource "azurerm_resource_group" "rg_network_hub" {
   name     = "rg-network-hub"
@@ -472,59 +571,205 @@ resource "azurerm_virtual_network" "vnet_hub" {
 ` : `# Flat topology - per workload VNet later`}
 
 # Allowed locations policy would use azurerm_policy_definition and assignment
+${allowRegions.length ? "# allowed: " + allowRegions.join(", ") : "# no region restriction"}
 
-# Note: Starter, extend for production
 `;
   }
 
+  // AVD templates (Application LZ)
+  function avdBicepTemplate(s){
+    if(s.archetype!=="AVD") return "// Select 'AVD' archetype to generate application template.";
+    return `// Application LZ - Azure Virtual Desktop (subscription/resource group scope example)
+@description('AVD region')
+param location string = '${s.avdRegion || "westeurope"}'
+
+resource rg_avd 'Microsoft.Resources/resourceGroups@2024-03-01' = {
+  name: 'rg-avd'
+  location: location
+}
+
+resource hp 'Microsoft.DesktopVirtualization/hostPools@2022-09-09' = {
+  name: 'hp-avd'
+  location: location
+  properties: {
+    hostPoolType: '${s.avdHostPoolType || "Pooled"}'
+    loadBalancerType: '${s.avdBalance || "BreadthFirst"}'
+    maxSessionLimit: ${Number(s.avdMaxSessions) || 12}
+    preferredAppGroupType: 'Desktop'
+    startVmOnConnect: true
+  }
+}
+
+resource ws 'Microsoft.DesktopVirtualization/workspaces@2022-09-09' = {
+  name: 'ws-avd'
+  location: location
+}
+
+resource dag 'Microsoft.DesktopVirtualization/applicationGroups@2022-09-09' = {
+  name: 'dag-avd'
+  location: location
+  properties: {
+    hostPoolArmPath: hp.id
+    type: 'Desktop'
+  }
+}
+
+resource assoc 'Microsoft.DesktopVirtualization/workspaces/applicationGroups@2022-09-09' = {
+  parent: ws
+  name: dag.name
+}
+
+${s.avdScaling==="On" ? `
+resource sp 'Microsoft.DesktopVirtualization/scalingPlans@2022-02-10-preview' = {
+  name: 'sp-avd'
+  location: location
+  properties: {
+    timeZone: 'Europe/Berlin'
+    hostPoolReferences: [
+      { hostPoolArmPath: hp.id, scalingPlanEnabled: true }
+    ]
+    schedules: [
+      {
+        name: 'default'
+        daysOfWeek: [ 'Monday','Tuesday','Wednesday','Thursday','Friday' ]
+        rampUpStartTime: { hour: ${parseInt((s.avdPeakStart||"08:00").split(":")[0])}, minute: ${parseInt((s.avdPeakStart||"08:00").split(":")[1])} }
+        rampDownStartTime: { hour: ${parseInt((s.avdPeakEnd||"18:00").split(":")[0])}, minute: ${parseInt((s.avdPeakEnd||"18:00").split(":")[1])} }
+        rampUpCapacityThresholdPct: 80
+        rampDownCapacityThresholdPct: 20
+        minHostsPct: 0
+        maxHostsPct: 100
+      }
+    ]
+  }
+}
+` : `// Scaling plan disabled`
+}
+
+// Notes:
+// - FSLogix: configure storage & GPO in your image or DSC (choice here: ${s.avdFslogix})
+// - Join type: ${s.avdDomainJoin} (ensure pre-reqs for Entra ID joined / hybrid)
+`;
+  }
+
+  function avdTfTemplate(s){
+    if(s.archetype!=="AVD") return "# Select 'AVD' archetype to generate application template.";
+    return `# Application LZ - Azure Virtual Desktop
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.112"
+    }
+  }
+}
+provider "azurerm" { features {} }
+
+variable "location" { type = string, default = "${s.avdRegion || "westeurope"}" }
+
+resource "azurerm_resource_group" "rg_avd" {
+  name     = "rg-avd"
+  location = var.location
+}
+
+resource "azurerm_virtual_desktop_host_pool" "hp" {
+  name                = "hp-avd"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg_avd.name
+  type                = "${(s.avdHostPoolType || "Pooled") === "Pooled" ? "Pooled" : "Personal"}"
+  load_balancer_type  = "${s.avdBalance || "BreadthFirst"}"
+  maximum_sessions_allowed = ${Number(s.avdMaxSessions) || 12}
+  preferred_app_group_type = "Desktop"
+  start_vm_on_connect = true
+}
+
+resource "azurerm_virtual_desktop_workspace" "ws" {
+  name                = "ws-avd"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg_avd.name
+}
+
+resource "azurerm_virtual_desktop_application_group" "dag" {
+  name                = "dag-avd"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg_avd.name
+  type                = "Desktop"
+  host_pool_id        = azurerm_virtual_desktop_host_pool.hp.id
+}
+
+resource "azurerm_virtual_desktop_workspace_application_group_association" "assoc" {
+  workspace_id       = azurerm_virtual_desktop_workspace.ws.id
+  application_group_id = azurerm_virtual_desktop_application_group.dag.id
+}
+
+${s.avdScaling==="On" ? `
+resource "azurerm_virtual_desktop_scaling_plan" "sp" {
+  name                = "sp-avd"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg_avd.name
+  time_zone           = "Europe/Berlin"
+  schedule {
+    name = "default"
+    days_of_week = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
+    ramp_up_start_time   = "${s.avdPeakStart || "08:00"}"
+    ramp_down_start_time = "${s.avdPeakEnd || "18:00"}"
+  }
+  host_pool {
+    host_pool_id          = azurerm_virtual_desktop_host_pool.hp.id
+    scaling_plan_enabled  = true
+  }
+}
+` : `# Scaling plan disabled`
+}
+
+# Notes:
+# - FSLogix backend: ${s.avdFslogix}
+# - Join type: ${s.avdDomainJoin}
+# - Private endpoints: ${s.avdPrivateLinks}
+`;
+  }
+
+  // Exports
   function buildAlzParams(s){
     const allowRegions = (s.allowedRegions||"").split(",").map(x=>x.trim()).filter(Boolean);
     const thresholds = (s.alerts||"50,80,100").split(",").map(x=>Number(x.trim())).filter(n=>!Number.isNaN(n));
     const tags = (s.tagSchema||"").split(",").map(x=>x.trim()).filter(Boolean);
 
-    return {
-      // minimal ALZ compatible-ish params to hand over to Enterprise Scale pipelines
+    const base = {
       locationDefault: "westeurope",
-      managementGroups: {
-        root: "Tenant Root",
-        platform: "Platform",
-        landingZones: "LandingZones",
-        sandbox: "Sandbox"
-      },
+      managementGroups: { root:"Tenant Root", platform:"Platform", landingZones:"LandingZones", sandbox:"Sandbox" },
       subscriptionModel: s.subModel,
-      network: {
-        topology: s.topology,
-        connectivity: s.connectivity,
-        privateDnsResolver: s.privDns === "Yes"
-      },
-      governance: {
-        policyLevel: s.policyLevel,
-        allowedRegions: allowRegions,
-        tags: tags,
-        vending: s.vending
-      },
-      security: {
-        defenderPlan: s.defender,
-        baseline: s.baseline,
-        compliancePack: s.compliance,
-        keyManagement: s.keys
-      },
-      cost: {
-        monthlyBudget: Number(s.budget)||0,
-        thresholds: thresholds
-      },
-      automation: {
-        iac: s.iac,
-        pipeline: s.pipelines
-      },
-      archetype: s.archetype
+      network: { topology:s.topology, connectivity:s.connectivity, privateDnsResolver: s.privDns==="Yes" },
+      governance: { policyLevel:s.policyLevel, allowedRegions:allowRegions, tags, vending:s.vending, compliance:s.compliance },
+      security: { defenderPlan:s.defender, baseline:s.baseline, keyManagement:s.keys },
+      cost: { monthlyBudget: Number(s.budget)||0, thresholds },
+      automation: { iac:s.iac, pipeline:s.pipelines }
     };
+
+    if(s.archetype==="AVD"){
+      base.application = {
+        type: "AVD",
+        avd: {
+          region: s.avdRegion,
+          hostPoolType: s.avdHostPoolType,
+          loadBalancer: s.avdBalance,
+          maxSessions: Number(s.avdMaxSessions)||12,
+          joinType: s.avdDomainJoin,
+          fslogix: s.avdFslogix,
+          privateLinks: s.avdPrivateLinks==="Yes",
+          scaling: s.avdScaling==="On",
+          scaleMinHosts: Number(s.avdScaleMinHosts)||1,
+          scaleMaxHosts: Number(s.avdScaleMaxHosts)||5,
+          peakStart: s.avdPeakStart,
+          peakEnd: s.avdPeakEnd
+        }
+      };
+    }
+    return base;
   }
 
   function buildTfvars(s){
     const p = buildAlzParams(s);
-    // flatten a little for tfvars readability
-    return {
+    const flat = {
       location_default: p.locationDefault,
       mg_root: p.managementGroups.root,
       mg_platform: p.managementGroups.platform,
@@ -535,103 +780,94 @@ resource "azurerm_virtual_network" "vnet_hub" {
       network_connectivity: p.network.connectivity,
       private_dns_resolver: p.network.privateDnsResolver,
       policy_level: p.governance.policyLevel,
-      allowed_regions: p.governance.allowedRegions,
-      tag_schema: p.governance.tags,
+      allowed_regions: p.governance.allowedRegions || [],
+      tag_schema: p.governance.tags || [],
       subscription_vending: p.governance.vending,
+      compliance_pack: p.governance.compliance,
       defender_plan: p.security.defenderPlan,
       security_baseline: p.security.baseline,
-      compliance_pack: p.security.compliancePack,
       key_management: p.security.keyManagement,
       monthly_budget: p.cost.monthlyBudget,
       budget_thresholds: p.cost.thresholds,
       iac_tool: p.automation.iac,
-      pipeline_tool: p.automation.pipeline,
-      archetype: p.archetype
+      pipeline_tool: p.automation.pipeline
     };
+    if(p.application && p.application.type==="AVD"){
+      flat.avd_enabled = true;
+      flat.avd_region = p.application.avd.region;
+      flat.avd_host_pool_type = p.application.avd.hostPoolType;
+      flat.avd_load_balancer  = p.application.avd.loadBalancer;
+      flat.avd_max_sessions   = p.application.avd.maxSessions;
+      flat.avd_join_type      = p.application.avd.joinType;
+      flat.avd_fslogix        = p.application.avd.fslogix;
+      flat.avd_private_links  = p.application.avd.privateLinks;
+      flat.avd_scaling        = p.application.avd.scaling;
+      flat.avd_scale_min      = p.application.avd.scaleMinHosts;
+      flat.avd_scale_max      = p.application.avd.scaleMaxHosts;
+      flat.avd_peak_start     = p.application.avd.peakStart;
+      flat.avd_peak_end       = p.application.avd.peakEnd;
+    } else {
+      flat.avd_enabled = false;
+    }
+    return flat;
   }
 
+  // UI + generate
   function generate(){
     if(!validate()) return;
-    const state = readState();
-    out.summary.textContent = buildSummary(state);
-    out.bicep.textContent = bicepTemplate(state);
-    out.tf.textContent    = tfTemplate(state);
+    const s = readState();
+    out.summary.textContent = buildSummary(s);
+    out.bicep.textContent = bicepTemplate(s);
+    out.tf.textContent    = tfTemplate(s);
+    out.avdBicep.textContent = avdBicepTemplate(s);
+    out.avdTf.textContent    = avdTfTemplate(s);
     toast("Generated");
   }
 
   function readState(){
-    const state = Object.fromEntries(ids.map(k=>[k, el[k].value.trim ? el[k].value.trim() : el[k].value]));
-    return state;
+    return Object.fromEntries(ids.map(k=>[k, el[k] && el[k].value !== undefined ? (el[k].value.trim ? el[k].value.trim() : el[k].value) : ""]));
   }
   function writeState(state){
     Object.entries(state).forEach(([k,v])=>{ if(el[k]) el[k].value = v; });
+    toggleAvd();
   }
-  function saveState(){
-    localStorage.setItem("lzgen:v1", JSON.stringify(readState()));
-  }
+  function saveState(){ localStorage.setItem("lzgen:v1", JSON.stringify(readState())); }
   function loadState(){
     const hash = location.hash.startsWith("#lz=") ? location.hash.slice(4) : null;
     if(hash){
-      try{
-        const json = decodeURIComponent(atob(hash));
-        const state = JSON.parse(json);
-        writeState(state); toast("Config loaded from link"); return;
-      }catch(e){ /* ignore */ }
+      try{ const json = decodeURIComponent(atob(hash)); const state = JSON.parse(json); writeState(state); toast("Config loaded from link"); return; }catch(e){}
     }
     const raw = localStorage.getItem("lzgen:v1");
     if(raw){ try{ writeState(JSON.parse(raw)); }catch(e){} }
   }
 
-  function copy(text){
-    navigator.clipboard.writeText(text).then(()=>toast("Copied")).catch(()=>toast("Copy failed"));
-  }
-  function download(filename, content){
-    const blob = new Blob([content], {type:"application/json"});
+  function toggleAvd(){ avdSection.style.display = (el.archetype.value === "AVD") ? "" : "none"; }
+
+  function copy(text){ navigator.clipboard.writeText(text).then(()=>toast("Copied")).catch(()=>toast("Copy failed")); }
+  function downloadFile(filename, content, type="text/plain"){
+    const blob = new Blob([content], {type});
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(a.href);
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
   }
   function shareLink(){
-    const state = readState();
-    const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
+    const encoded = btoa(encodeURIComponent(JSON.stringify(readState())));
     const url = location.origin + location.pathname + "#lz=" + encoded;
     copy(url); toast("Share link copied");
   }
   function toast(msg){ out.toast.textContent = msg; setTimeout(()=>out.toast.textContent="",3000); }
 
+  // Events
   btn.applyPreset?.addEventListener("click", ()=>applyPreset(el.preset.value));
   btn.generate.addEventListener("click", generate);
   btn.copyBicep.addEventListener("click", ()=>copy(out.bicep.textContent));
   btn.copyTf.addEventListener("click", ()=>copy(out.tf.textContent));
-
-  btn.downloadBicep.addEventListener("click", ()=>{
-    const s = readState();
-    const text = bicepTemplate(s);
-    const blob = new Blob([text], {type:"text/plain"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "caf-ready-lz.bicep";
-    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
-  });
-  btn.downloadTf.addEventListener("click", ()=>{
-    const s = readState();
-    const text = tfTemplate(s);
-    const blob = new Blob([text], {type:"text/plain"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "caf-ready-lz.tf";
-    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
-  });
-
-  btn.exportAlz.addEventListener("click", ()=>{
-    const json = JSON.stringify(buildAlzParams(readState()), null, 2);
-    download("alz-platform.params.json", json);
-    toast("Exported ALZ params.json");
-  });
+  btn.downloadBicep.addEventListener("click", ()=>downloadFile("caf-ready-lz.bicep", out.bicep.textContent || bicepTemplate(readState())));
+  btn.downloadTf.addEventListener("click", ()=>downloadFile("caf-ready-lz.tf", out.tf.textContent || tfTemplate(readState())));
+  btn.downloadAvdBicep.addEventListener("click", ()=>downloadFile("application-avd.bicep", out.avdBicep.textContent || avdBicepTemplate(readState())));
+  btn.downloadAvdTf.addEventListener("click", ()=>downloadFile("application-avd.tf", out.avdTf.textContent || avdTfTemplate(readState())));
+  btn.exportAlz.addEventListener("click", ()=>downloadFile("alz-platform.params.json", JSON.stringify(buildAlzParams(readState()), null, 2), "application/json"));
   btn.exportTfvars.addEventListener("click", ()=>{
     const tfvarsObj = buildTfvars(readState());
     const text = Object.entries(tfvarsObj).map(([k,v])=>{
@@ -639,19 +875,14 @@ resource "azurerm_virtual_network" "vnet_hub" {
       if(typeof v === "string") return `${k} = "${v}"`;
       return `${k} = ${v}`;
     }).join("\n");
-    const blob = new Blob([text], {type:"text/plain"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "alz-platform.tfvars";
-    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
-    toast("Exported tfvars");
+    downloadFile("alz-platform.tfvars", text, "text/plain");
   });
-
   btn.share.addEventListener("click", shareLink);
 
-  ids.forEach(k=> el[k].addEventListener("change", saveState));
+  ids.forEach(k=> el[k] && el[k].addEventListener("change", ()=>{ saveState(); if(k==="archetype") toggleAvd(); }));
 
   loadState();
   if(!localStorage.getItem("lzgen:v1")) applyPreset("starter");
+  toggleAvd();
 })();
 </script>
