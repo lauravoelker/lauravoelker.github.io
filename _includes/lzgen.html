@@ -1,5 +1,3 @@
-<div style="padding:.5rem;background:#ffe8a3;">LZGEN include loaded</div>
-
 <!-- _includes/lzgen.html -->
 <section id="lzgen" class="lz-wrap">
   {% unless include.hide_title %}
@@ -17,7 +15,6 @@
     <option value="centralus"><option value="southcentralus"><option value="canadacentral">
   </datalist>
 
-  <!-- CARDS GRID (unverändert aus deiner Version) -->
   <div class="lz-grid">
     <!-- Preset -->
     <div class="lz-card">
@@ -31,12 +28,327 @@
     </div>
 
     <!-- Organization -->
-    <!-- … ALLE deine bestehenden Cards, Felder und Sections (AVD/AKS/SAP/APIM) 1:1 beibehalten … -->
-    <!-- Ich kürze hier nur für die Nachricht; du kannst deinen gesamten HTML-Block unverändert lassen. -->
-    <!-- BEGIN: kopiere hier deinen kompletten Karten-/Formular-HTML-Teil aus deiner Datei rein -->
-    <!-- (Von <div class="lz-card"><h3>Organization</h3> … bis zum Ende der APIM-Section) -->
-    <!-- END -->
+    <div class="lz-card">
+      <h3>Organization</h3>
+      <label>Org size*
+        <select id="orgSize" required>
+          <option value="">Please choose</option>
+          <option>Solo IT</option>
+          <option>Team</option>
+          <option>Enterprise</option>
+        </select>
+      </label>
+      <label>Subscription model*
+        <select id="subModel" required>
+          <option value="">Please choose</option>
+          <option>Single</option>
+          <option>Multi</option>
+        </select>
+      </label>
+      <label>Regions strategy
+        <select id="regionPlan">
+          <option>Primary</option>
+          <option>Primary+DR</option>
+          <option>Multi region</option>
+        </select>
+      </label>
+    </div>
 
+    <!-- Identity -->
+    <div class="lz-card">
+      <h3>Identity</h3>
+      <label>Entra license
+        <select id="entraLevel">
+          <option>P1</option>
+          <option>P2</option>
+        </select>
+      </label>
+      <label>Identity source
+        <select id="identitySource">
+          <option>Cloud only</option>
+          <option>Hybrid (AD Connect)</option>
+        </select>
+      </label>
+      <label>RBAC baseline
+        <select id="rbac">
+          <option>Least privilege</option>
+          <option>Owner restricted</option>
+          <option>Relaxed</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Network -->
+    <div class="lz-card">
+      <h3>Network</h3>
+      <label>Topology*
+        <select id="topology" required>
+          <option value="">Please choose</option>
+          <option>Flat</option>
+          <option>Hub-and-Spoke</option>
+          <option>Mesh</option>
+        </select>
+      </label>
+      <label>Connectivity*
+        <select id="connectivity" required>
+          <option value="">Please choose</option>
+          <option>None</option>
+          <option>Site-to-Site VPN</option>
+          <option>ExpressRoute</option>
+        </select>
+      </label>
+      <label>Private DNS
+        <select id="privDns">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Governance -->
+    <div class="lz-card">
+      <h3>Governance and Policy</h3>
+      <label>Policy level*
+        <select id="policyLevel" required>
+          <option value="">Please choose</option>
+          <option>Basic</option>
+          <option>Standard</option>
+          <option>Strict</option>
+        </select>
+      </label>
+      <label>Allowed regions
+        <input id="allowedRegions" type="text" placeholder="e.g. westeurope, northeurope">
+      </label>
+      <label>Tags (comma separated)
+        <input id="tagSchema" type="text" value="CostCenter,Owner,Environment">
+      </label>
+      <label>Subscription vending
+        <select id="vending">
+          <option>Manual</option>
+          <option>Automated</option>
+        </select>
+      </label>
+      <label>Compliance pack
+        <select id="compliance">
+          <option value="None" selected>None</option>
+          <option value="MCSB">Microsoft Cloud Security Benchmark</option>
+          <option value="ISO27001">ISO 27001</option>
+          <option value="NIST80053">NIST SP 800-53</option>
+          <option value="CIS">CIS Foundations</option>
+          <option value="PCI">PCI DSS</option>
+        </select>
+      </label>
+
+      <!-- Guardrails -->
+      <label>Guardrails</label>
+      <label>
+        <input id="guardDenyPublicIp" type="checkbox" checked>
+        Deny creation of Public IPs (subscription)
+      </label>
+    </div>
+
+    <!-- Security -->
+    <div class="lz-card">
+      <h3>Security</h3>
+      <label>Defender for Cloud*
+        <select id="defender" required>
+          <option value="">Please choose</option>
+          <option>Off</option>
+          <option>Essentials</option>
+          <option>Full</option>
+        </select>
+      </label>
+      <label>Key management
+        <select id="keys">
+          <option>Platform managed</option>
+          <option>Customer managed</option>
+        </select>
+      </label>
+      <label>Baseline controls
+        <select id="baseline">
+          <option>Standard</option>
+          <option>High</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Ops & Cost -->
+    <div class="lz-card">
+      <h3>Ops and Cost</h3>
+      <label>Monitoring
+        <select id="monitoring">
+          <option>Log Analytics</option>
+          <option>Log Analytics + SIEM</option>
+        </select>
+      </label>
+      <label>Backup and DR
+        <select id="bcdr">
+          <option>Azure Backup</option>
+          <option>Azure Backup + ASR</option>
+          <option>3rd party</option>
+        </select>
+      </label>
+      <label>Monthly budget per subscription (€)*
+        <input id="budget" type="number" min="0" step="50" placeholder="e.g. 1000" required>
+      </label>
+      <label>Alerts
+        <input id="alerts" type="text" value="50,80,100">
+      </label>
+    </div>
+
+    <!-- Automation -->
+    <div class="lz-card">
+      <h3>Automation</h3>
+      <label>IaC*
+        <select id="iac" required>
+          <option value="">Please choose</option>
+          <option>Bicep</option>
+          <option>Terraform</option>
+        </select>
+      </label>
+      <label>Pipelines
+        <select id="pipelines">
+          <option>GitHub Actions</option>
+          <option>Azure DevOps</option>
+          <option>None</option>
+        </select>
+      </label>
+      <label>Archetype
+        <select id="archetype">
+          <option>Foundation</option>
+          <option>AKS</option>
+          <option>AVD</option>
+          <option>SAP</option>
+          <option>APIM</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Application LZ: AVD -->
+    <div id="avdSection" class="lz-card" style="display:none">
+      <h3>Application LZ: Azure Virtual Desktop (AVD)</h3>
+      <label>Region <input id="avdRegion" type="text" list="azureRegions" value="westeurope"></label>
+      <label>Host pool type
+        <select id="avdHostPoolType"><option>Pooled</option><option>Personal</option></select>
+      </label>
+      <label>Load balancing
+        <select id="avdBalance"><option>BreadthFirst</option><option>DepthFirst</option></select>
+      </label>
+      <label>Max sessions per host <input id="avdMaxSessions" type="number" min="1" value="12"></label>
+      <label>Join type
+        <select id="avdDomainJoin"><option>Entra ID joined</option><option>AD DS (hybrid) joined</option></select>
+      </label>
+      <label>FSLogix storage
+        <select id="avdFslogix"><option>Azure Files</option><option>Azure NetApp Files</option></select>
+      </label>
+      <label>Private endpoints
+        <select id="avdPrivateLinks"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>Scaling plan
+        <select id="avdScaling"><option>On</option><option>Off</option></select>
+      </label>
+      <label>Scale min hosts <input id="avdScaleMinHosts" type="number" min="0" value="1"></label>
+      <label>Scale max hosts <input id="avdScaleMaxHosts" type="number" min="1" value="5"></label>
+      <label>Peak window (HH:MM - HH:MM)
+        <input id="avdPeakStart" type="time" value="08:00">
+        <input id="avdPeakEnd" type="time" value="18:00">
+      </label>
+    </div>
+
+    <!-- Application LZ: AKS -->
+    <div id="aksSection" class="lz-card" style="display:none">
+      <h3>Application LZ: Azure Kubernetes Service (AKS)</h3>
+      <label>Region <input id="aksRegion" type="text" list="azureRegions" value="westeurope"></label>
+      <label>Private cluster
+        <select id="aksPrivate"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>CNI
+        <select id="aksCni"><option>Azure CNI</option><option>CNI Overlay</option></select>
+      </label>
+      <label>Ingress
+        <select id="aksIngress"><option>None</option><option>Nginx</option><option>AGIC</option></select>
+      </label>
+      <label>Outbound egress
+        <select id="aksOutbound"><option>NAT Gateway</option><option>LoadBalancer</option></select>
+      </label>
+      <label>Availability zones (e.g. 1,2,3) <input id="aksZones" type="text" value="1,2,3"></label>
+      <label>System node size <input id="aksSysSize" type="text" value="Standard_D4s_v5"></label>
+      <label>System node count <input id="aksSysCount" type="number" min="1" value="1"></label>
+      <label>User node size <input id="aksUserSize" type="text" value="Standard_D4s_v5"></label>
+      <label>User node count <input id="aksUserCount" type="number" min="0" value="2"></label>
+      <label>Workload Identity
+        <select id="aksWi"><option>On</option><option>Off</option></select>
+      </label>
+      <label>Key Vault CSI Driver
+        <select id="aksKvCsi"><option>On</option><option>Off</option></select>
+      </label>
+      <label>ACR integration
+        <select id="aksAcr"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>ACR name (if enabled)
+        <input id="aksAcrName" type="text" placeholder="e.g. mycompanyacr" />
+      </label>
+      <label>AKS Policy
+        <select id="aksPolicy"><option>On</option><option>Off</option></select>
+      </label>
+      <label>Network policy
+        <select id="aksNetPolicy"><option>Azure</option><option>Calico</option></select>
+      </label>
+      <label>Pod Security
+        <select id="aksPsp"><option>baseline</option><option>restricted</option></select>
+      </label>
+    </div>
+
+    <!-- Application LZ: SAP -->
+    <div id="sapSection" class="lz-card" style="display:none">
+      <h3>Application LZ: SAP on Azure</h3>
+      <label>Region <input id="sapRegion" type="text" list="azureRegions" value="westeurope"></label>
+      <label>Deployment pattern
+        <select id="sapPattern"><option>Two-tier</option><option>Three-tier</option><option>Single-VM</option></select>
+      </label>
+      <label>High availability
+        <select id="sapHa"><option>None</option><option>ASCS-ERS</option><option>DB HA</option><option>Full</option></select>
+      </label>
+      <label>DB platform
+        <select id="sapDb"><option>HANA</option><option>SQL</option></select>
+      </label>
+      <label>SAP SID (3 letters) <input id="sapSid" type="text" maxlength="3" value="PRD"></label>
+      <label>VM size (App) <input id="sapAppVm" type="text" value="Standard_D8s_v5"></label>
+      <label>VM size (DB) <input id="sapDbVm" type="text" value="Standard_E16ds_v5"></label>
+      <label>Availability zones (e.g. 1,2,3) <input id="sapZones" type="text" value="1,2,3"></label>
+      <label>Azure NetApp Files
+        <select id="sapAnf"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>Backup strategy
+        <select id="sapBackup"><option>Azure Backup</option><option>ANF Snapshots</option><option>None</option></select>
+      </label>
+      <label>SAP Monitor
+        <select id="sapMonitor"><option>On</option><option>Off</option></select>
+      </label>
+      <label>VNet CIDR <input id="sapVnetCidr" type="text" value="10.40.0.0/16"></label>
+      <label>Subnet App <input id="sapSubnetApp" type="text" value="10.40.1.0/24"></label>
+      <label>Subnet DB <input id="sapSubnetDb" type="text" value="10.40.2.0/24"></label>
+    </div>
+
+    <!-- Application LZ: APIM -->
+    <div id="apimSection" class="lz-card" style="display:none">
+      <h3>Application LZ: API Management (APIM)</h3>
+      <label>Region <input id="apimRegion" type="text" list="azureRegions" value="westeurope"></label>
+      <label>SKU
+        <select id="apimSku"><option>Developer</option><option>Basic</option><option>Standard</option><option>Premium</option></select>
+      </label>
+      <label>Capacity <input id="apimCapacity" type="number" min="1" value="1"></label>
+      <label>VNet mode
+        <select id="apimVnetMode"><option>None</option><option>External</option><option>Internal</option></select>
+      </label>
+      <label>Private endpoints
+        <select id="apimPrivateEndpoints"><option>Yes</option><option>No</option></select>
+      </label>
+      <label>Availability zones (e.g. 1,2,3) <input id="apimZones" type="text" value="1,2,3"></label>
+      <label>Managed Identity
+        <select id="apimMi"><option>On</option><option>Off</option></select>
+      </label>
+    </div>
   </div>
 
   <div class="lz-actions">
@@ -105,5 +417,5 @@
 }
 </style>
 
-<!-- Wichtig: JS jetzt extern laden (CSP-freundlich) -->
+<!-- JS jetzt extern laden (CSP-freundlich) -->
 <script defer src="{{ '/assets/js/lzgen.js' | relative_url }}"></script>
