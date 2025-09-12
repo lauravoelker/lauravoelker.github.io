@@ -224,21 +224,23 @@
 </section>
 
 <style>
-.lz-wrap{font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:2rem 0;padding:1rem 0}
-.lz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-.lz-card{border:1px solid var(--b,#ddd);border-radius:10px;padding:1rem;background:var(--bg,#fff);box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.lz-card h3{margin:.2rem 0 .6rem 0;font-size:1.05rem}
-label{display:block;margin:.5rem 0}
-input,select,button{width:100%;padding:.6rem;border:1px solid var(--b,#ccc);border-radius:8px;background:var(--bg,#fff)}
-button{cursor:pointer}
-.lz-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem;margin:1rem 0}
-.lz-output pre{white-space:pre-wrap;background:#0a0a0a;color:#f4f4f4;padding:1rem;border-radius:10px;overflow:auto}
-#toast{display:inline-block;margin-left:.5rem;min-height:1.2em}
+/* Scope EVERYTHING to #lzgen so the theme header/nav isn't touched */
+#lzgen { font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif; margin:2rem 0; padding:1rem 0; }
+#lzgen .lz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+#lzgen .lz-card{border:1px solid var(--b,#ddd);border-radius:10px;padding:1rem;background:var(--bg,#fff);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+#lzgen .lz-card h3{margin:.2rem 0 .6rem 0;font-size:1.05rem}
+#lzgen label{display:block;margin:.5rem 0}
+#lzgen input,#lzgen select,#lzgen button{width:100%;padding:.6rem;border:1px solid var(--b,#ccc);border-radius:8px;background:var(--bg,#fff)}
+#lzgen button{cursor:pointer}
+#lzgen .lz-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem;margin:1rem 0}
+#lzgen .lz-output pre{white-space:pre-wrap;background:#0a0a0a;color:#f4f4f4;padding:1rem;border-radius:10px;overflow:auto}
+#lzgen #toast{display:inline-block;margin-left:.5rem;min-height:1.2em}
+
+/* Dark mode – scoped (keine body- oder :root-Styles!) */
 @media (prefers-color-scheme: dark){
-  :root{--bg:#111;--b:#333}
-  body{background:#000;color:#eee}
-  .lz-card{background:#111;border-color:#333}
-  input,select,button{background:#0d0d0d;color:#eee;border-color:#333}
+  #lzgen{--bg:#111;--b:#333}
+  #lzgen .lz-card{background:#111;border-color:#333}
+  #lzgen input,#lzgen select,#lzgen button{background:#0d0d0d;color:#eee;border-color:#333}
 }
 </style>
 
