@@ -1,10 +1,13 @@
-<!-- _includes/lzgen.html -->
+<!-- _includes/lzgen.html :: v3 -->
 <section id="lzgen" class="lz-wrap">
+  <div class="lz-debug">LZGEN v3 include loaded</div>
+
   {% unless include.hide_title %}
   <h2>CAF Ready - Landing Zone Generator</h2>
   <p>Pick a preset or configure everything. Click Generate to get Bicep and Terraform starters. You can also export ALZ-compatible params and tfvars.</p>
   {% endunless %}
 
+  <!-- Region suggestions (for all app LZs) -->
   <datalist id="azureRegions">
     <option value="westeurope"><option value="northeurope"><option value="germanywestcentral">
     <option value="germanynorth"><option value="uksouth"><option value="ukwest">
@@ -138,7 +141,6 @@
         </select>
       </label>
 
-      <!-- Guardrails -->
       <label>Guardrails</label>
       <label>
         <input id="guardDenyPublicIp" type="checkbox" checked>
@@ -223,7 +225,7 @@
       </label>
     </div>
 
-    <!-- Application LZ: AVD -->
+    <!-- AVD -->
     <div id="avdSection" class="lz-card" style="display:none">
       <h3>Application LZ: Azure Virtual Desktop (AVD)</h3>
       <label>Region <input id="avdRegion" type="text" list="azureRegions" value="westeurope"></label>
@@ -254,7 +256,7 @@
       </label>
     </div>
 
-    <!-- Application LZ: AKS -->
+    <!-- AKS -->
     <div id="aksSection" class="lz-card" style="display:none">
       <h3>Application LZ: Azure Kubernetes Service (AKS)</h3>
       <label>Region <input id="aksRegion" type="text" list="azureRegions" value="westeurope"></label>
@@ -298,7 +300,7 @@
       </label>
     </div>
 
-    <!-- Application LZ: SAP -->
+    <!-- SAP -->
     <div id="sapSection" class="lz-card" style="display:none">
       <h3>Application LZ: SAP on Azure</h3>
       <label>Region <input id="sapRegion" type="text" list="azureRegions" value="westeurope"></label>
@@ -329,7 +331,7 @@
       <label>Subnet DB <input id="sapSubnetDb" type="text" value="10.40.2.0/24"></label>
     </div>
 
-    <!-- Application LZ: APIM -->
+    <!-- APIM -->
     <div id="apimSection" class="lz-card" style="display:none">
       <h3>Application LZ: API Management (APIM)</h3>
       <label>Region <input id="apimRegion" type="text" list="azureRegions" value="westeurope"></label>
@@ -399,6 +401,7 @@
 
 <style>
 #lzgen { font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif; margin:2rem 0; padding:1rem 0; }
+#lzgen .lz-debug{background:#ffe9a6;border:1px solid #f2cd5c;padding:.5rem .75rem;border-radius:.5rem;margin-bottom:1rem}
 #lzgen .lz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
 #lzgen .lz-card{border:1px solid var(--b,#ddd);border-radius:10px;padding:1rem;background:var(--bg,#fff);box-shadow:0 1px 2px rgba(0,0,0,.04)}
 #lzgen .lz-card h3{margin:.2rem 0 .6rem 0;font-size:1.05rem}
@@ -415,4 +418,5 @@
 }
 </style>
 
+<!-- externes JS nachladen -->
 <script defer src="{{ '/assets/js/lzgen.js' | relative_url }}"></script>
