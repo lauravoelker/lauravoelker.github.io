@@ -3,7 +3,7 @@ main:
    # url: /posts/
    # - title: "Categories"
    # url: /categories/#
-  - title: "Cloud Adaption Framework"
-    url: /cloud-adaption-framework/
+  - title: "Toolbox"
+    url: /toolbox/
   - title: "About"
     url: /about/
