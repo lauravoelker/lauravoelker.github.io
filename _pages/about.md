@@ -41,14 +41,19 @@ My work centers on empowering partners to navigate cloud security, AI, and digit
 I’m committed to continuous learning.<br>
 Here are a few recent certifications:
 
+**Azure**
+
+<a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/f0b59a8fa749b198" target="_blank">
+  <img src="/assets/images/MS-900.png" alt="Azure Certified: Fundamentals" width="120"/>
+</a>
+
+**Microsoft 365**
+
 <a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/6ed65f3e147537c0" target="_blank">
   <img src="/assets/images/MS-900.png" alt="Microsoft 365 Certified: Fundamentals" width="120"/>
 </a>
 <a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/f0b59a8fa749b198" target="_blank">
   <img src="/assets/images/Ms-700.png" alt="Microsoft 365 Certified: Teams Administrator Associate" width="120"/>
-</a>
-<a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/f0b59a8fa749b198" target="_blank">
-  <img src="/assets/images/AZ-900.png" alt="Azure Certified: Fundamentals" width="120"/>
 </a>
 
 ---
