@@ -28,7 +28,7 @@ Over time, I shifted my focus to Microsoft 365 and Teams, helping partners ident
 
 I enjoy translating complex technical topics into actionable steps that deliver real business value.
 
-**Today – All in on Azure:**  
+**Today:**  
 After a parental break, I returned with fresh perspective, now focusing fully on Microsoft Azure.<br> 
 
 My work centers on empowering partners to navigate cloud security, AI, and digital transformation, and to achieve their goals with confidence and clarity.
