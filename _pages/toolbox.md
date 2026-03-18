@@ -2,6 +2,7 @@
 title: ""
 layout: single
 permalink: /toolbox/
+image: /assets/images/Header_2.png
 ---
 
 **Azure Sales & Pre-Sales Toolbox**
