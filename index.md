@@ -5,27 +5,23 @@ header:
   overlay_filter: "0.3"
   overlay_image: /assets/images/Header_6.svg
 ---
+**A Guide to Azure Infrastructure, Hybrid Cloud, and Modern Workloads**<br>
 
-**A Guide to Security, AI, and Cloud Adoption in Microsoft Azure**<br>
-Hello. I’m Laura, a Partner Development Manager for Microsoft Azure. My mission is to help business leaders, consultants, and partners confidently adopt Azure by combining clear security best practices, AI guidance, and practical tooling.
+Hello. I’m Laura, a Partner Development Manager for Microsoft Azure.  
+My focus is on helping partners and businesses design, build, and scale Azure environments – from first workloads to complex hybrid infrastructures.
 
-On this blog you’ll find:
+I combine practical guidance on infrastructure, architecture, and cloud adoption with insights into security and AI, so you can move forward with clarity and confidence.
 
-**Practical guides**<br>
-For getting started with security in Azure.
+**On this blog you’ll find:**<br>
 
-**Clear explainations**<br>
-Of how AI and security tools work in the Microsoft Azure Cloud
+Practical infrastructure guidance  
+From first Azure deployments to hybrid and scalable environments
 
-**Partner insights**<br>
-And real-world use cases: what’s working, what’s new, and what can help your business or sumtomers today
+Clear architecture insights  
+How Azure services work together across on-premises and cloud
 
-**What you’ll find here**<br>
-▸ Detailed guides on each phase of Microsoft’s Cloud Adoption Framework<br>
-▸ Security checklists, PowerShell scripts, and white-label PDFs you can use today<br>
-▸ AI use cases that drive business value in Azure<br>
-▸ Licensing tips to optimize spend and compliance<br>
-▸ Regular updates on cloud, AI, and security trends<br>
+Partner-focused enablement  
+Real-world scenarios, use cases, and what actually works in customer projects
 
 **Featured Articles**<br>
 [Hybrid-First CAF Plan: From Strategy to a Living Backlog]({{ '/caf-plan/' | relative_url }})
