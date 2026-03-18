@@ -6,7 +6,12 @@ permalink: /toolbox/
 
 **Azure Sales & Pre-Sales Toolbox**
 
-A curated collection of essential tools and resources for Azure sales, pre-sales, and architecture.
+This is a collection of tools and resources I actually use in Azure projects, customer conversations, and architecture discussions.
+
+It’s a mix of official Microsoft documentation and a few community tools that are just really helpful in practice.
+Some of the tools listed here are not built by Microsoft but are widely used across the Azure community. I’ve marked those accordingly.
+
+Just a place to have everything in one spot when you need it.
 
 ---
 
@@ -69,7 +74,7 @@ Plan and execute migrations to Azure.
 » **[Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/)**  
 Manage hybrid and multi-cloud environments.
 
-» **[Azure Speed Test](https://www.azurespeed.com/)**  
+» **[Azure Speed Test](https://www.azurespeed.com/)** *(Community Tool)*
 Test latency to Azure regions.
 
 » **[Azure IP Ranges & Service Tags](https://www.microsoft.com/en-us/download/details.aspx?id=56519)**  
@@ -116,7 +121,7 @@ Understand storage performance options.
 » **[Storage Scalability Targets](https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account)**  
 Check limits for storage services.
 
-» **[Azure Pricing Comparison](https://azureprice.net)**  
+» **[Azure Pricing Comparison](https://azureprice.net)** *(Community Tool)*  
 Quick comparison of VM pricing.
 
 ---
@@ -139,13 +144,13 @@ Structured overview of new capabilities.
 » **[Azure Sustainability](https://learn.microsoft.com/en-us/azure/sustainability/)**  
 Estimate environmental impact of workloads.
 
-» **[Azure Charts](https://azurecharts.com/)**  
+» **[Azure Charts](https://azurecharts.com/)** *(Community Tool)*
 Visual insights and Azure growth trends.
 
-» **[Tenant Lookup](https://whatismytenantid.com/)**  
+» **[Tenant Lookup](https://whatismytenantid.com/)** *(Community Tool)*
 Quickly identify Azure tenant information.
 
-» **[Azure Naming Tool](https://aznamingtool.azurewebsites.net/)**  
+» **[Azure Naming Tool](https://aznamingtool.azurewebsites.net/)** *(Community Tool)*
 Generate consistent naming conventions.
 
 » **[Azure Service Icons](https://learn.microsoft.com/en-us/azure/architecture/icons/)**  
