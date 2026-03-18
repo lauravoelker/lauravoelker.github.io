@@ -74,7 +74,7 @@ Plan and execute migrations to Azure.
 » **[Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/)**  
 Manage hybrid and multi-cloud environments.
 
-» **[Azure Speed Test](https://www.azurespeed.com/)** *(Community Tool)*
+» **[Azure Speed Test](https://www.azurespeed.com/)** *(Community Tool)* <br>
 Test latency to Azure regions.
 
 » **[Azure IP Ranges & Service Tags](https://www.microsoft.com/en-us/download/details.aspx?id=56519)**  
@@ -121,7 +121,7 @@ Understand storage performance options.
 » **[Storage Scalability Targets](https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account)**  
 Check limits for storage services.
 
-» **[Azure Pricing Comparison](https://azureprice.net)** *(Community Tool)*  
+» **[Azure Pricing Comparison](https://azureprice.net)** *(Community Tool)* <br>
 Quick comparison of VM pricing.
 
 ---
@@ -144,13 +144,13 @@ Structured overview of new capabilities.
 » **[Azure Sustainability](https://learn.microsoft.com/en-us/azure/sustainability/)**  
 Estimate environmental impact of workloads.
 
-» **[Azure Charts](https://azurecharts.com/)** *(Community Tool)*
+» **[Azure Charts](https://azurecharts.com/)** *(Community Tool)* <br>
 Visual insights and Azure growth trends.
 
-» **[Tenant Lookup](https://whatismytenantid.com/)** *(Community Tool)*
+» **[Tenant Lookup](https://whatismytenantid.com/)** *(Community Tool)* <br>
 Quickly identify Azure tenant information.
 
-» **[Azure Naming Tool](https://aznamingtool.azurewebsites.net/)** *(Community Tool)*
+» **[Azure Naming Tool](https://aznamingtool.azurewebsites.net/)** *(Community Tool)* <br>
 Generate consistent naming conventions.
 
 » **[Azure Service Icons](https://learn.microsoft.com/en-us/azure/architecture/icons/)**  
