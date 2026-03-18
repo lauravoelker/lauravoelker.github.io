@@ -47,6 +47,9 @@ Here are a few recent certifications:
 <a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/f0b59a8fa749b198" target="_blank">
   <img src="/assets/images/Ms-700.png" alt="Microsoft 365 Certified: Teams Administrator Associate" width="120"/>
 </a>
+<a href="https://learn.microsoft.com/de-de/users/laura-2595/credentials/f0b59a8fa749b198" target="_blank">
+  <img src="/assets/images/AZ-900.png" alt="Azure Certified: Fundamentals" width="120"/>
+</a>
 
 ---
 
