@@ -23,9 +23,6 @@ How Azure services work together across on-premises and cloud
 Partner-focused enablement  
 Real-world scenarios, use cases, and what actually works in customer projects
 
-**Featured Articles**<br>
-[Hybrid-First CAF Plan: From Strategy to a Living Backlog]({{ '/caf-plan/' | relative_url }})
-
 
 
 
