@@ -21,9 +21,6 @@ Just a place to have everything in one spot when you need it.
 » **[Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)**  
 Use this when you need a quick estimate during customer conversations.
 
-» **[Azure TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/)**  
-Best for comparing on-premises environments with Azure.
-
 » **[Azure Savings Plans](https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/)**  
 Use this for long-term cost optimization discussions.
 
