@@ -2,7 +2,8 @@
 title: ""
 layout: single
 permalink: /toolbox/
-header: false
+header:
+  overlay_image: /assets/images/Azure_Toolbox.png
 image: "https://voelker.blog/assets/images/Azure_Toolbox.png"
 ---
 
